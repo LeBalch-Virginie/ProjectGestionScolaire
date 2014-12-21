@@ -1,0 +1,25 @@
+﻿@using GestionScolaire.Models
+@model IEnumerable<AnneeModels>
+
+@{
+    ViewBag.Title = "ReadAnnees";
+}
+
+<h2>Années</h2>
+
+<table class="table">
+
+
+    <tr>
+        <th>Id</th>
+        <th>Année</th>
+    </tr> 
+    @foreach(AnneeModels annee in Model)
+    {
+        <tr>
+            <td>@annee.id</td>
+            <td>@Html.ActionLink(annee.year.ToString(), "ReadAnnee", "Administration", new {id = annee.id}, null)</td>
+        </tr>
+    }
+</table>
+

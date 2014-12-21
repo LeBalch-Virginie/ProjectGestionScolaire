@@ -1,0 +1,948 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AcademyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="AcademyModelStoreContainer">
+          <EntitySet Name="Academies" EntityType="AcademyModel.Store.Academies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Classrooms" EntityType="AcademyModel.Store.Classrooms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cycles" EntityType="AcademyModel.Store.Cycles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Establishments" EntityType="AcademyModel.Store.Establishments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Evaluations" EntityType="AcademyModel.Store.Evaluations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Levels" EntityType="AcademyModel.Store.Levels" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Periods" EntityType="AcademyModel.Store.Periods" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Pupils" EntityType="AcademyModel.Store.Pupils" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Results" EntityType="AcademyModel.Store.Results" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tutors" EntityType="AcademyModel.Store.Tutors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="AcademyModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Years" EntityType="AcademyModel.Store.Years" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Classrooms_Establishments" Association="AcademyModel.Store.FK_Classrooms_Establishments">
+            <End Role="Establishments" EntitySet="Establishments" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classrooms_Users" Association="AcademyModel.Store.FK_Classrooms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classrooms_Years" Association="AcademyModel.Store.FK_Classrooms_Years">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Establishments_Academies" Association="AcademyModel.Store.FK_Establishments_Academies">
+            <End Role="Academies" EntitySet="Academies" />
+            <End Role="Establishments" EntitySet="Establishments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Establishments_Users" Association="AcademyModel.Store.FK_Establishments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Establishments" EntitySet="Establishments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Classrooms" Association="AcademyModel.Store.FK_Evaluations_Classrooms">
+            <End Role="Classrooms" EntitySet="Classrooms" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Periods" Association="AcademyModel.Store.FK_Evaluations_Periods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Users" Association="AcademyModel.Store.FK_Evaluations_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Levels_Cycles" Association="AcademyModel.Store.FK_Levels_Cycles">
+            <End Role="Cycles" EntitySet="Cycles" />
+            <End Role="Levels" EntitySet="Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Periods_Years" Association="AcademyModel.Store.FK_Periods_Years">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Periods" EntitySet="Periods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Classrooms" Association="AcademyModel.Store.FK_Pupils_Classrooms">
+            <End Role="Classrooms" EntitySet="Classrooms" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Levels" Association="AcademyModel.Store.FK_Pupils_Levels">
+            <End Role="Levels" EntitySet="Levels" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Tutors" Association="AcademyModel.Store.FK_Pupils_Tutors">
+            <End Role="Tutors" EntitySet="Tutors" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Evaluations" Association="AcademyModel.Store.FK_Results_Evaluations">
+            <End Role="Evaluations" EntitySet="Evaluations" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Pupils" Association="AcademyModel.Store.FK_Results_Pupils">
+            <End Role="Pupils" EntitySet="Pupils" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Academies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Classrooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Year_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Establishment_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cycles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Establishments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Town" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Academie_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evaluations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Classroom_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Period_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="TotalPoint" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Cycle_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Begin" Type="datetime" Nullable="false" />
+          <Property Name="End" Type="datetime" Nullable="false" />
+          <Property Name="Year_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pupils">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Sex" Type="smallint" Nullable="false" />
+          <Property Name="BirthdayDate" Type="datetime" Nullable="false" />
+          <Property Name="State" Type="smallint" Nullable="false" />
+          <Property Name="Tutor_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Classroom_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Level_Id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Evaluation_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Pupil_Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Note" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tutors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PostCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Town" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Years">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Classrooms_Establishments">
+          <End Role="Establishments" Type="AcademyModel.Store.Establishments" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Store.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establishments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="Establishment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classrooms_Users">
+          <End Role="Users" Type="AcademyModel.Store.Users" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Store.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classrooms_Years">
+          <End Role="Years" Type="AcademyModel.Store.Years" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Store.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Establishments_Academies">
+          <End Role="Academies" Type="AcademyModel.Store.Academies" Multiplicity="1" />
+          <End Role="Establishments" Type="AcademyModel.Store.Establishments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Academies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Establishments">
+              <PropertyRef Name="Academie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Establishments_Users">
+          <End Role="Users" Type="AcademyModel.Store.Users" Multiplicity="1" />
+          <End Role="Establishments" Type="AcademyModel.Store.Establishments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Establishments">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Classrooms">
+          <End Role="Classrooms" Type="AcademyModel.Store.Classrooms" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Store.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classrooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="Classroom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Periods">
+          <End Role="Periods" Type="AcademyModel.Store.Periods" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Store.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Users">
+          <End Role="Users" Type="AcademyModel.Store.Users" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Store.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Levels_Cycles">
+          <End Role="Cycles" Type="AcademyModel.Store.Cycles" Multiplicity="1" />
+          <End Role="Levels" Type="AcademyModel.Store.Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cycles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Levels">
+              <PropertyRef Name="Cycle_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Periods_Years">
+          <End Role="Years" Type="AcademyModel.Store.Years" Multiplicity="1" />
+          <End Role="Periods" Type="AcademyModel.Store.Periods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Periods">
+              <PropertyRef Name="Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Classrooms">
+          <End Role="Classrooms" Type="AcademyModel.Store.Classrooms" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Store.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classrooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Classroom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Levels">
+          <End Role="Levels" Type="AcademyModel.Store.Levels" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Store.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Levels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Level_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Tutors">
+          <End Role="Tutors" Type="AcademyModel.Store.Tutors" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Store.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Tutor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Evaluations">
+          <End Role="Evaluations" Type="AcademyModel.Store.Evaluations" Multiplicity="1" />
+          <End Role="Results" Type="AcademyModel.Store.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="Evaluation_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Pupils">
+          <End Role="Pupils" Type="AcademyModel.Store.Pupils" Multiplicity="1" />
+          <End Role="Results" Type="AcademyModel.Store.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pupils">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="Pupil_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AcademyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Academies" EntityType="AcademyModel.Academies" />
+          <EntitySet Name="Classrooms" EntityType="AcademyModel.Classrooms" />
+          <EntitySet Name="Cycles" EntityType="AcademyModel.Cycles" />
+          <EntitySet Name="Establishments" EntityType="AcademyModel.Establishments" />
+          <EntitySet Name="Evaluations" EntityType="AcademyModel.Evaluations" />
+          <EntitySet Name="Levels" EntityType="AcademyModel.Levels" />
+          <EntitySet Name="Periods" EntityType="AcademyModel.Periods" />
+          <EntitySet Name="Pupils" EntityType="AcademyModel.Pupils" />
+          <EntitySet Name="Results" EntityType="AcademyModel.Results" />
+          <EntitySet Name="Tutors" EntityType="AcademyModel.Tutors" />
+          <EntitySet Name="Users" EntityType="AcademyModel.Users" />
+          <EntitySet Name="Years" EntityType="AcademyModel.Years" />
+          <AssociationSet Name="FK_Establishments_Academies" Association="AcademyModel.FK_Establishments_Academies">
+            <End Role="Academies" EntitySet="Academies" />
+            <End Role="Establishments" EntitySet="Establishments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classrooms_Establishments" Association="AcademyModel.FK_Classrooms_Establishments">
+            <End Role="Establishments" EntitySet="Establishments" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classrooms_Users" Association="AcademyModel.FK_Classrooms_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Classrooms_Years" Association="AcademyModel.FK_Classrooms_Years">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Classrooms" EntitySet="Classrooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Classrooms" Association="AcademyModel.FK_Evaluations_Classrooms">
+            <End Role="Classrooms" EntitySet="Classrooms" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Classrooms" Association="AcademyModel.FK_Pupils_Classrooms">
+            <End Role="Classrooms" EntitySet="Classrooms" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Levels_Cycles" Association="AcademyModel.FK_Levels_Cycles">
+            <End Role="Cycles" EntitySet="Cycles" />
+            <End Role="Levels" EntitySet="Levels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Establishments_Users" Association="AcademyModel.FK_Establishments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Establishments" EntitySet="Establishments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Periods" Association="AcademyModel.FK_Evaluations_Periods">
+            <End Role="Periods" EntitySet="Periods" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluations_Users" Association="AcademyModel.FK_Evaluations_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Evaluations" EntitySet="Evaluations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Evaluations" Association="AcademyModel.FK_Results_Evaluations">
+            <End Role="Evaluations" EntitySet="Evaluations" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Levels" Association="AcademyModel.FK_Pupils_Levels">
+            <End Role="Levels" EntitySet="Levels" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Periods_Years" Association="AcademyModel.FK_Periods_Years">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="Periods" EntitySet="Periods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pupils_Tutors" Association="AcademyModel.FK_Pupils_Tutors">
+            <End Role="Tutors" EntitySet="Tutors" />
+            <End Role="Pupils" EntitySet="Pupils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Results_Pupils" Association="AcademyModel.FK_Results_Pupils">
+            <End Role="Pupils" EntitySet="Pupils" />
+            <End Role="Results" EntitySet="Results" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Academies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Establishments" Relationship="AcademyModel.FK_Establishments_Academies" FromRole="Academies" ToRole="Establishments" />
+        </EntityType>
+        <EntityType Name="Classrooms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="User_Id" Type="Guid" Nullable="false" />
+          <Property Name="Year_Id" Type="Guid" Nullable="false" />
+          <Property Name="Establishment_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Establishments" Relationship="AcademyModel.FK_Classrooms_Establishments" FromRole="Classrooms" ToRole="Establishments" />
+          <NavigationProperty Name="Users" Relationship="AcademyModel.FK_Classrooms_Users" FromRole="Classrooms" ToRole="Users" />
+          <NavigationProperty Name="Years" Relationship="AcademyModel.FK_Classrooms_Years" FromRole="Classrooms" ToRole="Years" />
+          <NavigationProperty Name="Evaluations" Relationship="AcademyModel.FK_Evaluations_Classrooms" FromRole="Classrooms" ToRole="Evaluations" />
+          <NavigationProperty Name="Pupils" Relationship="AcademyModel.FK_Pupils_Classrooms" FromRole="Classrooms" ToRole="Pupils" />
+        </EntityType>
+        <EntityType Name="Cycles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Levels" Relationship="AcademyModel.FK_Levels_Cycles" FromRole="Cycles" ToRole="Levels" />
+        </EntityType>
+        <EntityType Name="Establishments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="User_Id" Type="Guid" Nullable="false" />
+          <Property Name="Academie_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Academies" Relationship="AcademyModel.FK_Establishments_Academies" FromRole="Establishments" ToRole="Academies" />
+          <NavigationProperty Name="Classrooms" Relationship="AcademyModel.FK_Classrooms_Establishments" FromRole="Establishments" ToRole="Classrooms" />
+          <NavigationProperty Name="Users" Relationship="AcademyModel.FK_Establishments_Users" FromRole="Establishments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Evaluations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Classroom_Id" Type="Guid" Nullable="false" />
+          <Property Name="User_Id" Type="Guid" Nullable="false" />
+          <Property Name="Period_Id" Type="Guid" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalPoint" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Classrooms" Relationship="AcademyModel.FK_Evaluations_Classrooms" FromRole="Evaluations" ToRole="Classrooms" />
+          <NavigationProperty Name="Periods" Relationship="AcademyModel.FK_Evaluations_Periods" FromRole="Evaluations" ToRole="Periods" />
+          <NavigationProperty Name="Users" Relationship="AcademyModel.FK_Evaluations_Users" FromRole="Evaluations" ToRole="Users" />
+          <NavigationProperty Name="Results" Relationship="AcademyModel.FK_Results_Evaluations" FromRole="Evaluations" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Levels">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Cycle_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Cycles" Relationship="AcademyModel.FK_Levels_Cycles" FromRole="Levels" ToRole="Cycles" />
+          <NavigationProperty Name="Pupils" Relationship="AcademyModel.FK_Pupils_Levels" FromRole="Levels" ToRole="Pupils" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Begin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="End" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Year_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Evaluations" Relationship="AcademyModel.FK_Evaluations_Periods" FromRole="Periods" ToRole="Evaluations" />
+          <NavigationProperty Name="Years" Relationship="AcademyModel.FK_Periods_Years" FromRole="Periods" ToRole="Years" />
+        </EntityType>
+        <EntityType Name="Pupils">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Sex" Type="Int16" Nullable="false" />
+          <Property Name="BirthdayDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="State" Type="Int16" Nullable="false" />
+          <Property Name="Tutor_Id" Type="Guid" Nullable="false" />
+          <Property Name="Classroom_Id" Type="Guid" Nullable="false" />
+          <Property Name="Level_Id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Classrooms" Relationship="AcademyModel.FK_Pupils_Classrooms" FromRole="Pupils" ToRole="Classrooms" />
+          <NavigationProperty Name="Levels" Relationship="AcademyModel.FK_Pupils_Levels" FromRole="Pupils" ToRole="Levels" />
+          <NavigationProperty Name="Tutors" Relationship="AcademyModel.FK_Pupils_Tutors" FromRole="Pupils" ToRole="Tutors" />
+          <NavigationProperty Name="Results" Relationship="AcademyModel.FK_Results_Pupils" FromRole="Pupils" ToRole="Results" />
+        </EntityType>
+        <EntityType Name="Results">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Evaluation_Id" Type="Guid" Nullable="false" />
+          <Property Name="Pupil_Id" Type="Guid" Nullable="false" />
+          <Property Name="Note" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Evaluations" Relationship="AcademyModel.FK_Results_Evaluations" FromRole="Results" ToRole="Evaluations" />
+          <NavigationProperty Name="Pupils" Relationship="AcademyModel.FK_Results_Pupils" FromRole="Results" ToRole="Pupils" />
+        </EntityType>
+        <EntityType Name="Tutors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PostCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Tel" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Pupils" Relationship="AcademyModel.FK_Pupils_Tutors" FromRole="Tutors" ToRole="Pupils" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Classrooms" Relationship="AcademyModel.FK_Classrooms_Users" FromRole="Users" ToRole="Classrooms" />
+          <NavigationProperty Name="Establishments" Relationship="AcademyModel.FK_Establishments_Users" FromRole="Users" ToRole="Establishments" />
+          <NavigationProperty Name="Evaluations" Relationship="AcademyModel.FK_Evaluations_Users" FromRole="Users" ToRole="Evaluations" />
+        </EntityType>
+        <EntityType Name="Years">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Classrooms" Relationship="AcademyModel.FK_Classrooms_Years" FromRole="Years" ToRole="Classrooms" />
+          <NavigationProperty Name="Periods" Relationship="AcademyModel.FK_Periods_Years" FromRole="Years" ToRole="Periods" />
+        </EntityType>
+        <Association Name="FK_Establishments_Academies">
+          <End Role="Academies" Type="AcademyModel.Academies" Multiplicity="1" />
+          <End Role="Establishments" Type="AcademyModel.Establishments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Academies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Establishments">
+              <PropertyRef Name="Academie_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classrooms_Establishments">
+          <End Role="Establishments" Type="AcademyModel.Establishments" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Establishments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="Establishment_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classrooms_Users">
+          <End Role="Users" Type="AcademyModel.Users" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Classrooms_Years">
+          <End Role="Years" Type="AcademyModel.Years" Multiplicity="1" />
+          <End Role="Classrooms" Type="AcademyModel.Classrooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Classrooms">
+              <PropertyRef Name="Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Classrooms">
+          <End Role="Classrooms" Type="AcademyModel.Classrooms" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classrooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="Classroom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Classrooms">
+          <End Role="Classrooms" Type="AcademyModel.Classrooms" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classrooms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Classroom_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Levels_Cycles">
+          <End Role="Cycles" Type="AcademyModel.Cycles" Multiplicity="1" />
+          <End Role="Levels" Type="AcademyModel.Levels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cycles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Levels">
+              <PropertyRef Name="Cycle_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Establishments_Users">
+          <End Role="Users" Type="AcademyModel.Users" Multiplicity="1" />
+          <End Role="Establishments" Type="AcademyModel.Establishments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Establishments">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Periods">
+          <End Role="Periods" Type="AcademyModel.Periods" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="Period_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluations_Users">
+          <End Role="Users" Type="AcademyModel.Users" Multiplicity="1" />
+          <End Role="Evaluations" Type="AcademyModel.Evaluations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluations">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Evaluations">
+          <End Role="Evaluations" Type="AcademyModel.Evaluations" Multiplicity="1" />
+          <End Role="Results" Type="AcademyModel.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="Evaluation_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Levels">
+          <End Role="Levels" Type="AcademyModel.Levels" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Levels">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Level_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Periods_Years">
+          <End Role="Years" Type="AcademyModel.Years" Multiplicity="1" />
+          <End Role="Periods" Type="AcademyModel.Periods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Periods">
+              <PropertyRef Name="Year_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pupils_Tutors">
+          <End Role="Tutors" Type="AcademyModel.Tutors" Multiplicity="1" />
+          <End Role="Pupils" Type="AcademyModel.Pupils" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pupils">
+              <PropertyRef Name="Tutor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Results_Pupils">
+          <End Role="Pupils" Type="AcademyModel.Pupils" Multiplicity="1" />
+          <End Role="Results" Type="AcademyModel.Results" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pupils">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Results">
+              <PropertyRef Name="Pupil_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AcademyModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Academies">
+            <EntityTypeMapping TypeName="AcademyModel.Academies">
+              <MappingFragment StoreEntitySet="Academies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classrooms">
+            <EntityTypeMapping TypeName="AcademyModel.Classrooms">
+              <MappingFragment StoreEntitySet="Classrooms">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+                <ScalarProperty Name="Establishment_Id" ColumnName="Establishment_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cycles">
+            <EntityTypeMapping TypeName="AcademyModel.Cycles">
+              <MappingFragment StoreEntitySet="Cycles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Establishments">
+            <EntityTypeMapping TypeName="AcademyModel.Establishments">
+              <MappingFragment StoreEntitySet="Establishments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Academie_Id" ColumnName="Academie_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluations">
+            <EntityTypeMapping TypeName="AcademyModel.Evaluations">
+              <MappingFragment StoreEntitySet="Evaluations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Classroom_Id" ColumnName="Classroom_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Levels">
+            <EntityTypeMapping TypeName="AcademyModel.Levels">
+              <MappingFragment StoreEntitySet="Levels">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cycle_Id" ColumnName="Cycle_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="AcademyModel.Periods">
+              <MappingFragment StoreEntitySet="Periods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Begin" ColumnName="Begin" />
+                <ScalarProperty Name="End" ColumnName="End" />
+                <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pupils">
+            <EntityTypeMapping TypeName="AcademyModel.Pupils">
+              <MappingFragment StoreEntitySet="Pupils">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Tutor_Id" ColumnName="Tutor_Id" />
+                <ScalarProperty Name="Classroom_Id" ColumnName="Classroom_Id" />
+                <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Results">
+            <EntityTypeMapping TypeName="AcademyModel.Results">
+              <MappingFragment StoreEntitySet="Results">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Evaluation_Id" ColumnName="Evaluation_Id" />
+                <ScalarProperty Name="Pupil_Id" ColumnName="Pupil_Id" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutors">
+            <EntityTypeMapping TypeName="AcademyModel.Tutors">
+              <MappingFragment StoreEntitySet="Tutors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AcademyModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Years">
+            <EntityTypeMapping TypeName="AcademyModel.Years">
+              <MappingFragment StoreEntitySet="Years">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

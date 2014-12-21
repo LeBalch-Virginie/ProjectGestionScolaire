@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AcademyModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Academies">
+      <EntityTypeMapping TypeName="AcademyModel.Academies">
+        <MappingFragment StoreEntitySet="Academies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classrooms">
+      <EntityTypeMapping TypeName="AcademyModel.Classrooms">
+        <MappingFragment StoreEntitySet="Classrooms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+          <ScalarProperty Name="Establishment_Id" ColumnName="Establishment_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cycles">
+      <EntityTypeMapping TypeName="AcademyModel.Cycles">
+        <MappingFragment StoreEntitySet="Cycles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Establishments">
+      <EntityTypeMapping TypeName="AcademyModel.Establishments">
+        <MappingFragment StoreEntitySet="Establishments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Academie_Id" ColumnName="Academie_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Evaluations">
+      <EntityTypeMapping TypeName="AcademyModel.Evaluations">
+        <MappingFragment StoreEntitySet="Evaluations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Classroom_Id" ColumnName="Classroom_Id" />
+          <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+          <ScalarProperty Name="Period_Id" ColumnName="Period_Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TotalPoint" ColumnName="TotalPoint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Levels">
+      <EntityTypeMapping TypeName="AcademyModel.Levels">
+        <MappingFragment StoreEntitySet="Levels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Cycle_Id" ColumnName="Cycle_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periods">
+      <EntityTypeMapping TypeName="AcademyModel.Periods">
+        <MappingFragment StoreEntitySet="Periods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Begin" ColumnName="Begin" />
+          <ScalarProperty Name="End" ColumnName="End" />
+          <ScalarProperty Name="Year_Id" ColumnName="Year_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pupils">
+      <EntityTypeMapping TypeName="AcademyModel.Pupils">
+        <MappingFragment StoreEntitySet="Pupils">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Tutor_Id" ColumnName="Tutor_Id" />
+          <ScalarProperty Name="Classroom_Id" ColumnName="Classroom_Id" />
+          <ScalarProperty Name="Level_Id" ColumnName="Level_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="AcademyModel.Results">
+        <MappingFragment StoreEntitySet="Results">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Evaluation_Id" ColumnName="Evaluation_Id" />
+          <ScalarProperty Name="Pupil_Id" ColumnName="Pupil_Id" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tutors">
+      <EntityTypeMapping TypeName="AcademyModel.Tutors">
+        <MappingFragment StoreEntitySet="Tutors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AcademyModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Years">
+      <EntityTypeMapping TypeName="AcademyModel.Years">
+        <MappingFragment StoreEntitySet="Years">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

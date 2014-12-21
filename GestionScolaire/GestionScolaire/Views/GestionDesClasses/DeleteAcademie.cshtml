@@ -1,0 +1,23 @@
+﻿@using GestionScolaire.Models
+@model AcademieModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Suppresion de  @Model.name</h2>
+
+@Html.ValidationSummary(true)
+
+@{Html.BeginForm("DeleteAcademie", "GestionDesClasses", FormMethod.Post);}
+@Html.HiddenFor(model => model.id)
+<h3>Voulez-vous vraiment supprimer cet élément???</h3>
+<table class="table">
+    <tr>
+        <td>
+            <button>Oui</button>
+            <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
+        </td>
+    </tr>
+</table>
+@{Html.EndForm();}

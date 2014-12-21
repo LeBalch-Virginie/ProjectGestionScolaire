@@ -1,0 +1,33 @@
+﻿@using GestionScolaire.Models
+@model EtablissementModels
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> Etablissement @Model.name</h2>
+
+<table class="table">
+    <tr>
+        <td> @Html.LabelFor(model => model.id)</td>
+        <td>@Html.LabelFor(model => model.name)</td>
+        <td>@Html.LabelFor(model => model.address)</td>
+        <td>@Html.LabelFor(model => model.postCode)</td>
+        <td>@Html.LabelFor(model => model.town)</td>
+        <td>@Html.LabelFor(model => model.userId)</td>
+        <td>@Html.LabelFor(model => model.academieId)</td>
+    </tr>
+
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.name</td>
+        <td>@Model.address</td>
+        <td>@Model.postCode</td>
+        <td>@Model.town</td>
+        <td>@Model.userId</td>
+        <td>@Model.academieId</td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "EditEtablissement", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
