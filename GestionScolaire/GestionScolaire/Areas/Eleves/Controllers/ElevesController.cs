@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace GestionScolaire.Areas.Eleves.Controllers
 {
-    public class TuteurController : Controller
+    public class ElevesController : Controller
     {
         //
         // GET: /Eleves/Eleves/
