@@ -57,6 +57,16 @@ namespace GestionScolaire.Models
             data.Establishments.Remove(GetEtablissementById(id));
         }
 
+        public IQueryable<Academies> GetAcademies()
+        {
+            return data.Academies;
+        }
+
+        public IQueryable<Users> GetUsers()
+        {
+            return data.Users;
+        }
+
         #endregion
 
         public void Save()

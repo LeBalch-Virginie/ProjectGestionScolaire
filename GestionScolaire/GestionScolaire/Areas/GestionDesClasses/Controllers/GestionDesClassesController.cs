@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GestionScolaire.Models;
+using GestionScolaire.Areas.GestionDesClasses.Models;
 
 namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 {
@@ -174,14 +175,14 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (EtablissementRepository repository = new EtablissementRepository())
             {
                 IQueryable<Establishments> a = repository.All();
-
+                
                 models = repository.All().Select(x => new EtablissementModels
                 {
                     id = x.Id,
                     name = x.Name,
                     address = x.Address,
                     postCode = x.PostCode,
-                    town = x.Town,
+                    town = x.Town
                 }).ToList();
             }
             return View(models);
@@ -215,7 +216,18 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         public ActionResult CreateEtablissement()
         {
-            return View();
+            EtablissementModels model;
+            using (EtablissementRepository repository = new EtablissementRepository())
+            {
+                IQueryable<Academies> academies = repository.GetAcademies();
+                IQueryable<Users> users = repository.GetUsers();
+                model = new EtablissementModels
+                {
+                    academies = getListAcademies(academies),
+                    users = getListUsers(users)
+                };
+            }
+            return View(model);
         }
 
         // POST: /GestionDesClasses/CreateEtablissement
@@ -226,7 +238,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             {
                 using (EtablissementRepository repository = new EtablissementRepository())
                 {
-
                     Establishments a = new Establishments
                     {
                        Id = Guid.NewGuid(),
@@ -234,11 +245,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                        Address = model.address,
                        PostCode = model.postCode,
                        Town = model.town,
-                       //User_Id = Guid.NewGuid(),
-                       Academie_Id = model.academieId,
-
-                      
-
+                       User_Id = model.userId,
+                       Academie_Id = model.academieId
+                       
                        // revoir avec les deja existant
                     };
 
@@ -246,11 +255,47 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     repository.Save();
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadEtablissements");
             }
            
             return View(model);
         }
+
+        private List<AcademieModels> getListAcademies(IQueryable<Academies> academies)
+        {
+            List<AcademieModels> ac = new List<AcademieModels>();
+            foreach (var aca in academies)
+            {
+                AcademieModels a = new AcademieModels
+                {
+                    id = aca.Id,
+                    name = aca.Name
+                };
+                ac.Add(a);
+            }
+            return ac;
+        }
+
+        private List<UserModels> getListUsers(IQueryable<Users> users)
+        {
+            List<UserModels> list = new List<UserModels>();
+            foreach (var u in users)
+            {
+                UserModels a = new UserModels
+                {
+                    firstName = u.FirstName,
+                    id = u.Id,
+                    lastName = u.LastName,
+                    mail = u.Mail,
+                    password = u.Password,
+                    userName = u.UserName
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
+
 
         //
         // GET: /GestionDesClasses/Edit/5

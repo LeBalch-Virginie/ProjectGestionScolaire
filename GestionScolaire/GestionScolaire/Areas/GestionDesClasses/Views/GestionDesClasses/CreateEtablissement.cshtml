@@ -18,6 +18,8 @@
             @Html.LabelFor(model => model.address)
             @Html.LabelFor(model => model.postCode)
             @Html.LabelFor(model => model.town)
+            @Html.LabelFor(model => model.academieIdName)
+            @Html.LabelFor(model => model.userName)
 
         </div>
         <div class="editor-field">
@@ -29,6 +31,11 @@
             @Html.ValidationMessageFor(model => model.postCode)
             @Html.EditorFor(model => model.town)
             @Html.ValidationMessageFor(model => model.town)
+            @Html.DropDownListFor(model => model.academieId, new SelectList(Model.academies, 
+                               "Id", "Name"))
+            @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+                               "Id", "UserName"))
+            @Html.ValidationMessageFor(model => model.academies)
         </div>
 
         <p>

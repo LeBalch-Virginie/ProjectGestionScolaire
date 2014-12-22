@@ -179,6 +179,7 @@
     <Compile Include="Areas\GestionDesClasses\Models\ClasseRepository.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\EtablissementModels.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\EtablissementRepository.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\UserModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\GestionDesClasses\Controllers\GestionDesClassesController.cs" />

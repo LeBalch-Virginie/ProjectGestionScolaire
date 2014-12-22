@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionScolaire.Areas.GestionDesClasses.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,10 +38,9 @@ namespace GestionScolaire.Models
         public String academieIdName { get; set; }
 
 
-/// ////////////////////////////
+        public List<AcademieModels> academies { get; set; }
 
-        public System.Web.Mvc.SelectList AcademieIdNames;
+        public List<UserModels> users { get; set; }
 
-        public AcademieModels academs { get; set; }
     }
 }
