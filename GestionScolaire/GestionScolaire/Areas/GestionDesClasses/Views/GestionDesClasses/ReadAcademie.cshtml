@@ -1,0 +1,19 @@
+﻿@using GestionScolaire.Models
+@model AcademieModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>academie @Model.name</h2>
+
+<table class="table">
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.name</td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "EditAcademie", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
