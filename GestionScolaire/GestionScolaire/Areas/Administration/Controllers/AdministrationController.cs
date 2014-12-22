@@ -7,7 +7,7 @@ using GestionScolaire.Models;
 
 namespace GestionScolaire.Areas.Administration.Controllers
 {
-    public class AdminController : Controller
+    public class AdministrationController : Controller
     {
         //
         // GET: /Administration/
