@@ -172,6 +172,7 @@
     <Compile Include="Areas\Administration\Models\NiveauRepository.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeModels.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeRepository.cs" />
+    <Compile Include="Areas\Eleves\ElevesAreaRegistration.cs" />
     <Compile Include="Areas\GestionDesClasses\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieModels.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieRepository.cs" />
@@ -341,6 +342,7 @@
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateEtablissement.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateClasse.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateAcademie.cshtml" />
+    <Content Include="Areas\Eleves\Views\Web.config" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -399,10 +401,14 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Administration.cshtml" />
     <Content Include="Views\Home\GestionDesClasses.cshtml" />
+    <Content Include="Views\Home\Eleves.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\Eleves\Controllers\" />
+    <Folder Include="Areas\Eleves\Models\" />
+    <Folder Include="Areas\Eleves\Views\Shared\" />
     <Folder Include="Areas\GestionDesClasses\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

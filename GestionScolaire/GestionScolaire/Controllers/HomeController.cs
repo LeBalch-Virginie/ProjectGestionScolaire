@@ -43,5 +43,13 @@ namespace GestionScolaire.Controllers
             return View();
         }
 
+        public ActionResult Eleves()
+        {
+            ViewBag.Message = "Votre page gestion des élèves.";
+
+            return View();
+        }
+
+
     }
 }
