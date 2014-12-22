@@ -18,10 +18,10 @@ namespace GestionScolaire.Areas.Eleves.Controllers
         }
 
         // GET: /Eleves/ReadEleves
-        /*public ActionResult ReadEleves()
+        public ActionResult ReadEleves()
         {
             IList<TuteurModels> models = new List<TuteurModels>();
-            using (TuteurRepository repository = new TuteurRepository())
+            /*using (TuteurRepository repository = new TuteurRepository())
             {
                 IQueryable<Tutors> a = repository.All();
 
@@ -31,7 +31,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     name = x.Name
                 }).ToList();
             }
-            return View(models);
-        }*/
+            return View(models);*/
+        }
     }
 }
