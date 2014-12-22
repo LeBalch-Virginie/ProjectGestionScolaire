@@ -1,2 +1,6 @@
 Academy.mdf
 *.mdf
+*.cache
+*.suo
+*.ldf
+*.mdf
