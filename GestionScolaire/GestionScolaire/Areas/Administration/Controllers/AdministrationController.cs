@@ -36,17 +36,36 @@ namespace GestionScolaire.Areas.Administration.Controllers
         public ActionResult ReadCycle(Guid id)
         {
             CycleModels model;
+
             using (CycleRepository repository = new CycleRepository())
             {
                 Cycles c = repository.GetCycleById(id);
-
+                IQueryable<Levels> l = repository.GetNiveauxById(id);
                 model = new CycleModels
                 {
                     id = c.Id,
-                    title = c.Title
+                    title = c.Title,
+                    niveaux = getListNiveau(l)
                 };
             }
             return View(model);
+        }
+
+        private List<NiveauModels> getListNiveau(IQueryable<Levels> levels)
+        {
+            List<NiveauModels> niveaux = new List<NiveauModels>();
+            foreach (var level in levels)
+            {
+                NiveauModels niveau = new NiveauModels
+                {
+                    id = level.Id,
+                    title = level.Title,
+                    cycleId = level.Cycle_Id,
+                    cycleTitle = level.Cycles.Title
+                };
+                niveaux.Add(niveau);
+            }
+            return niveaux;
         }
 
         public ActionResult ReadNiveaux()

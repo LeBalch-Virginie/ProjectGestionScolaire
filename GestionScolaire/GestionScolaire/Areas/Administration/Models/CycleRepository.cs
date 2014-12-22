@@ -35,6 +35,11 @@ namespace GestionScolaire.Models
             return All().SingleOrDefault(cycle => cycle.Id == id);
         }
 
+        public IQueryable<Levels> GetNiveauxById(Guid id)
+        {
+            return data.Levels.Where(level => level.Cycle_Id == id);
+        }
+
         #endregion
 
         #region CRUD

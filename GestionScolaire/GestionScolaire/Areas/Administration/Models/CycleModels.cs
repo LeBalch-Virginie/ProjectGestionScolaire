@@ -14,7 +14,8 @@ namespace GestionScolaire.Models
         [Display(Name = "Titre du cycle")]
         public String title { get; set; }
 
-        public List<NiveauModels> Levels { get; set; }
+        [Display(Name = "Liste des niveaux")]
+        public List<NiveauModels> niveaux { get; set; }
     }
 
 
