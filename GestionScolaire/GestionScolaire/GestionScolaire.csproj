@@ -163,8 +163,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Models\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Models\AnneeModels.cs" />
+    <Compile Include="Areas\Administration\Models\AnneeRepository.cs" />
+    <Compile Include="Areas\Administration\Models\CycleModels.cs" />
+    <Compile Include="Areas\Administration\Models\CycleRepository.cs" />
+    <Compile Include="Areas\Administration\Models\NiveauModels.cs" />
+    <Compile Include="Areas\Administration\Models\NiveauRepository.cs" />
+    <Compile Include="Areas\Administration\Models\PeriodeModels.cs" />
+    <Compile Include="Areas\Administration\Models\PeriodeRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\CycleController.cs" />
     <Compile Include="Controllers\Academie.cs" />
     <Compile Include="Controllers\GestionDesClassesController.cs" />
@@ -179,8 +189,6 @@
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\AnneeModels.cs" />
-    <Compile Include="Models\AnneeRepository.cs" />
     <Compile Include="Models\ApplicationModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -201,8 +209,6 @@
     <Compile Include="Models\Classrooms.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CycleModels.cs" />
-    <Compile Include="Models\CycleRepository.cs" />
     <Compile Include="Models\Cycles.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
@@ -217,10 +223,6 @@
     <Compile Include="Models\Levels.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NiveauModels.cs" />
-    <Compile Include="Models\NiveauRepository.cs" />
-    <Compile Include="Models\PeriodeModels.cs" />
-    <Compile Include="Models\PeriodeRepository.cs" />
     <Compile Include="Models\Periods.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
@@ -315,6 +317,16 @@
       <DependentUpon>ApplicationModel.edmx</DependentUpon>
       <LastGenOutput>ApplicationModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Areas\Administration\Views\Web.config" />
+    <Content Include="Areas\Administration\Views\ReadPeriodes.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadPeriode.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadNiveaux.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadNiveau.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadCycles.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadCycle.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadAnnees.cshtml" />
+    <Content Include="Areas\Administration\Views\ReadAnnee.cshtml" />
+    <Content Include="Areas\Administration\Views\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -396,9 +408,11 @@
     <Content Include="Views\GestionDesClasses\EditClasse.cshtml" />
     <Content Include="Views\GestionDesClasses\ReadClasses.cshtml" />
     <Content Include="Views\GestionDesClasses\ReadClasse.cshtml" />
+    <Content Include="Views\Home\Administration.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

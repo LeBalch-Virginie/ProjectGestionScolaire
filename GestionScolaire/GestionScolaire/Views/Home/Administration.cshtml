@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+<h2>Admin</h2>
+
+coucou
+
+
+ @Html.ActionLink("Afficher les cycles", "ReadCycles", "Administration", new {area = "Administration"}, null)
+ @Html.ActionLink("Afficher les niveaux", "ReadNiveaux", "Administration", new {area = "Administration"}, null)
+ @Html.ActionLink("Afficher les périodes", "ReadPeriodes", "Administration", new {area = "Administration"}, null)
+ @Html.ActionLink("Afficher les années", "ReadAnnees", "Administration", new {area = "Administration"}, null)

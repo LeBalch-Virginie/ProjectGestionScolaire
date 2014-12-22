@@ -1,0 +1,24 @@
+﻿@using GestionScolaire.Models
+@model PeriodeModels
+
+@{
+    ViewBag.Title = "Periode " + Model.begin + " - " + Model.end;
+}
+
+<h2>Periodes @Model.begin -  @Model.end</h2>
+
+<table class="table">
+
+    <tr>
+        <th>Id</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Année</th>
+    </tr> 
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.begin</td>
+        <td>@Model.end</td>           
+        <td>@Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)</td>
+    </tr>
+</table>

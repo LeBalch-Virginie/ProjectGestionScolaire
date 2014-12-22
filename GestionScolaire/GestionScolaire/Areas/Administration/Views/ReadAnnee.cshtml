@@ -1,0 +1,21 @@
+﻿@using GestionScolaire.Models
+@model AnneeModels
+
+@{
+    ViewBag.Title = "Année " + Model.year;
+}
+
+
+<h2>Année @Model.year</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Année</th>
+    </tr> 
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.year</td>
+    </tr>
+</table>
+
