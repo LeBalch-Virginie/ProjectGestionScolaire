@@ -11,7 +11,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 {
     public class GestionDesClassesController : Controller
     {
-        private Entities db = new Entities();
 
         // GET: /GestionDesClasses/
         public ActionResult Index()
