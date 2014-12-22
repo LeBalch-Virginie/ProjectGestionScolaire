@@ -17,6 +17,7 @@ namespace GestionScolaire.Areas.Administration.Controllers
             return View();
         }
 
+        //lecture de l'ensemble des cycles
         public ActionResult ReadCycles()
         {
             IList<CycleModels> models = new List<CycleModels>();
