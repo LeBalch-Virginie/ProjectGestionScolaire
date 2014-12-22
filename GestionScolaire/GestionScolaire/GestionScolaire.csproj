@@ -164,7 +164,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
-    <Compile Include="Areas\Administration\Models\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Models\AnneeModels.cs" />
     <Compile Include="Areas\Administration\Models\AnneeRepository.cs" />
     <Compile Include="Areas\Administration\Models\CycleModels.cs" />
@@ -173,18 +172,21 @@
     <Compile Include="Areas\Administration\Models\NiveauRepository.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeModels.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeRepository.cs" />
+    <Compile Include="Areas\GestionDesClasses\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\AcademieModels.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\AcademieRepository.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\ClasseModels.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\ClasseRepository.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\EtablissementModels.cs" />
+    <Compile Include="Areas\GestionDesClasses\Models\EtablissementRepository.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
-    <Compile Include="Controllers\CycleController.cs" />
-    <Compile Include="Controllers\Academie.cs" />
-    <Compile Include="Controllers\GestionDesClassesController.cs" />
+    <Compile Include="Areas\GestionDesClasses\Controllers\GestionDesClassesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AcademieModels.cs" />
-    <Compile Include="Models\AcademieRepository.cs" />
     <Compile Include="Models\Academies.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
@@ -204,8 +206,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ClasseModels.cs" />
-    <Compile Include="Models\ClasseRepository.cs" />
     <Compile Include="Models\Classrooms.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
@@ -215,8 +215,6 @@
     <Compile Include="Models\Establishments.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EtablissementModels.cs" />
-    <Compile Include="Models\EtablissementRepository.cs" />
     <Compile Include="Models\Evaluations.cs">
       <DependentUpon>ApplicationModel.tt</DependentUpon>
     </Compile>
@@ -318,15 +316,30 @@
       <LastGenOutput>ApplicationModel.cs</LastGenOutput>
     </Content>
     <Content Include="Areas\Administration\Views\Web.config" />
-    <Content Include="Areas\Administration\Views\ReadPeriodes.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadPeriode.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadNiveaux.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadNiveau.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadCycles.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadCycle.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadAnnees.cshtml" />
-    <Content Include="Areas\Administration\Views\ReadAnnee.cshtml" />
-    <Content Include="Areas\Administration\Views\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadPeriodes.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadPeriode.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadNiveaux.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadNiveau.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadCycles.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadCycle.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadAnnees.cshtml" />
+    <Content Include="Areas\Administration\Views\Administration\ReadAnnee.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\Web.config" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissements.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasses.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademies.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateAcademie.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -383,36 +396,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Administration\Index.cshtml" />
-    <Content Include="Views\Administration\ReadAnnee.cshtml" />
-    <Content Include="Views\Administration\ReadAnnees.cshtml" />
-    <Content Include="Views\Administration\ReadCycle.cshtml" />
-    <Content Include="Views\Administration\ReadCycles.cshtml" />
-    <Content Include="Views\Administration\ReadNiveau.cshtml" />
-    <Content Include="Views\Administration\ReadNiveaux.cshtml" />
-    <Content Include="Views\Administration\ReadPeriode.cshtml" />
-    <Content Include="Views\Administration\ReadPeriodes.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadAcademie.cshtml" />
-    <Content Include="Views\GestionDesClasses\CreateAcademie.cshtml" />
-    <Content Include="Views\GestionDesClasses\EditAcademie.cshtml" />
-    <Content Include="Views\GestionDesClasses\DeleteAcademie.cshtml" />
-    <Content Include="Views\GestionDesClasses\index.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadAcademies.cshtml" />
-    <Content Include="Views\GestionDesClasses\CreateEtablissement.cshtml" />
-    <Content Include="Views\GestionDesClasses\DeleteEtablissement.cshtml" />
-    <Content Include="Views\GestionDesClasses\EditEtablissement.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadEtablissement.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadEtablissements.cshtml" />
-    <Content Include="Views\GestionDesClasses\CreateClasse.cshtml" />
-    <Content Include="Views\GestionDesClasses\DeleteClasse.cshtml" />
-    <Content Include="Views\GestionDesClasses\EditClasse.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadClasses.cshtml" />
-    <Content Include="Views\GestionDesClasses\ReadClasse.cshtml" />
     <Content Include="Views\Home\Administration.cshtml" />
+    <Content Include="Views\Home\GestionDesClasses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
+    <Folder Include="Areas\GestionDesClasses\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -36,5 +36,12 @@ namespace GestionScolaire.Controllers
             return View();
         }
 
+        public ActionResult GestionDesClasses()
+        {
+            ViewBag.Message = "Votre page gestion des classes .";
+
+            return View();
+        }
+
     }
 }
