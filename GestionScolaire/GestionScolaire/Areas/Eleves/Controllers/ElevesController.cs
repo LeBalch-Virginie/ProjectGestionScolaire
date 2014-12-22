@@ -1,4 +1,5 @@
 ﻿using GestionScolaire.Areas.Eleves.Models;
+using GestionScolaire.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,25 @@ namespace GestionScolaire.Areas.Eleves.Controllers
         public ActionResult ReadEleves()
         {
             IList<TuteurModels> models = new List<TuteurModels>();
-            /*using (TuteurRepository repository = new TuteurRepository())
+            using (TuteurRepository repository = new TuteurRepository())
             {
                 IQueryable<Tutors> a = repository.All();
 
                 models = repository.All().Select(x => new TuteurModels
                 {
                     id = x.Id,
-                    name = x.Name
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail,
+                    postCode = x.PostCode,
+                    comment = x.Comment,
+                    town = x.Town,
+                    tel = x.Tel,
+                    address = x.Address,
+                   // eleves = 
                 }).ToList();
             }
-            return View(models);*/
+            return View(models);
         }
     }
 }

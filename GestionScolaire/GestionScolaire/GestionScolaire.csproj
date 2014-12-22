@@ -172,7 +172,10 @@
     <Compile Include="Areas\Administration\Models\NiveauRepository.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeModels.cs" />
     <Compile Include="Areas\Administration\Models\PeriodeRepository.cs" />
+    <Compile Include="Areas\Eleves\Controllers\ElevesController.cs" />
     <Compile Include="Areas\Eleves\ElevesAreaRegistration.cs" />
+    <Compile Include="Areas\Eleves\Models\TuteurModels.cs" />
+    <Compile Include="Areas\Eleves\Models\TuteurRepository.cs" />
     <Compile Include="Areas\GestionDesClasses\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieModels.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieRepository.cs" />
@@ -406,8 +409,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Eleves\Controllers\" />
-    <Folder Include="Areas\Eleves\Models\" />
     <Folder Include="Areas\Eleves\Views\Shared\" />
     <Folder Include="Areas\GestionDesClasses\Views\Shared\" />
   </ItemGroup>

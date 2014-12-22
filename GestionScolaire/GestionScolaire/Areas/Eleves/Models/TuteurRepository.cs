@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GestionScolaire.Areas.Eleves.Models
 {
-    public class TuteurRepository
+    public class TuteurRepository : IDisposable
     {
         private Entities data;
 
