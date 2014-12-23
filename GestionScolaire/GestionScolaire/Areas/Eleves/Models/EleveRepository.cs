@@ -26,12 +26,12 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         #region Queries
 
-        public IQueryable<Tutors> All()
+        public IQueryable<Pupils> All()
         {
-            return data.Tutors;
+            return data.Pupils;
         }
 
-        public Tutors GetPupilById(Guid id)
+        public Pupils GetPupilById(Guid id)
         {
             return All().SingleOrDefault(Tutor => Tutor.Id == id);
         }
@@ -39,20 +39,37 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         #region CRUD
 
-        public void Add(Tutors s)
+        public void Add(Pupils s)
         {
-            data.Tutors.Add(s);
+            data.Pupils.Add(s);
         }
 
-        public void Delete(Tutors s)
+        public void Delete(Pupils s)
         {
-            data.Tutors.Remove(s);
+            data.Pupils.Remove(s);
         }
 
         public void DeleteById(Guid id)
         {
-            data.Tutors.Remove(GetPupilById(id));
+            data.Pupils.Remove(GetPupilById(id));
         }
+
+
+        public IQueryable<Tutors> GetTutors()
+        {
+            return data.Tutors;
+        }
+
+        public IQueryable<Classrooms> GetClasses()
+        {
+            return data.Classrooms;
+        }
+
+        public IQueryable<Levels> GetNiveaux()
+        {
+            return data.Levels;
+        }
+
 
         #endregion
 

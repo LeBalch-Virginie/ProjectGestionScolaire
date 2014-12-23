@@ -1,4 +1,6 @@
 ﻿using GestionScolaire.Areas.Eleves.Models;
+using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,65 @@ namespace GestionScolaire.Areas.Eleves.Controllers
 {
     public class ElevesController : Controller
     {
-        //
+
+        private List<ClasseModels> getListClasses(IQueryable<Classrooms> classrooms)
+        {
+            List<ClasseModels> ac = new List<ClasseModels>();
+            foreach (var aca in classrooms)
+            {
+                ClasseModels c = new ClasseModels
+                {
+                    id = aca.Id,
+                    title = aca.Title,
+                    userId = aca.User_Id,
+                    yearId = aca.Year_Id,
+                    etablissementId = aca.Establishment_Id,
+                };
+                ac.Add(c);
+            }
+            return ac;
+        }
+
+        private List<TuteurModels> getListTuteurs(IQueryable<Tutors> tuteurs)
+        {
+            List<TuteurModels> ac = new List<TuteurModels>();
+            foreach (var aca in tuteurs)
+            {
+                TuteurModels x = new TuteurModels
+                {
+                    id = aca.Id,
+                    firstName = aca.FirstName,
+                    lastName = aca.LastName,
+                    mail = aca.Mail,
+                    postCode = aca.PostCode,
+                    comment = aca.Comment,
+                    town = aca.Town,
+                    tel = aca.Tel,
+                    address = aca.Address,
+                };
+                ac.Add(x);
+            }
+            return ac;
+        }
+
+        private List<NiveauModels> getListNiveaux(IQueryable<Levels> niveaux)
+        {
+            List<NiveauModels> ac = new List<NiveauModels>();
+            foreach (var aca in niveaux)
+            {
+                NiveauModels x = new NiveauModels
+                {
+                    id = aca.Id,
+                    title = aca.Title,
+                    cycleId = aca.Cycle_Id,
+                };
+                ac.Add(x);
+            }
+            return ac;
+        }
+
+
+
         // GET: /Eleves/Eleves/
 
         public ActionResult Index()
@@ -18,8 +78,10 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             return View();
         }
 
-        // GET: /Eleves/ReadEleves
-        public ActionResult ReadEleves()
+        #region Tuteurs
+
+        // GET: /Eleves/ReadTuteurs
+        public ActionResult ReadTuteurs()
         {
             IList<TuteurModels> models = new List<TuteurModels>();
             using (TuteurRepository repository = new TuteurRepository())
@@ -37,10 +99,383 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     town = x.Town,
                     tel = x.Tel,
                     address = x.Address,
-                   // eleves = 
+                    // eleves = 
                 }).ToList();
             }
             return View(models);
         }
+
+        public ActionResult ReadTuteur(Guid id)
+        {
+            TuteurModels model;
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                Tutors x = repository.GetTutorById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new TuteurModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail,
+                    postCode = x.PostCode,
+                    comment = x.Comment,
+                    town = x.Town,
+                    tel = x.Tel,
+                    address = x.Address,
+                    // eleves = 
+
+                };
+            }
+            return View(model);
+        }
+
+        // GET: /Eleves/CreateTuteur
+        public ActionResult CreateTuteur()
+        {
+            return View();
+        }
+
+        // POST: /Eleves/CreateTuteur
+        [HttpPost]
+        public ActionResult CreateTuteur(TuteurModels model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (TuteurRepository repository = new TuteurRepository())
+                {
+                    Tutors a = new Tutors
+                    {
+                        Id = Guid.NewGuid(),
+                        FirstName = model.firstName,
+                        LastName = model.lastName,
+                        Mail = model.mail,
+                        PostCode = model.postCode,
+                        Comment = model.comment,
+                        Town = model.town,
+                        Tel = model.tel,
+                        Address = model.address,
+                        // eleves = 
+                    };
+
+                    repository.Add(a);
+                    repository.Save();
+
+                }
+                return RedirectToAction("ReadTuteurs");
+            }
+            return View(model);
+        }
+
+        public ActionResult EditTuteur(Guid id)
+        {
+            TuteurModels model;
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                Tutors x = repository.GetTutorById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new TuteurModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail,
+                    postCode = x.PostCode,
+                    comment = x.Comment,
+                    town = x.Town,
+                    tel = x.Tel,
+                    address = x.Address,
+                    // eleves = 
+                };
+            }
+            return View(model);
+        }
+
+        // POST: /Eleves/Edit/5
+
+        [HttpPost]
+        public ActionResult EditTuteur(TuteurModels model)
+        {
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                Tutors x = repository.GetTutorById(model.id);
+                x.FirstName = model.firstName;
+                x.LastName = model.lastName;
+                x.Mail = model.mail;
+                x.PostCode = model.postCode;
+                x.Comment = model.comment;
+                x.Town = model.town;
+                x.Tel = model.tel;
+                x.Address = model.address;
+                // eleves = 
+
+                if (ModelState.IsValid)
+                {
+                    repository.Save();
+                }
+                return RedirectToAction("ReadTuteurs");
+            }
+
+        }
+
+        public ActionResult DeleteTuteur(Guid id)
+        {
+            TuteurModels model;
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                Tutors x = repository.GetTutorById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new TuteurModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail,
+                    postCode = x.PostCode,
+                    comment = x.Comment,
+                    town = x.Town,
+                    tel = x.Tel,
+                    address = x.Address,
+                    // eleves = 
+                };
+            }
+
+
+            return View("DeleteTuteur", model);
+        }
+
+        // POST: /Eleves/DeleteTuteur/5
+        [HttpPost, ActionName("DeleteTuteur")]
+        public ActionResult DeleteTuteur(TuteurModels model)
+        {
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                repository.DeleteById(model.id);
+                repository.Save();
+            }
+            return View("Index");
+        }
+
+        #endregion
+
+        //////////////////////////////////////////////////////////////
+
+        // GET: /Eleves/ReadEleves
+        public ActionResult ReadEleves()
+        {
+            IList<EleveModels> models = new List<EleveModels>();
+            using (EleveRepository repository = new EleveRepository())
+            {
+                IQueryable<Pupils> a = repository.All();
+
+                models = repository.All().Select(x => new EleveModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id
+                    // tuteurs = 
+                    // classroom =
+                    // level =
+                    // result =
+                }).ToList();
+            }
+            return View(models);
+        }
+
+        public ActionResult ReadEleve(Guid id)
+        {
+            EleveModels model;
+            using (EleveRepository repository = new EleveRepository())
+            {
+                Pupils x = repository.GetPupilById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new EleveModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id
+                    // tuteurs = 
+                    // classroom =
+                    // level =
+                    // result =
+
+                };
+            }
+            return View(model);
+        }
+
+        // GET: /Eleves/CreateEleve
+        public ActionResult CreateEleve()
+        {
+            EleveModels model;
+            using (EleveRepository repository = new EleveRepository())
+            {
+
+                IQueryable<Tutors> tuteurs = repository.GetTutors();
+                IQueryable<Classrooms> classes = repository.GetClasses();
+                IQueryable<Levels> niveaux = repository.GetNiveaux();
+                model = new EleveModels
+                {
+                    tuteurs = getListTuteurs(tuteurs),
+                    classes = getListClasses(classes),
+                    niveaux = getListNiveaux(niveaux)
+                };
+            }
+            return View(model);
+        }
+
+        // POST: /Eleves/CreateEleve
+        [HttpPost]
+        public ActionResult CreateEleve(EleveModels model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (EleveRepository repository = new EleveRepository())
+                {
+                    Pupils a = new Pupils
+                    {
+                        Id = Guid.NewGuid(),
+                        State = short.MaxValue,
+                        FirstName = model.firstName,
+                        LastName = model.lastName,
+                        Sex = model.sexe,
+                        BirthdayDate = model.birthdayDate,
+                        Tutor_Id = model.tuteurId,
+                        Classroom_Id = model.classroomId,
+                        Level_Id = model.levelId
+                        // tuteurs = 
+                        // classroom =
+                        // level =
+                        // result =
+                    };
+
+                    repository.Add(a);
+                    repository.Save();
+
+                }
+                return RedirectToAction("ReadEleves");
+            }
+            return View(model);
+        }
+
+        public ActionResult EditEleve(Guid id)
+        {
+            EleveModels model;
+            using (EleveRepository repository = new EleveRepository())
+            {
+
+                IQueryable<Tutors> tuteurs = repository.GetTutors();
+                IQueryable<Classrooms> classes = repository.GetClasses();
+                IQueryable<Levels> niveaux = repository.GetNiveaux();
+                model = new EleveModels
+                {
+                    tuteurs = getListTuteurs(tuteurs),
+                    classes = getListClasses(classes),
+                    niveaux = getListNiveaux(niveaux)
+                };
+            }
+            return View(model);
+        }
+
+        // POST: /Eleves/Edit/5
+
+        [HttpPost]
+        public ActionResult EditEleve(EleveModels model)
+        {
+            using (EleveRepository repository = new EleveRepository())
+            {
+                Pupils x = repository.GetPupilById(model.id);
+                x.State = short.MaxValue;
+                x.FirstName = model.firstName;
+                x.LastName = model.lastName;
+                x.Sex = model.sexe;
+                x.BirthdayDate = model.birthdayDate;
+                x.Tutor_Id = model.tuteurId;
+                x.Classroom_Id = model.classroomId;
+                x.Level_Id = model.levelId;
+                // eleves = 
+
+                if (ModelState.IsValid)
+                {
+                    repository.Save();
+                }
+                return RedirectToAction("ReadEleves");
+            }
+
+        }
+
+        public ActionResult DeleteEleve(Guid id)
+        {
+            EleveModels model;
+            using (EleveRepository repository = new EleveRepository())
+            {
+                Pupils x = repository.GetPupilById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new EleveModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id
+                    // tuteurs = 
+                    // classroom =
+                    // level =
+                    // result =
+                };
+            }
+
+
+            return View("DeleteEleve", model);
+        }
+
+        // POST: /Eleves/DeleteEleve/5
+        [HttpPost, ActionName("DeleteEleve")]
+        public ActionResult DeleteEleve(EleveModels model)
+        {
+            using (EleveRepository repository = new EleveRepository())
+            {
+                repository.DeleteById(model.id);
+                repository.Save();
+            }
+            return View("Index");
+        }
+
+
+
+
+
+
+
     }
 }
