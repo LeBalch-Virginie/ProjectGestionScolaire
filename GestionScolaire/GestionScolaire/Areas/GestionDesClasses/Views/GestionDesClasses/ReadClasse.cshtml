@@ -1,19 +1,19 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
 @model ClasseModels
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>academie @Model.title</h2>
+<h2>classe @Model.title</h2>
 
 <table class="table">
     <tr>
-        <td>@Model.id</td>
         <td>@Model.title</td>
+        
     </tr>
 </table>
 <p>
     @Html.ActionLink("Edit", "EditClasse", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ReadClasses")
 </p>

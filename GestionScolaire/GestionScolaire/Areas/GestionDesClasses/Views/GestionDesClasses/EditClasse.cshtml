@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
 @model ClasseModels
 
 @{
@@ -20,6 +20,12 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.title)
             @Html.ValidationMessageFor(model => model.title)
+            @Html.DropDownListFor(model => model.yearId, new SelectList(Model.years, 
+                               "Id", "Year"))
+            @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+                               "Id", "UserName"))
+            @Html.DropDownListFor(model => model.etablissementId, new SelectList(Model.etablissements, 
+                               "Id", "Name"))
         </div>
 
         <p>
@@ -29,7 +35,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ReadClasses")
 </div>
 
 @section Scripts {

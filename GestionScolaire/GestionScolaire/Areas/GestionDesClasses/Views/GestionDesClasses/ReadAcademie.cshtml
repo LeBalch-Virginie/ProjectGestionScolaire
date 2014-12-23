@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
 @model AcademieModels
 
 @{
@@ -15,5 +15,5 @@
 </table>
 <p>
     @Html.ActionLink("Edit", "EditAcademie", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ReadAcademies")
 </p>

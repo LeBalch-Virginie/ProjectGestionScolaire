@@ -1,4 +1,4 @@
-﻿@model GestionScolaire.Models.AcademieModels
+﻿@model GestionScolaire.Areas.GestionDesClasses.Models.AcademieModels
 
 @{
     ViewBag.Title = "Create";
@@ -19,7 +19,6 @@
             @Html.EditorFor(model => model.name)
             @Html.ValidationMessageFor(model => model.name)
         </div>
-
         <p>
             <input type="submit" value="Create" />
         </p>
@@ -27,7 +26,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ReadAcademies")
 </div>
 
 @section Scripts {
