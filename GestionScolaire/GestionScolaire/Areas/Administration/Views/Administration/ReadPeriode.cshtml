@@ -5,9 +5,15 @@
     ViewBag.Title = "Periode " + Model.begin + " - " + Model.end;
 }
 
-<h2>Periodes @Model.begin -  @Model.end</h2>
+<h2>Periode @Model.begin -  @Model.end</h2>
 
-<table class="table">
+<p>Cette période commence le @Model.begin et se termine le @Model.end
+    <br />
+    Elle appartient à l'année scolaire : <br /><br />
+    @Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)
+</p>
+
+@*<table class="table">
 
     <tr>
         <th>Id</th>
@@ -21,4 +27,4 @@
         <td>@Model.end</td>           
         <td>@Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId}, new { target = "_blank" })</td>
     </tr>
-</table>
+</table>*@
