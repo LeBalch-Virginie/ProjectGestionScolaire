@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GestionScolaire.Areas.Eleves.Models
 {
-    public class EleveModels
+    public class EleveModels 
     {
         [Display(Name = "Id de l'eleve")]
         public Guid id { get; set; }
@@ -24,9 +24,6 @@ namespace GestionScolaire.Areas.Eleves.Models
         [Display(Name = "date d'anniversaire")]
         public DateTime birthdayDate { get; set; }
 
-        [Display(Name = "sexe")]
-        public int sexe { get; set; }
-
         [Display(Name = "Id du tuteur")]
         public Guid tuteurId { get; set; }
 
@@ -37,5 +34,4 @@ namespace GestionScolaire.Areas.Eleves.Models
         public Guid levelId { get; set; }
 
     }
-}
 }

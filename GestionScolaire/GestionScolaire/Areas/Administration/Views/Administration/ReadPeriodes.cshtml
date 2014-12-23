@@ -19,9 +19,9 @@
     {
         <tr>
             <td>@periode.id</td>
-            <td>@Html.ActionLink(periode.begin.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)</td>
+            <td>@Html.ActionLink(periode.begin.ToString(), "ReadPeriode", "Administration", new {area = "Administration", id = periode.id}, new { target = "_blank" })</td>
             <td>@periode.end</td>
-            <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {id = periode.yearId}, null)</td>
+            <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration", id = periode.yearId}, new { target = "_blank" })</td>
         </tr>
     }
 </table>

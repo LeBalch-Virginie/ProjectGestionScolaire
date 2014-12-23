@@ -19,6 +19,6 @@
         <td>@Model.id</td>
         <td>@Model.begin</td>
         <td>@Model.end</td>           
-        <td>@Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)</td>
+        <td>@Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId}, new { target = "_blank" })</td>
     </tr>
 </table>

@@ -16,7 +16,7 @@
     <tr>
         <td>@Model.id</td>
         <td>@Model.title</td>
-        <td>@Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)</td>
+        <td>@Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {area = "Administration",id = Model.cycleId}, new { target = "_blank" })</td>
     </tr>
    
 </table>

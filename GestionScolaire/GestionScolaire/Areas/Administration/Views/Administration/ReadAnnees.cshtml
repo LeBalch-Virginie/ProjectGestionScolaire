@@ -18,7 +18,7 @@
     {
         <tr>
             <td>@annee.id</td>
-            <td>@Html.ActionLink(annee.year.ToString(), "ReadAnnee", "Administration", new {id = annee.id}, new { target = "_blank" })</td>
+            <td>@Html.ActionLink(annee.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration",id = annee.id}, new { target = "_blank" })</td>
         </tr>
     }
 </table>
