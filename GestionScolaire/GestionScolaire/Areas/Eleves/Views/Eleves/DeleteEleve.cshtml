@@ -1,5 +1,5 @@
 ﻿@using GestionScolaire.Areas.Eleves.Models
-@model TuteurModels
+@model EleveModels
 
 @{
     ViewBag.Title = "Delete";
@@ -9,14 +9,14 @@
 
 @Html.ValidationSummary(true)
 
-@{Html.BeginForm("DeleteTuteur", "Eleves", FormMethod.Post);}
+@{Html.BeginForm("DeleteEleve", "Eleves", FormMethod.Post);}
 @Html.HiddenFor(model => model.id)
 <h3>Voulez-vous vraiment supprimer cet élément???</h3>
 <table class="table">
     <tr>
         <td>
             <button>Oui</button>
-            <button type="button">@Html.ActionLink("Non", "Index", "Eleves")</button>
+            <button type="button">@Html.ActionLink("Non", "index", "Eleves")</button>
         </td>
     </tr>
 </table>

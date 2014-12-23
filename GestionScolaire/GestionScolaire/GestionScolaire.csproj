@@ -359,6 +359,7 @@
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasses.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissement.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissements.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\DeleteEleve.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
