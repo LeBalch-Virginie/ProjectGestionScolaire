@@ -1,12 +1,13 @@
 ﻿html {
     background-color: #e2e2e2;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 body {
-    background-color: #fff;
-    border-top: solid 10px #000;
+    /*background-color: #fff;*/
+    background-color: #dedadc;
+    border-top: solid 0px #000;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
@@ -104,18 +105,18 @@ h5, h6 {
     padding-bottom: 35px;
 }
 
-    .main-content {
+    /*.main-content {
         background: url("../Images/accent.png") no-repeat;
         padding-left: 10px;
         padding-top: 30px;
-    }
+    }*/
 
-    .featured + .main-content {
+    /*.featured + .main-content {
         background: url("../Images/heroAccent.png") no-repeat;
-    }
+    }*/
 
 header .content-wrapper {
-    padding-top: 20px; 
+    padding-top: 0px; 
 }
 
 footer {
@@ -212,7 +213,7 @@ ul#menu {
     background-color: #fff;
 }
 
-    .featured .content-wrapper {
+    /*.featured .content-wrapper {
         background-color: #7ac0da;
         background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
@@ -221,7 +222,7 @@ ul#menu {
         background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
         color: #3e5667;
         padding: 20px 40px 30px 40px;
-    }
+    }*/
 
         .featured hgroup.title h1, .featured hgroup.title h2 {
             color: #fff;
@@ -743,7 +744,7 @@ tr.pager td {
     footer .float-right {
         float: none;
     }
-
+    
     footer {
         text-align: center;
         height: auto;
@@ -753,4 +754,71 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+}
+
+/* CSS GESTION SCOLAIRE */
+a.logo
+{
+    background: url(../Images/logo.png) no-repeat top left;
+    display: block;
+    width: 457px;
+    height: 172px;
+    text-indent: -9999px; /* hides the link text */
+}
+
+.float-right {
+    background-color: black;/*#9f8fa5;*/
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.float-right nav ul li a {
+    color: white;
+}
+
+ul#menu li a {
+    background: none;
+    color: #b22170;
+    text-decoration: none;
+    font-family: 'Century Gothic';
+    font-size: 1.1em;
+}
+
+ul#menu li a:hover {
+    color: #cccccc;
+}
+
+
+#body {
+    background-color: #e1bfd2;
+    padding: 20px;
+    padding-bottom: 80px;
+}
+
+footer, html {
+    background-color: black;
+}
+
+#body h2 {
+    font-family: 'Century Gothic';
+    padding-bottom: 20px;
+}
+
+#body a {
+    display: block;
+    font-family: 'Century Gothic';
+    color: #b22170;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: black;
+    margin: 5px;
+    padding: 15px;
+}
+
+#body a:hover {
+    color: black;
+    background-color: #b22170;
 }
