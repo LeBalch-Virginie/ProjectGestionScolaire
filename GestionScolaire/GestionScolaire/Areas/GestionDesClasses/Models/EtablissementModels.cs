@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace GestionScolaire.Models
+namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
     public class EtablissementModels
     {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GestionScolaire.Models;
+using GestionScolaire.Areas.Administration.Models;
 
 namespace GestionScolaire.Areas.Administration.Controllers
 {

@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.Administration.Models
 @model IEnumerable<CycleModels>
 
 @{
@@ -7,23 +7,21 @@
 
 <h2>Cycles</h2>
 
- @*<table class="table">*@
+ <table class="table">
 
 
-    @*<tr>
-        x<th>Id</th>
+    <tr>
+        <th>Id</th>
         <th>Titre</th>
-    </tr>*@ 
+    </tr>
     @foreach(CycleModels cycle in Model)
     {
-        @* <tr>
+         <tr>
             <td>@cycle.id</td>
-<<<<<<< HEAD
+
             <td>@Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {area = "Administration",id = cycle.id}, new { target = "_blank" })</td>
         </tr>
-=======
-            <td>*@ 
-            @Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, null)@*</td>*@
->>>>>>> origin/master
+
     }
- @*</table>*@
+ </table>
+

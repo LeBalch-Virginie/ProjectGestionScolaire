@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.Administration.Models
 @model IEnumerable<NiveauModels>
 
 @{
@@ -7,27 +7,25 @@
 
 <h2>Niveaux</h2>
 
-@*<table class="table">
+<table class="table">
 
 
     <tr>
         <th>Id</th>
         <th>Titre</th>
         <th>Cycle</th>
-    </tr>*@
+    </tr>
     @foreach(NiveauModels niveau in Model)
     {
-        @*<tr>
+        <tr>
             <td>@niveau.id</td>
-<<<<<<< HEAD
-            <td>@Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {area = "Administration",id = niveau.id}, new { target = "_blank" })</td>
-            <td>@niveau.cycleTitle</td>
+
+            <td>@Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {area = "Administration", id = niveau.id}, new { target = "_blank" })</td>
+            <td>@Html.ActionLink(niveau.cycleTitle, "ReadCycle", "Administration", new {area = "Administration", id = niveau.cycleId}, new { target = "_blank" })</td>
         </tr>
-=======
-            <td>*@@Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, null)@*</td>
-            <td>@Html.ActionLink(niveau.cycleTitle, "ReadCycle", "Administration", new {id = niveau.cycleId}, null)</td>
-        </tr>*@
->>>>>>> origin/master
+
     }
-@*</table>*@
+</table>
+
+
 

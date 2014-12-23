@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Areas.GestionDesClasses.Models;
+using GestionScolaire.Areas.Administration.Models;
 
-
-namespace GestionScolaire.Models
+namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
     public class ClasseModels
     {
@@ -23,6 +24,13 @@ namespace GestionScolaire.Models
 
         [Display(Name = "Id de l'etablissement liée")]
         public Guid etablissementId { get; set; }
+
+
+        public List<EtablissementModels> etablissements { get; set; }
+
+        public List<UserModels> users { get; set; }
+
+        public List<AnneeModels> years { get; set; }
 
     }
 }

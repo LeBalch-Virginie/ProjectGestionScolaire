@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Models;
 
-namespace GestionScolaire.Models
+namespace GestionScolaire.Areas.Administration.Models
 {
     public class NiveauRepository : IDisposable
     {

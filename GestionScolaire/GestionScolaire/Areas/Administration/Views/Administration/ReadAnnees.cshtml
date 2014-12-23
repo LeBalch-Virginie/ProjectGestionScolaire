@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.Administration.Models
 @model IEnumerable<AnneeModels>
 
 @{
@@ -7,24 +7,23 @@
 
 <h2>Années</h2>
 
-@*<table class="table">
+<table class="table">
 
 
     <tr>
         <th>Id</th>
         <th>Année</th>
-    </tr> *@
+    </tr> 
     @foreach(AnneeModels annee in Model)
     {
-        @*<tr>
+        <tr>
             <td>@annee.id</td>
-<<<<<<< HEAD
+
             <td>@Html.ActionLink(annee.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration",id = annee.id}, new { target = "_blank" })</td>
         </tr>
-=======
-            <td>*@@Html.ActionLink(annee.year.ToString(), "ReadAnnee", "Administration", new {id = annee.id}, new { target = "_blank" })@*</td>
-        </tr>*@
->>>>>>> origin/master
+
+
+
     }
-@*</table>*@
+</table>
 

@@ -332,22 +332,33 @@
     <Content Include="Areas\Administration\Views\Administration\ReadAnnees.cshtml" />
     <Content Include="Areas\Administration\Views\Administration\ReadAnnee.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\Web.config" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissements.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissement.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasses.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasse.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademies.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademie.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditEtablissement.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditClasse.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditAcademie.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteEtablissement.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteClasse.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteAcademie.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateEtablissement.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateClasse.cshtml" />
-    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateAcademie.cshtml" />
     <Content Include="Areas\Eleves\Views\Web.config" />
+    <Content Include="Areas\Eleves\Views\Eleves\CreateEleve.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\CreateTuteur.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\DeleteTuteur.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\EditEleve.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\EditTuteur.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\ReadEleve.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\ReadEleves.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\ReadTuteur.cshtml" />
+    <Content Include="Areas\Eleves\Views\Eleves\ReadTuteurs.cshtml" />
+    <Content Include="Areas\Eleves\Views\Shared\Index.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\Shared\Index.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\CreateEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\DeleteEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\EditEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademie.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadAcademies.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasse.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadClasses.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissement.cshtml" />
+    <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissements.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -411,8 +422,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
-    <Folder Include="Areas\Eleves\Views\Shared\" />
-    <Folder Include="Areas\GestionDesClasses\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

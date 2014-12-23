@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Models;
 
-namespace GestionScolaire.Models
+namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
     public class ClasseRepository : IDisposable
     {
@@ -36,6 +37,20 @@ namespace GestionScolaire.Models
             return All().SingleOrDefault(Classroom => Classroom.Id == id);
         }
 
+        public IQueryable<Years> GetYears()
+        {
+            return data.Years;
+        }
+
+        public IQueryable<Users> GetUsers()
+        {
+            return data.Users;
+        }
+
+        public IQueryable<Establishments> GetEtablissements()
+        {
+            return data.Establishments;
+        }
 
 
         #endregion

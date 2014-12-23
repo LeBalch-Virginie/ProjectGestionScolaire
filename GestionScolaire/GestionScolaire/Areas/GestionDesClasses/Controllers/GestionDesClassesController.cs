@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using GestionScolaire.Models;
 using GestionScolaire.Areas.GestionDesClasses.Models;
+using GestionScolaire.Areas.Administration.Models;
+
 
 namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 {
@@ -16,6 +18,76 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        private List<AcademieModels> getListAcademies(IQueryable<Academies> academies)
+        {
+            List<AcademieModels> ac = new List<AcademieModels>();
+            foreach (var aca in academies)
+            {
+                AcademieModels a = new AcademieModels
+                {
+                    id = aca.Id,
+                    name = aca.Name
+                };
+                ac.Add(a);
+            }
+            return ac;
+        }
+
+        private List<UserModels> getListUsers(IQueryable<Users> users)
+        {
+            List<UserModels> list = new List<UserModels>();
+            foreach (var u in users)
+            {
+                UserModels a = new UserModels
+                {
+                    firstName = u.FirstName,
+                    id = u.Id,
+                    lastName = u.LastName,
+                    mail = u.Mail,
+                    password = u.Password,
+                    userName = u.UserName
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
+        private List<AnneeModels> getListYears(IQueryable<Years> years)
+        {
+            List<AnneeModels> list = new List<AnneeModels>();
+            foreach (var u in years)
+            {
+                AnneeModels a = new AnneeModels
+                {
+                    id = u.Id,
+                    year = u.Year
+
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
+        private List<EtablissementModels> getListEtablissements(IQueryable<Establishments> etablissements)
+        {
+            List<EtablissementModels> list = new List<EtablissementModels>();
+            foreach (var u in etablissements)
+            {
+                EtablissementModels a = new EtablissementModels
+                {
+                    id = u.Id,
+                    name = u.Name,
+                    address = u.Address,
+                    postCode = u.PostCode,
+                    town = u.Town,
+                    userId = u.User_Id,
+                    academieId = u.Academie_Id
+                };
+                list.Add(a);
+            }
+            return list;
         }
 
         #region Academie
@@ -44,14 +116,16 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (AcademieRepository repository = new AcademieRepository())
             {
                 Academies a = repository.GetAcademieById(id);
-                if (a == null){ 
+                if (a == null)
+                {
                     return HttpNotFound();
                 }
-                model = new AcademieModels {
+                model = new AcademieModels
+                {
                     id = a.Id,
                     name = a.Name
 
-                };   
+                };
             }
             return View(model);
         }
@@ -67,7 +141,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
         [HttpPost]
         public ActionResult CreateAcademie(AcademieModels model)
         {
-            
+
             if (ModelState.IsValid)
             {
                 using (AcademieRepository repository = new AcademieRepository())
@@ -82,7 +156,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     repository.Save();
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadAcademies");
             }
             return View(model);
         }
@@ -123,7 +197,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 {
                     repository.Save();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadAcademies");
             }
 
         }
@@ -146,9 +220,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     name = a.Name
                 };
             }
-           
 
-            return View("DeleteAcademie",model);
+
+            return View("DeleteAcademie", model);
         }
 
         // POST: /GestionDesClasses/DeleteAcademie/5
@@ -163,8 +237,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View("Index");
         }
 
-        #endregion   
-  
+        #endregion
+
         #region Etablissement
 
         // GET: /GestionDesClasses/ReadEtablissements
@@ -174,7 +248,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (EtablissementRepository repository = new EtablissementRepository())
             {
                 IQueryable<Establishments> a = repository.All();
-                
+
                 models = repository.All().Select(x => new EtablissementModels
                 {
                     id = x.Id,
@@ -194,10 +268,12 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (EtablissementRepository repository = new EtablissementRepository())
             {
                 Establishments a = repository.GetEtablissementById(id);
-                if (a == null){ 
+                if (a == null)
+                {
                     return HttpNotFound();
                 }
-                model = new EtablissementModels {
+                model = new EtablissementModels
+                {
                     id = a.Id,
                     name = a.Name,
                     address = a.Address,
@@ -206,7 +282,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userId = a.User_Id,
                     academieId = a.Academie_Id
 
-                };   
+                };
             }
             return View(model);
         }
@@ -239,15 +315,13 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 {
                     Establishments a = new Establishments
                     {
-                       Id = Guid.NewGuid(),
-                       Name = model.name,
-                       Address = model.address,
-                       PostCode = model.postCode,
-                       Town = model.town,
-                       User_Id = model.userId,
-                       Academie_Id = model.academieId
-                       
-                       // revoir avec les deja existant
+                        Id = Guid.NewGuid(),
+                        Name = model.name,
+                        Address = model.address,
+                        PostCode = model.postCode,
+                        Town = model.town,
+                        User_Id = model.userId,
+                        Academie_Id = model.academieId
                     };
 
                     repository.Add(a);
@@ -256,43 +330,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 }
                 return RedirectToAction("ReadEtablissements");
             }
-           
+
             return View(model);
         }
 
-        private List<AcademieModels> getListAcademies(IQueryable<Academies> academies)
-        {
-            List<AcademieModels> ac = new List<AcademieModels>();
-            foreach (var aca in academies)
-            {
-                AcademieModels a = new AcademieModels
-                {
-                    id = aca.Id,
-                    name = aca.Name
-                };
-                ac.Add(a);
-            }
-            return ac;
-        }
 
-        private List<UserModels> getListUsers(IQueryable<Users> users)
-        {
-            List<UserModels> list = new List<UserModels>();
-            foreach (var u in users)
-            {
-                UserModels a = new UserModels
-                {
-                    firstName = u.FirstName,
-                    id = u.Id,
-                    lastName = u.LastName,
-                    mail = u.Mail,
-                    password = u.Password,
-                    userName = u.UserName
-                };
-                list.Add(a);
-            }
-            return list;
-        }
 
 
 
@@ -301,9 +343,12 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         public ActionResult EditEtablissement(Guid id)
         {
+
             EtablissementModels model;
             using (EtablissementRepository repository = new EtablissementRepository())
             {
+                IQueryable<Academies> academies = repository.GetAcademies();
+                IQueryable<Users> users = repository.GetUsers();
                 Establishments a = repository.GetEtablissementById(id);
                 if (a == null)
                 {
@@ -316,6 +361,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     address = a.Address,
                     postCode = a.PostCode,
                     town = a.Town,
+                    academies = getListAcademies(academies),
+                    users = getListUsers(users)
                 };
             }
             return View(model);
@@ -334,12 +381,14 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 a.Address = model.address;
                 a.PostCode = model.postCode;
                 a.Town = model.town;
+                a.User_Id = model.userId;
+                a.Academie_Id = model.academieId;
 
                 if (ModelState.IsValid)
                 {
                     repository.Save();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadEtablissements");
             }
 
         }
@@ -382,11 +431,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View("Index");
         }
 
-        #endregion     
+        #endregion
 
         #region Classe
 
-        // GET: /GestionDesClasses/ReadEtablissements
+        // GET: /GestionDesClasses/Classes
         public ActionResult ReadClasses()
         {
             IList<ClasseModels> models = new List<ClasseModels>();
@@ -406,13 +455,14 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View(models);
         }
 
-        // GET: /GestionDesClasses/ReadEtablissement/1122
+        // GET: /GestionDesClasses/ReadClasse/1122
         public ActionResult ReadClasse(Guid id)
         {
             ClasseModels model;
             using (ClasseRepository repository = new ClasseRepository())
             {
-                Classrooms c= repository.GetClasseById(id);
+                Classrooms c = repository.GetClasseById(id);
+                //IQueryable<Users> l = repository.GetUserById(id);
                 if (c == null)
                 {
                     return HttpNotFound();
@@ -424,20 +474,37 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userId = c.User_Id,
                     yearId = c.Year_Id,
                     etablissementId = c.Establishment_Id,
+                    //userName = 
+                    // yearName = 
+                    //etablissementName = 
 
                 };
             }
             return View(model);
         }
 
-        // GET: /GestionDesClasses/CreateEtablissement
+        // GET: /GestionDesClasses/CreateClasse
 
         public ActionResult CreateClasse()
         {
-            return View();
+            ClasseModels model;
+            using (ClasseRepository repository = new ClasseRepository())
+            {
+
+                IQueryable<Users> users = repository.GetUsers();
+                IQueryable<Years> years = repository.GetYears();
+                IQueryable<Establishments> etablissements = repository.GetEtablissements();
+                model = new ClasseModels
+                {
+                    users = getListUsers(users),
+                    years = getListYears(years),
+                    etablissements = getListEtablissements(etablissements)
+                };
+            }
+            return View(model);
         }
 
-        // POST: /GestionDesClasses/CreateEtablissement
+        // POST: /GestionDesClasses/CreateClasse
         [HttpPost]
         public ActionResult CreateClasse(ClasseModels model)
         {
@@ -453,17 +520,13 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                         User_Id = model.userId,
                         Year_Id = model.yearId,
                         Establishment_Id = model.etablissementId,
-
-
-
-                        // revoir avec les deja existant
                     };
 
                     repository.Add(a);
                     repository.Save();
 
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadClasses");
             }
 
             return View(model);
@@ -477,6 +540,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             ClasseModels model;
             using (ClasseRepository repository = new ClasseRepository())
             {
+                IQueryable<Years> years = repository.GetYears();
+                IQueryable<Users> users = repository.GetUsers();
+                IQueryable<Establishments> etablissements = repository.GetEtablissements();
                 Classrooms c = repository.GetClasseById(id);
                 if (c == null)
                 {
@@ -486,9 +552,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 {
                     id = c.Id,
                     title = c.Title,
-                    userId = c.User_Id,
-                    yearId = c.Year_Id,
-                    etablissementId = c.Establishment_Id,
+                    users = getListUsers(users),
+                    years = getListYears(years),
+                    etablissements = getListEtablissements(etablissements)
                 };
             }
             return View(model);
@@ -512,7 +578,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 {
                     repository.Save();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadClasses");
             }
 
         }
@@ -555,8 +621,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View("Index");
         }
 
-        #endregion     
+        #endregion
     }
-    
-    
+
+
 }

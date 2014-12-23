@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Models;
 
-namespace GestionScolaire.Models
+namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
     public class EtablissementRepository : IDisposable
     {
