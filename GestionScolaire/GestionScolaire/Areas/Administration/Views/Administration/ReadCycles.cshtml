@@ -7,18 +7,18 @@
 
 <h2>Cycles</h2>
 
-<table class="table">
+ @*<table class="table">*@
 
 
-    <tr>
-        <th>Id</th>
+    @*<tr>
+        x<th>Id</th>
         <th>Titre</th>
-    </tr> 
+    </tr>*@ 
     @foreach(CycleModels cycle in Model)
     {
-        <tr>
+        @* <tr>
             <td>@cycle.id</td>
-            <td>@Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, null)</td>
-        </tr>
+            <td>*@ 
+            @Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, null)@*</td>*@
     }
-</table>
+ @*</table>*@

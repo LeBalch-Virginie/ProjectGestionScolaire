@@ -822,3 +822,31 @@ footer, html {
     color: black;
     background-color: #b22170;
 }
+
+p {
+    font-family: 'Century Gothic';
+}
+
+#body table, #body tr th, #body tr td {
+   background-color: black;
+   text-align: center;
+   padding: 4px;
+   padding-left: 10px;
+   padding-right: 10px;
+   margin: 0;
+   border-radius: 5px;
+}
+
+#body table a {
+   padding: 5px;
+}
+
+#body table a:hover {
+   padding: 5px;
+}
+
+#body tr th {
+   background-color: #b22170;
+   border-radius: 0px;
+   color: #999
+}

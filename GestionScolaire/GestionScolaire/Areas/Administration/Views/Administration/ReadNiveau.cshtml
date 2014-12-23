@@ -4,9 +4,10 @@
 @{
     ViewBag.Title = @Model.title;
 }
-<h2>Niveaux @Model.title</h2>
+<h2>Niveau @Model.title</h2>
 
-<table class="table">
+<p>Le niveau @Model.title appartient au cycle :</p>
+@*<table class="table">
 
     <tr>
         <th>Id</th>
@@ -16,7 +17,7 @@
     <tr>
         <td>@Model.id</td>
         <td>@Model.title</td>
-        <td>@Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)</td>
+        <td>*@@Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)@*</td>
     </tr>
    
-</table>
+</table>*@
