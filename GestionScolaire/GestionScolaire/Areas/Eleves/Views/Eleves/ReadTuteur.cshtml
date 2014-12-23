@@ -1,0 +1,19 @@
+﻿@using GestionScolaire.Areas.Eleves.Models
+@model TuteurModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>tuteur @Model.lastName</h2>
+
+<table class="table">
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.lastName</td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Edit", "EditTuteur", new {area = "Eleves", id = Model.id }) |
+    @Html.ActionLink("Back to List", "ReadTuteurs")
+</p>

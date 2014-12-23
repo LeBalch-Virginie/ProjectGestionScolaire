@@ -1,0 +1,35 @@
+﻿@using GestionScolaire.Areas.Eleves.Models
+@model IEnumerable<TuteurModels>
+
+@{
+    ViewBag.Title = "ReadTuteurs";
+}
+
+<h2>Ensemble des tuteurs</h2>
+
+<p>
+    @Html.ActionLink("Creation d'un nouveau tuteur", "CreateTuteur")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+    </tr>
+
+@foreach (TuteurModels tuteur in Model)
+{
+    <tr>
+        <td>
+            @tuteur.lastName
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditTuteur", new {area = "Eleves", id = tuteur.id }, null) |
+            @Html.ActionLink("Details", "ReadTuteur", new {area = "Eleves", id = tuteur.id }) |
+            @Html.ActionLink("Delete", "DeleteTuteur", new {area = "Eleves", id = tuteur.id })
+        </td>
+
+    </tr>
+}
+
+</table>

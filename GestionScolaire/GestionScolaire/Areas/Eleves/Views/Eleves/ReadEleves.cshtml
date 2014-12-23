@@ -1,0 +1,35 @@
+﻿@using GestionScolaire.Areas.Eleves.Models
+@model IEnumerable<EleveModels>
+
+@{
+    ViewBag.Title = "ReadEleves";
+}
+
+<h2>Ensemble des eleves</h2>
+
+<p>
+    @Html.ActionLink("Creation d'un nouvelle eleve", "CreateEleve")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+    </tr>
+
+@foreach (EleveModels eleve in Model)
+{
+    <tr>
+        <td>
+            @eleve.lastName
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = eleve.id }, null) |
+            @Html.ActionLink("Details", "ReadEleve", new {area = "Eleves", id = eleve.id }) |
+            @Html.ActionLink("Delete", "DeleteEleve", new {area = "Eleves", id = eleve.id })
+        </td>
+
+    </tr>
+}
+
+</table>
