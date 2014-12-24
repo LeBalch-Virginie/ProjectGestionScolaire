@@ -1,4 +1,4 @@
-﻿@using GestionScolaire.Models
+﻿@using GestionScolaire.Areas.Administration.Models
 @model IEnumerable<PeriodeModels>
 
 @{
@@ -10,7 +10,7 @@
 <table class="table">
 
     <tr>
-        @*<th>Id</th>*@
+        <th>Id</th>
         <th>Début</th>
         <th>Fin</th>
         <th>Année</th>
@@ -18,17 +18,17 @@
     @foreach(PeriodeModels periode in Model)
     {
         <tr>
-<<<<<<< HEAD
+
             <td>@periode.id</td>
             <td>@Html.ActionLink(periode.begin.ToString(), "ReadPeriode", "Administration", new {area = "Administration", id = periode.id}, new { target = "_blank" })</td>
             <td>@periode.end</td>
             <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration", id = periode.yearId}, new { target = "_blank" })</td>
-=======
-            @*<td>@periode.id</td>*@
+
+            <td>@periode.id</td>
             <td colspan=2>@Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
             </td>
             <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {id = periode.yearId}, null)</td>
->>>>>>> origin/master
+
         </tr>
     }
 </table>
