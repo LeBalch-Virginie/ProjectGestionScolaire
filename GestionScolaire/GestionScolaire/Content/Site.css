@@ -850,3 +850,33 @@ p {
    border-radius: 0px;
    color: #999
 }
+
+.academie {
+    background-color: grey;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.academie a {
+    display: inline;
+}
+
+.academie tr, .academie td {
+    width: 100%;  
+}
+
+.academie_name {
+    color: #b22170;
+    font-size: 1.5em;
+    font-variant: small-caps;
+}
+
+#body .create a {
+    background-color: #b22170;
+    color: #d3dce0;
+}
+
+#body .create a:hover {
+    background-color: #b22170;
+    color: black;
+}

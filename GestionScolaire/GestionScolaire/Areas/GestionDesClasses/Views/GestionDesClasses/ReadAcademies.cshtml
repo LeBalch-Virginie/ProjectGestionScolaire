@@ -6,30 +6,37 @@
     ViewBag.Title = "ReadAcademies";
 }
 
-<h2>Ensemble des academies</h2>
+<h2>Académies</h2>
 
-<p>
-    @Html.ActionLink("Creation d'une nouvelle academie", "CreateAcademie")
-</p>
-<table>
+<div class="create">
+    @Html.ActionLink("Creation d'une nouvelle académie", "CreateAcademie")
+</div>
+@*<table>
     <tr>
         <th>
             Titre
         </th>
-    </tr>
+    </tr>*@
 
 @foreach (AcademieModels academ in Model) {
-    <tr>
-        <td>
-            @academ.name
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditAcademie", new {area = "GestionDesClasses", id = academ.id }, null) |
-            @Html.ActionLink("Details", "ReadAcademie", new {area = "GestionDesClasses", id = academ.id }) |
-            @Html.ActionLink("Delete", "DeleteAcademie", new {area = "GestionDesClasses", id = academ.id })
-        </td>
+    <div class="academie">
+        <table>
+            <tr>
+                <td class="academie_name">@academ.name</td>
+                <td>@Html.ActionLink("Edit", "EditAcademie", new {area = "GestionDesClasses", id = academ.id }, null) </td>
+                <td>@Html.ActionLink("Details", "ReadAcademie", new {area = "GestionDesClasses", id = academ.id }) </td>
+                <td>@Html.ActionLink("Delete", "DeleteAcademie", new {area = "GestionDesClasses", id = academ.id })</td>
+            </tr>
+        </table>
+    </div>
+    @*<tr>
+        <td>*@
+           
+        @*</td>
+        <td>*@
+          @*</td>
 
-    </tr>
+    </tr>*@
 }
 
-</table>
+@*</table>*@
