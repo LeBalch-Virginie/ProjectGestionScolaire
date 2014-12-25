@@ -851,21 +851,21 @@ p {
    color: #999
 }
 
-.academie {
+.liste {
     background-color: grey;
     margin: 5px;
     border-radius: 5px;
 }
 
-.academie a {
+.liste a {
     display: inline;
 }
 
-.academie tr, .academie td {
+.liste tr, .liste td {
     width: 100%;  
 }
 
-.academie_name {
+.element_name {
     color: #b22170;
     font-size: 1.5em;
     font-variant: small-caps;

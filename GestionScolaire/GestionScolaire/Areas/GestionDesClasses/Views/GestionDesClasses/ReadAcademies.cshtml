@@ -9,7 +9,7 @@
 <h2>Académies</h2>
 
 <div class="create">
-    @Html.ActionLink("Creation d'une nouvelle académie", "CreateAcademie")
+    @Html.ActionLink("Création d'une nouvelle académie", "CreateAcademie")
 </div>
 @*<table>
     <tr>
@@ -19,10 +19,10 @@
     </tr>*@
 
 @foreach (AcademieModels academ in Model) {
-    <div class="academie">
+    <div class="liste">
         <table>
             <tr>
-                <td class="academie_name">@academ.name</td>
+                <td class="element_name">@academ.name</td>
                 <td>@Html.ActionLink("Edit", "EditAcademie", new {area = "GestionDesClasses", id = academ.id }, null) </td>
                 <td>@Html.ActionLink("Details", "ReadAcademie", new {area = "GestionDesClasses", id = academ.id }) </td>
                 <td>@Html.ActionLink("Delete", "DeleteAcademie", new {area = "GestionDesClasses", id = academ.id })</td>

@@ -5,12 +5,26 @@
     ViewBag.Title = "ReadEtablissements";
 }
 
-<h2>Ensemble des Etablissements</h2>
+<h2>Etablissements</h2>
 
-<p>
-    @Html.ActionLink("Creation d'un nouvel etablissement", "CreateEtablissement")
-</p>
-<table>
+<div class="create">
+     @Html.ActionLink("Création d'un nouvel établissement", "CreateEtablissement")
+</div>
+
+@foreach (EtablissementModels m in Model) {
+    <div class="liste">
+        <table>
+            <tr>
+                <td class="element_name"> @m.name</td>
+                <td>@Html.ActionLink("Edit", "EditEtablissement", new { id = m.id }, null)</td>
+                <td>@Html.ActionLink("Details", "ReadEtablissement", new { id = m.id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteEtablissement", new { id = m.id })</td>
+            </tr>
+        </table>
+    </div>
+}
+
+@*<table>
     <tr>
         <th>
             Titre
@@ -32,3 +46,4 @@
 }
 
 </table>
+*@

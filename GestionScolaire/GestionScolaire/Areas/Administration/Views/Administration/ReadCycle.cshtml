@@ -14,7 +14,7 @@
         <td>@Model.title</td>*@
         @foreach(NiveauModels niveau in Model.niveaux)
         {
-            <td>@Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, null)</td>
+            @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, null)
         }
     @*</tr>
 </table>*@
