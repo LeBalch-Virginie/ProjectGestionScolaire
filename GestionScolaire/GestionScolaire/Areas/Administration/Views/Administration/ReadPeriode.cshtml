@@ -1,13 +1,19 @@
 ﻿@using GestionScolaire.Areas.Administration.Models
-@model IEnumerable<PeriodeModels>
+@model PeriodeModels
 
 @{
-    ViewBag.Title = "ReadPeriodes";
+    ViewBag.Title = "Periode " + Model.begin + " - " + Model.end;
 }
 
-<h2>Periodes</h2>
+<h2>Periode @Model.begin -  @Model.end</h2>
 
-<table class="table">
+<p>Cette période commence le @Model.begin et se termine le @Model.end
+    <br />
+    Elle appartient à l'année scolaire : <br /><br />
+    @Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)
+</p>
+
+@*<table class="table">
 
     <tr>
         <th>Id</th>
@@ -15,16 +21,10 @@
         <th>Fin</th>
         <th>Année</th>
     </tr> 
-    @foreach(PeriodeModels periode in Model)
-    {
-        <tr>
-
-            <td>@periode.id</td>
-            <td colspan=2>@Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {area = "Administration",id = periode.id}, new { target = "_blank" })
-            </td>
-            <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {area = "Administration",id = periode.yearId}, new { target = "_blank" })</td>
-
-        </tr>
-    }
-</table>
-
+    <tr>
+        <td>@Model.id</td>
+        <td>@Model.begin</td>
+        <td>@Model.end</td>           
+        <td>@Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)</td>
+    </tr>
+</table>*@
