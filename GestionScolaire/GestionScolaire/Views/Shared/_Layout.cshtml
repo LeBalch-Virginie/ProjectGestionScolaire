@@ -13,21 +13,20 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("votre logo ici", "Index", "Home")</p>
+                    @*<p class="site-title">@Html.ActionLink("votre logo ici", "Index", "Home")</p>*@
+                    @Html.ActionLink("Button Name", "Index", "Home", new { @class="logo" })
                 </div>
                 <div class="float-right">
-                    <section id="login">
+                    @*<section id="login">
                         @Html.Partial("_LoginPartial")
-                    </section>
+                    </section>*@
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                            <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Administration", "Administration", "Home", new { area = "" },null)</li>
-                            <li>@Html.ActionLink("Etablissements & Classes","GestionDesClasses", "Home",new { area = "" },null),</li>
-                            <li>@Html.ActionLink("Elèves", "Eleves", "Home",new { area = "" },null),</li>
-                            <li>@Html.ActionLink("Evaluations", "Evaluations", "Home")</li>
+                            <li>@Html.ActionLink("Accueil", "Index", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Administration", "Administration", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Etablissements & Classes","GestionDesClasses", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Elèves", "Eleves", "Home", new { area = "" }, null)</li>
+                            <li>@Html.ActionLink("Evaluations", "Evaluations", "Home", new { area = "" }, null)</li>
                         </ul>
                     </nav>
                 </div>
@@ -38,11 +37,12 @@
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
+            
         </div>
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - Mon application ASP.NET MVC</p>
+                    <p>&copy; @DateTime.Now.Year - Projet Dotnet - Mathilde AUMONT & Virginie LEBALCH</p>
                 </div>
             </div>
         </footer>
