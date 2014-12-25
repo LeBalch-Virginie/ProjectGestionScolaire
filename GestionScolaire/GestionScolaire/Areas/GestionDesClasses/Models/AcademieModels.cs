@@ -13,5 +13,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         [Display(Name = "Nom de l'academie")]
         public String name { get; set; }
 
+        [Display(Name = "Etablissements")]
+        public List<EtablissementModels> etablissements { get; set; }
     }
 }

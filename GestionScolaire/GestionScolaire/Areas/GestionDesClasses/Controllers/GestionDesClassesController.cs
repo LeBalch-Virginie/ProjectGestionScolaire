@@ -116,6 +116,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (AcademieRepository repository = new AcademieRepository())
             {
                 Academies a = repository.GetAcademieById(id);
+                 IQueryable<Establishments> l = repository.GetEstablishmentById(id);
                 if (a == null)
                 {
                     return HttpNotFound();
@@ -123,8 +124,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 model = new AcademieModels
                 {
                     id = a.Id,
-                    name = a.Name
-
+                    name = a.Name,
+                    etablissements = getListEtablissements(l)
                 };
             }
             return View(model);

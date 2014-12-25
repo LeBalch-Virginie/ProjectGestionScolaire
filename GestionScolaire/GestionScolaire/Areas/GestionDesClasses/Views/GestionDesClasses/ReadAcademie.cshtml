@@ -5,15 +5,13 @@
     ViewBag.Title = "Details";
 }
 
-<h2>academie @Model.name</h2>
+<h2>Académie de @Model.name</h2>
+@Html.ActionLink("Edit", "EditAcademie", new { id = Model.id })
+<p>Liste des établissements présents dans cette académie :</p>
+@foreach(EtablissementModels e in Model.etablissements)
+{
+    @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {id = e.id}, null)
+}
 
-<table class="table">
-    <tr>
-        <td>@Model.id</td>
-        <td>@Model.name</td>
-    </tr>
-</table>
-<p>
-    @Html.ActionLink("Edit", "EditAcademie", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "ReadAcademies")
-</p>
+ @Html.ActionLink("Back to List", "ReadAcademies")
+

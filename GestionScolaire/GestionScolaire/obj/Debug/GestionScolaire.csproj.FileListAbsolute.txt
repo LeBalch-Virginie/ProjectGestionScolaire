@@ -275,3 +275,4 @@ C:\Users\Mathilde\Documents\GitHub\ProjectGestionScolaire\GestionScolaire\Gestio
 C:\Users\Mathilde\Documents\GitHub\ProjectGestionScolaire\GestionScolaire\GestionScolaire\bin\fr\WebMatrix.WebData.resources.dll
 C:\Users\Mathilde\Documents\GitHub\ProjectGestionScolaire\GestionScolaire\GestionScolaire\obj\Debug\GestionScolaire.dll
 C:\Users\Mathilde\Documents\GitHub\ProjectGestionScolaire\GestionScolaire\GestionScolaire\obj\Debug\GestionScolaire.pdb
+C:\Users\Mathilde\Documents\GitHub\ProjectGestionScolaire\GestionScolaire\GestionScolaire\obj\Debug\GestionScolaire.csprojResolveAssemblyReference.cache

@@ -36,6 +36,12 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
             return All().SingleOrDefault(Academie => Academie.Id == id);
         }
 
+        public IQueryable<Establishments> GetEstablishmentById(Guid id)
+        {
+            return data.Establishments.Where(esta => esta.Academie_Id == id);
+        }
+
+
         #endregion
 
         #region CRUD
