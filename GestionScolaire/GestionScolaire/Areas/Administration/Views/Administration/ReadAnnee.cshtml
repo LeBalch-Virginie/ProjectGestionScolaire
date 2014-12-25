@@ -8,15 +8,8 @@
 
 <h2>Année @Model.year</h2>
 
-<table class="table">
-    <tr>
-        <th>Id</th>
-        <th>Année</th>
-    </tr> 
-    <tr>
-        <td>@Model.id</td>
-        <td>@Model.year</td>
-    </tr>
-</table>
-
-
+<p>L'année scolaire @Model.year est composée des périodes suivantes :</p>
+@foreach(PeriodeModels periode in Model.periods)
+{
+    @Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
+}

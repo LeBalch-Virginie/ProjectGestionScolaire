@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Areas.Administration.Models;
 
 namespace GestionScolaire.Areas.Administration.Models
 {
@@ -13,5 +14,8 @@ namespace GestionScolaire.Areas.Administration.Models
 
         [Display(Name = "Année")]
         public int year { get; set; }
+
+        [Display(Name = "Liste des périodes")]
+        public List<PeriodeModels> periods { get; set; }
     }
 }

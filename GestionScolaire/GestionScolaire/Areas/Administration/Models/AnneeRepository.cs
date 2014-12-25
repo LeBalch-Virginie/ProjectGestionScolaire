@@ -8,7 +8,7 @@ namespace GestionScolaire.Areas.Administration.Models
 {
     public class AnneeRepository : IDisposable
     {
-                private Entities data;
+        private Entities data;
 
         #region Construct
 
@@ -34,6 +34,11 @@ namespace GestionScolaire.Areas.Administration.Models
         public Years GetYearById(Guid id)
         {
             return All().SingleOrDefault(year => year.Id == id);
+        }
+
+        public IQueryable<Periods> GetPeriodesById(Guid id)
+        {
+            return data.Periods.Where(periode => periode.Year_Id == id);
         }
 
         #endregion

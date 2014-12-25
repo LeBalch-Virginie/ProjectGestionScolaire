@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using GestionScolaire.Models;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Models;
 
 namespace GestionScolaire.Areas.Administration.Controllers
 {
@@ -73,7 +73,7 @@ namespace GestionScolaire.Areas.Administration.Controllers
         public ActionResult ReadNiveaux()
         {
             IList<NiveauModels> models = new List<NiveauModels>();
-            using (NiveauRepository repository = new NiveauRepository()) 
+            using (NiveauRepository repository = new NiveauRepository())
             {
 
                 IQueryable<Levels> c = repository.All();
@@ -164,14 +164,34 @@ namespace GestionScolaire.Areas.Administration.Controllers
             using (AnneeRepository repository = new AnneeRepository())
             {
                 Years a = repository.GetYearById(id);
+                IQueryable<Periods> l = repository.GetPeriodesById(id);
                 model = new AnneeModels
                 {
                     id = a.Id,
-                    year = a.Year
+                    year = a.Year,
+                    periods = getListPeriode(l)
                 };
             }
             return View(model);
         }
 
+        private List<PeriodeModels> getListPeriode(IQueryable<Periods> periods)
+        {
+            List<PeriodeModels> periodes = new List<PeriodeModels>();
+            foreach (var p in periods)
+            {
+                PeriodeModels periode = new PeriodeModels
+                {
+                    id = p.Id,
+                    begin = p.Begin,
+                    end = p.End,
+                    year = p.Years.Year,
+                    yearId = p.Year_Id
+
+                };
+                periodes.Add(periode);
+            }
+            return periodes;
+        }
     }
 }
