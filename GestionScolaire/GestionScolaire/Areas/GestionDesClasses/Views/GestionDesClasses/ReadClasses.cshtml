@@ -7,28 +7,20 @@
 
 <h2>Ensemble des Classes</h2>
 
-<p>
-    @Html.ActionLink("Creation d'une nouvelle classe", "CreateClasse")
-</p>
-<table>
-    <tr>
-        <th>
-            Titre
-        </th>
-    </tr>
+<div class="create">
+     @Html.ActionLink("Création d'une nouvelle classe", "CreateClasse")
+</div>
 
 @foreach (ClasseModels m in Model)
 {
-    <tr>
-        <td>
-            @m.title
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditClasse", new { id = m.id }, null) |
-            @Html.ActionLink("Details", "ReadClasse", new { id = m.id }) |
-            @Html.ActionLink("Delete", "DeleteClasse", new { id = m.id })
-        </td>
-    </tr>
+    <div class="liste">
+        <table>
+            <tr>
+                <td class="element_name"> @m.title</td>
+                <td>@Html.ActionLink("Edit", "EditClasse", new { id = m.id }, null)</td>
+                <td>@Html.ActionLink("Details", "ReadClasse", new { id = m.id })</td>
+                <td>@Html.ActionLink("Delete", "DeleteClasse", new { id = m.id })</td>
+            </tr>
+        </table>
+    </div>
 }
-
-</table>
