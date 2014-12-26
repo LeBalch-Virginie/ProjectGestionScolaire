@@ -5,19 +5,22 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Suppresion de  @Model.name</h2>
+<h2>Suppression de  @Model.name</h2>
 
 @Html.ValidationSummary(true)
 
 @{Html.BeginForm("DeleteAcademie", "GestionDesClasses", FormMethod.Post);}
 @Html.HiddenFor(model => model.id)
-<h3>Voulez-vous vraiment supprimer cet élément???</h3>
-<table class="table">
+<h3>Voulez-vous vraiment supprimer cet élément !??</h3>
+<br />
+@*<table class="table suppression">
     <tr>
-        <td>
-            <button>Oui</button>
-            <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
-        </td>
+        <td>*@
+    <div id="suppression">
+        <button type="button">Oui</button>
+        <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
+    </div>
+        @*</td>
     </tr>
-</table>
+</@*table>*@
 @{Html.EndForm();}

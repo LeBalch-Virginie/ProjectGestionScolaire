@@ -880,3 +880,28 @@ p {
     background-color: #b22170;
     color: black;
 }
+
+
+
+#body #suppression a, #body #suppression button {
+    
+    font-family: 'Century Gothic';
+    color: #b22170;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+#body #suppression button {
+    background-color: black;
+    color: #b22170;
+    border-radius: 5px;
+    //width: 100px;
+    padding: 15px;
+}
+
+#body #suppression button:hover, #body #suppression a:hover {
+    color: #e2e2e2
+}
