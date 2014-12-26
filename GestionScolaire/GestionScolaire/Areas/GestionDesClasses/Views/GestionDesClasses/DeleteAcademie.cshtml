@@ -5,7 +5,7 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Suppression de  @Model.name</h2>
+<h2>Suppression de @Model.name</h2>
 
 @Html.ValidationSummary(true)
 
@@ -17,7 +17,7 @@
     <tr>
         <td>*@
     <div id="suppression">
-        <button type="button">Oui</button>
+        <button>Oui</button>
         <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
     </div>
         @*</td>

@@ -12,12 +12,9 @@
 @{Html.BeginForm("DeleteClasse", "GestionDesClasses", FormMethod.Post);}
 @Html.HiddenFor(model => model.id)
 <h3>Voulez-vous vraiment supprimer cet élément???</h3>
-<table class="table">
-    <tr>
-        <td>
-            <button>Oui</button>
-            <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
-        </td>
-    </tr>
-</table>
+<br />
+<div id="suppression">
+        <button>Oui</button>
+        <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
+    </div>
 @{Html.EndForm();}
