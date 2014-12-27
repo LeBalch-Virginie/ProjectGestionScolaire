@@ -52,6 +52,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
             return data.Establishments;
         }
 
+        public IQueryable<Classrooms> GetClassesByQuery(String query)
+        {
+            return All().Where(Classrooms => Classrooms.Title.Contains(query));
+        }
+
 
         #endregion
 

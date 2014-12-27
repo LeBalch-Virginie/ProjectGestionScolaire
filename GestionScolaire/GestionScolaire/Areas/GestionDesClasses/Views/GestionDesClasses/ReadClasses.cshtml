@@ -11,16 +11,17 @@
      @Html.ActionLink("Création d'une nouvelle classe", "CreateClasse")
 </div>
 
-@foreach (ClasseModels m in Model)
+<div id="search">
+@using(Ajax.BeginForm("SearchClasses", "GestionDesClasses",
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "classe"
+    }))
 {
-    <div class="liste">
-        <table>
-            <tr>
-                <td class="element_name"> @m.title</td>
-                <td>@Html.ActionLink("Edit", "EditClasse", new { id = m.id }, null)</td>
-                <td>@Html.ActionLink("Details", "ReadClasse", new { id = m.id })</td>
-                <td>@Html.ActionLink("Delete", "DeleteClasse", new { id = m.id })</td>
-            </tr>
-        </table>
-    </div>
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
 }
+</div>
+
+@Html.Partial("_classesList")

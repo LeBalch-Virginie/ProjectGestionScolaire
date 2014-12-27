@@ -540,6 +540,25 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View(model);
         }
 
+        // POST: /GestionDesClasses/SearchClasses
+        [HttpPost]
+        public ActionResult SearchClasses(String query)
+        {
+            IList<ClasseModels> models = new List<ClasseModels>();
+            using (ClasseRepository repository = new ClasseRepository())
+            {
+                models = repository.GetClassesByQuery(query).Select(x => new ClasseModels
+                {
+                    id = x.Id,
+                    title = x.Title,
+                    userId = x.User_Id,
+                    yearId = x.Year_Id,
+                    etablissementId = x.Establishment_Id,
+                }).ToList();
+            }
+            return PartialView("_classesList", models);
+        }
+
         // POST: /GestionDesClasses/CreateClasse
         [HttpPost]
         public ActionResult CreateClasse(ClasseModels model)

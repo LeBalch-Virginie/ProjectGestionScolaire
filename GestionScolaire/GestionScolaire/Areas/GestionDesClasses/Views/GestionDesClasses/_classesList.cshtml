@@ -1,0 +1,18 @@
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
+@model IEnumerable<ClasseModels>
+
+<div id="classe">
+    @foreach (ClasseModels m in Model)
+    {
+        <div class="liste">
+            <table>
+                <tr>
+                    <td class="element_name"> @m.title</td>
+                    <td>@Html.ActionLink("Edit", "EditClasse", new { id = m.id }, null)</td>
+                    <td>@Html.ActionLink("Details", "ReadClasse", new { id = m.id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteClasse", new { id = m.id })</td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
