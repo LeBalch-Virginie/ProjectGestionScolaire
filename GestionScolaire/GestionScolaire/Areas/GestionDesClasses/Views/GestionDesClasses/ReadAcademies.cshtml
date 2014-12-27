@@ -12,33 +12,19 @@
     @Html.ActionLink("Création d'une nouvelle académie", "CreateAcademie")
 </div>
 
-@using(Ajax.BeginForm(
+@using(Ajax.BeginForm("SearchAcademies", "GestionDesClasses",
     new AjaxOptions
     {
-        HttpMethod ="get",
+        @*HttpMethod ="get",*@
         InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "academie"
     }))
 {
-  <input type="text" name="searchTerm" />  
+    string query="";
+    @Html.EditorFor(x => query)
+  @*<input type="text" name="query" />  *@
   <input type="submit" value="Search By Name" /> 
 }
 
 
-
-<div id="academie">
-    @foreach (AcademieModels academ in Model) {
-        
-    <div class="liste">
-        <table>
-            <tr>
-                <td class="element_name">@academ.name</td>
-                <td>@Html.ActionLink("Edit", "EditAcademie", new {area = "GestionDesClasses", id = academ.id }, null) </td>
-                <td>@Html.ActionLink("Details", "ReadAcademie", new {area = "GestionDesClasses", id = academ.id }) </td>
-                <td>@Html.ActionLink("Delete", "DeleteAcademie", new {area = "GestionDesClasses", id = academ.id })</td>
-            </tr>
-        </table>
-    </div>
-    }
-
-</div>
+@Html.Partial("_academiesList")

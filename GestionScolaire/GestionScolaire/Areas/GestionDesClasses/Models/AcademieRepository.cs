@@ -41,6 +41,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
             return data.Establishments.Where(esta => esta.Academie_Id == id);
         }
 
+        public IQueryable<Academies> GetAcademiesByQuery(String query)
+        {
+            return All().Where(Academie => Academie.Name.Contains(query));
+        }
+
 
         #endregion
 

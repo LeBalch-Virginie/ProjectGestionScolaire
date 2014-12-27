@@ -1,0 +1,20 @@
+﻿
+@using GestionScolaire.Areas.GestionDesClasses.Models
+@model IEnumerable<AcademieModels>
+
+<div id="academie">
+    @foreach (AcademieModels academ in Model) {
+        
+    <div class="liste">
+        <table>
+            <tr>
+                <td class="element_name">@academ.name</td>
+                <td>@Html.ActionLink("Edit", "EditAcademie", new {area = "GestionDesClasses", id = academ.id }, null) </td>
+                <td>@Html.ActionLink("Details", "ReadAcademie", new {area = "GestionDesClasses", id = academ.id }) </td>
+                <td>@Html.ActionLink("Delete", "DeleteAcademie", new {area = "GestionDesClasses", id = academ.id })</td>
+            </tr>
+        </table>
+    </div>
+    }
+
+</div>

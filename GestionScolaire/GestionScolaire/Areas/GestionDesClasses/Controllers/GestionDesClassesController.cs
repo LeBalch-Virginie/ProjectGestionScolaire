@@ -138,6 +138,22 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View();
         }
 
+        // POST: /GestionDesClasses/SearchAcademies
+        [HttpPost]
+        public ActionResult SearchAcademies(String query)
+        {
+            IList<AcademieModels> models = new List<AcademieModels>();
+            using (AcademieRepository repository = new AcademieRepository())
+            {
+                models = repository.GetAcademiesByQuery(query).Select(x => new AcademieModels
+                {
+                    id = x.Id,
+                    name = x.Name
+                }).ToList();
+            }
+            return PartialView("_academiesList", models);
+        }
+
         // POST: /GestionDesClasses/CreateAcademie
         [HttpPost]
         public ActionResult CreateAcademie(AcademieModels model)
