@@ -2,34 +2,29 @@
 @model IEnumerable<EleveModels>
 
 @{
-    ViewBag.Title = "ReadEleves";
+    ViewBag.Title = "Elèves";
 }
 
-<h2>Ensemble des eleves</h2>
+<h2>Ensemble des élèves</h2>
 
-<p>
+<div class="create">
     @Html.ActionLink("Création d'un nouvel élève", "CreateEleve")
-</p>
-<table>
-    <tr>
-        <th>
-            Titre
-        </th>
-    </tr>
+</div>
 
-@foreach (EleveModels eleve in Model)
+<div id="search">
+@using(Ajax.BeginForm("SearchEleves", "Eleves",
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "eleve"
+    }))
 {
-    <tr>
-        <td>
-            @eleve.lastName
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = eleve.id }, null) |
-            @Html.ActionLink("Details", "ReadEleve", new {area = "Eleves", id = eleve.id }) |
-            @Html.ActionLink("Delete", "DeleteEleve", new {area = "Eleves", id = eleve.id })
-        </td>
-
-    </tr>
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
 }
+</div>
 
-</table>
+@Html.Partial("_elevesList")
+
+
+

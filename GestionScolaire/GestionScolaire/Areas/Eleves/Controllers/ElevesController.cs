@@ -347,6 +347,34 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             return View(model);
         }
 
+        // POST: /GestionDesClasses/SearchEleves
+        [HttpPost]
+        public ActionResult SearchEleves(String query)
+        {
+            IList<EleveModels> models = new List<EleveModels>();
+            using (EleveRepository repository = new EleveRepository())
+            {
+                IQueryable<Pupils> a = repository.All();
+
+                models = repository.GetElevesByQuery(query).Select(x => new EleveModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id
+                    // tuteurs = 
+                    // classroom =
+                    // level =
+                    // result =
+                }).ToList();
+            }
+            return PartialView("_elevesList", models);
+        }
+
         // POST: /Eleves/CreateEleve
         [HttpPost]
         public ActionResult CreateEleve(EleveModels model)

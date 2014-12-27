@@ -1,0 +1,18 @@
+﻿@using GestionScolaire.Areas.Eleves.Models
+@model IEnumerable<EleveModels>
+
+<div id="eleve">
+    @foreach (EleveModels eleve in Model)
+    {
+        <div class="liste">
+            <table>
+                <tr>
+                    <td class="element_name"> @eleve.lastName @eleve.firstName</td>
+                    <td>@Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = eleve.id }, null)</td>
+                    <td>@Html.ActionLink("Details", "ReadEleve", new {area = "Eleves", id = eleve.id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteEleve", new {area = "Eleves", id = eleve.id })</td>
+                </tr>
+            </table>
+        </div>
+    }
+</div>
