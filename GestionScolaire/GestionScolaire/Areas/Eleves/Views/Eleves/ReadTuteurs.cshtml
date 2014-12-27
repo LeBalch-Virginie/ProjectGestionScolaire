@@ -7,29 +7,21 @@
 
 <h2>Ensemble des tuteurs</h2>
 
-<p>
+<div class="create">
     @Html.ActionLink("Creation d'un nouveau tuteur", "CreateTuteur")
-</p>
-<table>
-    <tr>
-        <th>
-            Titre
-        </th>
-    </tr>
+</div>
 
-@foreach (TuteurModels tuteur in Model)
+<div id="search">
+@using(Ajax.BeginForm("SearchTuteurs", "Eleves",
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "tuteur"
+    }))
 {
-    <tr>
-        <td>
-            @tuteur.lastName
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditTuteur", new {area = "Eleves", id = tuteur.id }, null) |
-            @Html.ActionLink("Details", "ReadTuteur", new {area = "Eleves", id = tuteur.id }) |
-            @Html.ActionLink("Delete", "DeleteTuteur", new {area = "Eleves", id = tuteur.id })
-        </td>
-
-    </tr>
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
 }
+</div>
 
-</table>
+@Html.Partial("_tuteursList")

@@ -35,6 +35,12 @@ namespace GestionScolaire.Areas.Eleves.Models
         {
             return All().SingleOrDefault(Tutor => Tutor.Id == id);
         }
+
+        public IQueryable<Tutors> GetTuteursByQuery(String query)
+        {
+            return All().Where(Tutor => Tutor.LastName.Contains(query) || Tutor.FirstName.Contains(query));
+        }
+
         #endregion
 
         #region CRUD

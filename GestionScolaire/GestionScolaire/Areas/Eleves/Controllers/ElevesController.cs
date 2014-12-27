@@ -139,6 +139,30 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             return View();
         }
 
+        // POST: /GestionDesClasses/SearchEleves
+        [HttpPost]
+        public ActionResult SearchTuteurs(String query)
+        {
+            IList<TuteurModels> models = new List<TuteurModels>();
+            using (TuteurRepository repository = new TuteurRepository())
+            {
+                models = repository.GetTuteursByQuery(query).Select(x => new TuteurModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail,
+                    postCode = x.PostCode,
+                    comment = x.Comment,
+                    town = x.Town,
+                    tel = x.Tel,
+                    address = x.Address,
+                    // eleves = 
+                }).ToList();
+            }
+            return PartialView("_tuteursList", models);
+        }
+
         // POST: /Eleves/CreateTuteur
         [HttpPost]
         public ActionResult CreateTuteur(TuteurModels model)
