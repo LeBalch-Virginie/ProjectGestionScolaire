@@ -12,19 +12,17 @@
     @Html.ActionLink("Création d'une nouvelle académie", "CreateAcademie")
 </div>
 
+<div id="search">
 @using(Ajax.BeginForm("SearchAcademies", "GestionDesClasses",
     new AjaxOptions
     {
-        @*HttpMethod ="get",*@
         InsertionMode = InsertionMode.Replace,
         UpdateTargetId = "academie"
     }))
 {
-    string query="";
-    @Html.EditorFor(x => query)
-  @*<input type="text" name="query" />  *@
-  <input type="submit" value="Search By Name" /> 
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
 }
-
+</div>
 
 @Html.Partial("_academiesList")

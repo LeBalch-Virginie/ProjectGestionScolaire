@@ -883,8 +883,7 @@ p {
 
 
 
-#body #suppression a, #body #suppression button {
-    
+#body #suppression a, #body #suppression button {  
     font-family: 'Century Gothic';
     color: #b22170;
     text-decoration: none;
@@ -903,4 +902,17 @@ p {
 
 #body #suppression button:hover, #body #suppression a:hover {
     color: #e2e2e2
+}
+
+#body #search {
+    padding-left: 5px;
+}
+
+
+#body input[type="submit"] {
+    font-family: 'Century Gothic';
+    background-color: #b22170;
+    color: #d3dce0;
+    border: none;
+    margin-left: 5px;
 }
