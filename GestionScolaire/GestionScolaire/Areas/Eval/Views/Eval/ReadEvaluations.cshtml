@@ -1,0 +1,35 @@
+﻿@using GestionScolaire.Areas.Eval.Models
+@model IEnumerable<EvaluationModels>
+
+@{
+    ViewBag.Title = "ReadEvaluations";
+}
+
+<h2>Ensemble des evaluations</h2>
+
+<p>
+    @Html.ActionLink("Creation d'une nouvelle evaluation", "CreateEvaluation")
+</p>
+<table>
+    <tr>
+        <th>
+            Titre
+        </th>
+    </tr>
+
+@foreach (EvaluationModels eval in Model)
+{
+    <tr>
+        <td>
+            @eval.id
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditEvaluation", new {area = "eval", id = eval.id }, null) |
+            @Html.ActionLink("Details", "ReadEvaluation", new {area = "eval", id = eval.id }) |
+            @Html.ActionLink("Delete", "DeleteEvaluation", new {area = "eval", id = eval.id })
+        </td>
+
+    </tr>
+}
+
+</table>

@@ -1,0 +1,13 @@
+﻿@using GestionScolaire.Areas.Eval.Models
+@model EvaluationModels
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>evaluation du @Model.date</h2>
+@Html.ActionLink("Edit", "EditEvaluation", new { id = Model.id })
+
+
+
+ @Html.ActionLink("Back to List", "ReadEvaluations")

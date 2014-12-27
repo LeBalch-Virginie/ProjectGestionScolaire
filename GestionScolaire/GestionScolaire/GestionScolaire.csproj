@@ -178,6 +178,10 @@
     <Compile Include="Areas\Eleves\Models\EleveRepository.cs" />
     <Compile Include="Areas\Eleves\Models\TuteurModels.cs" />
     <Compile Include="Areas\Eleves\Models\TuteurRepository.cs" />
+    <Compile Include="Areas\Eval\Controllers\EvalController.cs" />
+    <Compile Include="Areas\Eval\EvalAreaRegistration.cs" />
+    <Compile Include="Areas\Eval\Models\EvaluationModels.cs" />
+    <Compile Include="Areas\Eval\Models\EvaluationRepository.cs" />
     <Compile Include="Areas\GestionDesClasses\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieModels.cs" />
     <Compile Include="Areas\GestionDesClasses\Models\AcademieRepository.cs" />
@@ -360,6 +364,13 @@
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissement.cshtml" />
     <Content Include="Areas\GestionDesClasses\Views\GestionDesClasses\ReadEtablissements.cshtml" />
     <Content Include="Areas\Eleves\Views\Eleves\DeleteEleve.cshtml" />
+    <Content Include="Areas\Eval\Views\Web.config" />
+    <Content Include="Areas\Eval\Views\Shared\Index.cshtml" />
+    <Content Include="Areas\Eval\Views\Eval\CreateEvaluation.cshtml" />
+    <Content Include="Areas\Eval\Views\Eval\ReadEvaluations.cshtml" />
+    <Content Include="Areas\Eval\Views\Eval\ReadEvaluation.cshtml" />
+    <Content Include="Areas\Eval\Views\Eval\EditEvaluation.cshtml" />
+    <Content Include="Areas\Eval\Views\Eval\DeleteEvaluation.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -419,6 +430,7 @@
     <Content Include="Views\Home\Administration.cshtml" />
     <Content Include="Views\Home\GestionDesClasses.cshtml" />
     <Content Include="Views\Home\Eleves.cshtml" />
+    <Content Include="Views\Home\Eval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

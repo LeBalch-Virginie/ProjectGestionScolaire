@@ -51,5 +51,12 @@ namespace GestionScolaire.Controllers
         }
 
 
+        public ActionResult Eval()
+        {
+            ViewBag.Message = "Votre page gestion des évaluations.";
+
+            return View();
+        }
+
     }
 }

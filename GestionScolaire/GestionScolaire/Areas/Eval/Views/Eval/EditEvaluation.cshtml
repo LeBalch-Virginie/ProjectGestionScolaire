@@ -1,0 +1,55 @@
+﻿@using GestionScolaire.Areas.Eval.Models
+@model EvaluationModels
+
+@{
+    ViewBag.Title = "EditEvaluation";
+}
+
+<h2>EditEvaluation</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Eleve</legend>
+
+        <div class="editor-label">
+       
+            @Html.LabelFor(model => model.classroomId) 
+            @Html.LabelFor(model => model.userId)
+            @Html.LabelFor(model => model.periodId)
+            @Html.LabelFor(model => model.totalPoint)
+            @Html.LabelFor(model => model.date)
+
+
+        </div>
+        <div class="editor-field">
+        
+            @Html.DropDownListFor(model => model.classroomId, new SelectList(Model.classes, 
+                               "Id", "Title"))
+                               
+            @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+                                "Id", "UserName"))
+                                
+            @Html.DropDownListFor(model => model.periodId, new SelectList(Model.periodes, 
+                               "Id", "Begin"))
+
+            @Html.LabelFor(model => model.totalPoint)
+            @Html.TextBoxFor(model => model.totalPoint)
+            @Html.ValidationMessageFor(model => model.totalPoint)   
+                            
+            @Html.EditorFor(model => model.date)
+            @Html.ValidationMessageFor(model => model.date)
+           
+                         
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
