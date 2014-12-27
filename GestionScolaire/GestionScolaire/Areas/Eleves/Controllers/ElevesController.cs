@@ -391,8 +391,17 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                 IQueryable<Tutors> tuteurs = repository.GetTutors();
                 IQueryable<Classrooms> classes = repository.GetClasses();
                 IQueryable<Levels> niveaux = repository.GetNiveaux();
+                Pupils x = repository.GetPupilById(id);
                 model = new EleveModels
                 {
+                    state = short.MaxValue,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id,
                     tuteurs = getListTuteurs(tuteurs),
                     classes = getListClasses(classes),
                     niveaux = getListNiveaux(niveaux)
