@@ -11,39 +11,17 @@
      @Html.ActionLink("Création d'un nouvel établissement", "CreateEtablissement")
 </div>
 
-@foreach (EtablissementModels m in Model) {
-    <div class="liste">
-        <table>
-            <tr>
-                <td class="element_name"> @m.name</td>
-                <td>@Html.ActionLink("Edit", "EditEtablissement", new { id = m.id }, null)</td>
-                <td>@Html.ActionLink("Details", "ReadEtablissement", new { id = m.id })</td>
-                <td>@Html.ActionLink("Delete", "DeleteEtablissement", new { id = m.id })</td>
-            </tr>
-        </table>
-    </div>
-}
-
-@*<table>
-    <tr>
-        <th>
-            Titre
-        </th>
-    </tr>
-
-@foreach (EtablissementModels m in Model)
+<div id="search">
+@using(Ajax.BeginForm("SearchEtablissements", "GestionDesClasses",
+    new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "etablissement"
+    }))
 {
-    <tr>
-        <td>
-            @m.name
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditEtablissement", new { id = m.id }, null) |
-            @Html.ActionLink("Details", "ReadEtablissement", new { id = m.id }) |
-            @Html.ActionLink("Delete", "DeleteEtablissement", new { id = m.id })
-        </td>
-    </tr>
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
 }
+</div>
 
-</table>
-*@
+@Html.Partial("_etablissementsList")

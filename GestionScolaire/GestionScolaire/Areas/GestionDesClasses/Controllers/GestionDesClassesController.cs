@@ -322,6 +322,25 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View(model);
         }
 
+        // POST: /GestionDesClasses/SearchEtablissements
+        [HttpPost]
+        public ActionResult SearchEtablissements(String query)
+        {
+            IList<EtablissementModels> models = new List<EtablissementModels>();
+            using (EtablissementRepository repository = new EtablissementRepository())
+            {
+                models = repository.GetEtablissementsByQuery(query).Select(x => new EtablissementModels
+                {
+                    id = x.Id,
+                    name = x.Name,
+                    address = x.Address,
+                    postCode = x.PostCode,
+                    town = x.Town
+                }).ToList();
+            }
+            return PartialView("_etablissementsList", models);
+        }
+
         // POST: /GestionDesClasses/CreateEtablissement
         [HttpPost]
         public ActionResult CreateEtablissement(EtablissementModels model)

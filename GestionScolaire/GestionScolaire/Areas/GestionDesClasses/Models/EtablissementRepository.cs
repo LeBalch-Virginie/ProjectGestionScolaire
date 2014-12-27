@@ -37,6 +37,10 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
             return All().SingleOrDefault(Establishment => Establishment.Id == id);
         }
 
+        public IQueryable<Establishments> GetEtablissementsByQuery(String query)
+        {
+            return All().Where(Establishment => Establishment.Name.Contains(query));
+        }
 
 
         #endregion
