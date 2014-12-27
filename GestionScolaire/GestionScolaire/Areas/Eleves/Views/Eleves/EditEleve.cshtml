@@ -4,10 +4,10 @@
 
 
 @{
-    ViewBag.Title = "CreateEleve";
+    ViewBag.Title = "EditEleve";
 }
 
-<h2>CreateEleve</h2>
+<h2>EditEleve</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -34,17 +34,17 @@
             @Html.ValidationMessageFor(model => model.sexe)
             @Html.EditorFor(model => model.birthdayDate)
             @Html.ValidationMessageFor(model => model.birthdayDate)
-            @Html.DropDownListFor(model => model.tuteurId, new SelectList(Model.tuteurs, 
-                               "Id", "Name"))
+             @Html.DropDownListFor(model => model.tuteurId, new SelectList(Model.tuteurs, 
+                               "Id", "LastName"))
             @Html.DropDownListFor(model => model.classroomId, new SelectList(Model.classes, 
-                               "Id", "UserName"))
+                               "Id", "Title"))
              @Html.DropDownListFor(model => model.levelId, new SelectList(Model.niveaux, 
-                               "Id", "UserName"))
+                               "Id", "Title"))
          
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

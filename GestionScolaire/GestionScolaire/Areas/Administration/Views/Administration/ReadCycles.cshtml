@@ -7,19 +7,10 @@
 
 <h2>Cycles</h2>
 
- @*<table class="table">*@
-
-
-    @*<tr>
-        x<th>Id</th>
-        <th>Titre</th>
-    </tr>*@ 
     @foreach(CycleModels cycle in Model)
     {
-        @* <tr>
-            <td>@cycle.id</td>
-            <td>*@ 
+
             @Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, null)@*</td>*@
     }
- @*</table>*@
+
 

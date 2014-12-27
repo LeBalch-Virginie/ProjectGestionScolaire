@@ -8,6 +8,12 @@ namespace GestionScolaire
         // Pour plus d’informations sur le Bundling, accédez à l’adresse http://go.microsoft.com/fwlink/?LinkId=254725 (en anglais)
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/otf").Include(
+                             "~/Scripts/jquery-{version}.js",
+                             "~/Scripts/jquery-ui-{version}.js",
+                             "~/Scripts/jquery.unobtrusive*",
+                             "~/Scripts/jquery.validate*"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

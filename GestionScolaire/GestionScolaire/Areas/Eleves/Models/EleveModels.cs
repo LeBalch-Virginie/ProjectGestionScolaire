@@ -27,6 +27,7 @@ namespace GestionScolaire.Areas.Eleves.Models
 
 
         [Display(Name = "date d'anniversaire")]
+        [DataType(DataType.Date)]
         public DateTime birthdayDate { get; set; }
 
         [Display(Name = "Id du tuteur")]

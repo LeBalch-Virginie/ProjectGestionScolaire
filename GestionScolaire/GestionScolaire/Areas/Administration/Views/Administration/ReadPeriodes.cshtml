@@ -10,7 +10,6 @@
 <table class="table">
 
     <tr>
-        @*<th>Id</th>*@
         <th>Début</th>
         <th>Fin</th>
         <th>Année</th>
@@ -18,7 +17,6 @@
     @foreach(PeriodeModels periode in Model)
     {
         <tr>
-            @*<td>@periode.id</td>*@
             <td colspan=2>@Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
             </td>
             <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {id = periode.yearId}, null)</td>

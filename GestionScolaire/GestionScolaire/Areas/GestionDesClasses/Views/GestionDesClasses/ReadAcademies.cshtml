@@ -11,14 +11,24 @@
 <div class="create">
     @Html.ActionLink("Création d'une nouvelle académie", "CreateAcademie")
 </div>
-@*<table>
-    <tr>
-        <th>
-            Titre
-        </th>
-    </tr>*@
 
-@foreach (AcademieModels academ in Model) {
+@using(Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod ="get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "academie"
+    }))
+{
+  <input type="text" name="searchTerm" />  
+  <input type="submit" value="Search By Name" /> 
+}
+
+
+
+<div id="academie">
+    @foreach (AcademieModels academ in Model) {
+        
     <div class="liste">
         <table>
             <tr>
@@ -29,14 +39,6 @@
             </tr>
         </table>
     </div>
-    @*<tr>
-        <td>*@
-           
-        @*</td>
-        <td>*@
-          @*</td>
+    }
 
-    </tr>*@
-}
-
-@*</table>*@
+</div>

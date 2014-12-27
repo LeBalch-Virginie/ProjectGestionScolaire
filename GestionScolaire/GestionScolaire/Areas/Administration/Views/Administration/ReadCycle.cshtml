@@ -8,13 +8,8 @@
 <h2>Cycle @Model.title</h2>
 
 <p>Le cycle @Model.title est composé des différents niveaux suivants :</p>
-@*<table class="table">
-    <tr>
-        <td>@Model.id</td>
-        <td>@Model.title</td>*@
+
         @foreach(NiveauModels niveau in Model.niveaux)
         {
             @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, null)
         }
-    @*</tr>
-</table>*@

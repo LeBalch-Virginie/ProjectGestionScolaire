@@ -7,17 +7,5 @@
 <h2>Niveau @Model.title</h2>
 
 <p>Le niveau @Model.title appartient au cycle :</p>
-@*<table class="table">
+    @Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)
 
-    <tr>
-        <th>Id</th>
-        <th>Titre</th>
-        <th>Cycle</th>
-    </tr> 
-    <tr>
-        <td>@Model.id</td>
-        <td>@Model.title</td>
-        <td>*@@Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)@*</td>
-    </tr>
-   
-</table>*@
