@@ -1,0 +1,55 @@
+﻿@model GestionScolaire.Areas.GestionDesClasses.Models.UserModels
+
+
+@{
+    ViewBag.Title = "CreateUser";
+}
+
+<h2>Création d'un principal</h2>
+
+
+@using (Html.BeginForm()) {
+@Html.ValidationSummary(true)
+
+<div id="content_form">
+    <table class="table" id="form_creation">
+        <tr>
+            <td> @Html.LabelFor(model => model.userName)</td>
+            <td> @Html.TextBoxFor(model => model.userName)
+                 @Html.ValidationMessageFor(model => model.userName)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.password)</td>
+            <td> @Html.TextBoxFor(model => model.password)
+                 @Html.ValidationMessageFor(model => model.password)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.firstName)</td>
+            <td> @Html.TextBoxFor(model => model.firstName)
+                 @Html.ValidationMessageFor(model => model.firstName)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.lastName)</td>
+            <td> @Html.TextBoxFor(model => model.lastName)
+                 @Html.ValidationMessageFor(model => model.lastName)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.mail)</td>
+            <td> @Html.TextBoxFor(model => model.mail)
+                 @Html.ValidationMessageFor(model => model.mail)
+            </td>
+        </tr>
+
+
+    </table>
+    <input type="submit" value="Create" />
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

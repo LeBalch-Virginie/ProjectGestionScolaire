@@ -1,0 +1,21 @@
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
+@model UserModels
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Suppresion de  @Model.userName</h2>
+
+@Html.ValidationSummary(true)
+
+@{Html.BeginForm("DeleteUser", "GestionDesClasses", FormMethod.Post);}
+@Html.HiddenFor(model => model.id)
+<h3>Voulez-vous vraiment supprimer cet élément???</h3>
+<br />
+<div id="suppression">
+    <button>Oui</button>
+    <button type="button">@Html.ActionLink("Non", "Index", "GestionDesClasses")</button>
+</div>
+@{Html.EndForm();}
+

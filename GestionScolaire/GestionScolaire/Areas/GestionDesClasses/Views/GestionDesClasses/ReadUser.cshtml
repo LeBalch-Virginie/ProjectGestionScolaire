@@ -1,0 +1,26 @@
+﻿@using GestionScolaire.Areas.GestionDesClasses.Models
+@model UserModels
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Principal @Model.userName</h2>
+@Html.ActionLink("Edit", "EditUser", new { id = Model.id })
+
+<table class="table">
+    <tr>
+        <td>@Html.LabelFor(model => model.firstName)</td>
+        <td>@Html.LabelFor(model => model.lastName)</td>
+        <td>@Html.LabelFor(model => model.mail)</td>
+    </tr>
+    <tr>      
+        <td>@Model.firstName</td>
+        <td>@Model.lastName</td>
+        <td>@Model.mail</td>
+    </tr>
+</table>
+
+
+ @Html.ActionLink("Back to List", "ReadUsers")

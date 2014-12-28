@@ -679,6 +679,194 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
         }
 
         #endregion
+
+        #region User
+
+        // GET: /GestionDesClasses/ReadUsers
+        public ActionResult ReadUsers()
+        {
+            IList<UserModels> models = new List<UserModels>();
+            using (UserRepository repository = new UserRepository())
+            {
+                IQueryable<Users> a = repository.All();
+
+                models = repository.All().Select(x => new UserModels
+                {
+                    id = x.Id,
+                    userName = x.UserName,
+                    password = x.Password,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail
+                }).ToList();
+            }
+            return View(models);
+        }
+
+        // GET: /GestionDesClasses/ReadUser/1122
+        public ActionResult ReadUser(Guid id)
+        {
+            UserModels model;
+            using (UserRepository repository = new UserRepository())
+            {
+                Users x = repository.GetUserById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new UserModels
+                {
+                    id = x.Id,
+                    userName = x.UserName,
+                    password = x.Password,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail
+                };
+            }
+            return View(model);
+        }
+
+        // GET: /GestionDesClasses/CreateUser
+
+        public ActionResult CreateUser()
+        {
+            return View();
+        }
+
+        // POST: /GestionDesClasses/SearchUsers
+        [HttpPost]
+        public ActionResult SearchUsers(String query)
+        {
+            IList<UserModels> models = new List<UserModels>();
+            using (UserRepository repository = new UserRepository())
+            {
+                models = repository.GetUsersByQuery(query).Select(x => new UserModels
+                {
+                    id = x.Id,
+                    userName = x.UserName,
+                }).ToList();
+            }
+            return PartialView("_usersList", models);
+        }
+
+        // POST: /GestionDesClasses/CreateUser
+        [HttpPost]
+        public ActionResult CreateUser(UserModels model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                using (UserRepository repository = new UserRepository())
+                {
+                    Users a = new Users
+                    {
+                        Id = Guid.NewGuid(),
+                        UserName = model.userName,
+                        Password = model.password,
+                        FirstName = model.firstName,
+                        LastName = model.lastName,
+                        Mail = model.mail
+                    };
+
+                    repository.Add(a);
+                    repository.Save();
+
+                }
+                return RedirectToAction("ReadUsers");
+            }
+            return View(model);
+        }
+
+        //
+        // GET: /GestionDesClasses/Edit/5
+
+        public ActionResult EditUser(Guid id)
+        {
+            UserModels model;
+            using (UserRepository repository = new UserRepository())
+            {
+                Users x = repository.GetUserById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new UserModels
+                {
+                    id = x.Id,
+                    userName = x.UserName,
+                    password = x.Password,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail
+                };
+            }
+            return View(model);
+        }
+
+        // POST: /GestionDesClasses/Edit/5
+
+        [HttpPost]
+        public ActionResult EditUser(UserModels model)
+        {
+            using (UserRepository repository = new UserRepository())
+            {
+                Users a = repository.GetUserById(model.id);
+                a.UserName = model.userName;
+                a.Password = model.password;
+                a.FirstName = model.firstName;
+                a.LastName = model.lastName;
+                a.Mail = model.mail;
+
+                if (ModelState.IsValid)
+                {
+                    repository.Save();
+                }
+                return RedirectToAction("ReadUsers");
+            }
+
+        }
+
+        // GET: /GestionDesClasses/DeleteUser/5
+
+        public ActionResult DeleteUser(Guid id)
+        {
+            UserModels model;
+            using (UserRepository repository = new UserRepository())
+            {
+                Users x = repository.GetUserById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new UserModels
+                {
+                    id = x.Id,
+                    userName = x.UserName,
+                    password = x.Password,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    mail = x.Mail
+                };
+            }
+
+
+            return View("DeleteUser", model);
+        }
+
+        // POST: /GestionDesClasses/DeleteUser/5
+        [HttpPost, ActionName("DeleteUser")]
+        public ActionResult DeleteAcademie(UserModels model)
+        {
+            using (UserRepository repository = new UserRepository())
+            {
+                repository.DeleteById(model.id);
+                repository.Save();
+            }
+            return View("Index");
+        }
+
+        #endregion
     }
 
 
