@@ -83,5 +83,5 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
 
     }
-    }
+    
 }
