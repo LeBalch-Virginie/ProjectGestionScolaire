@@ -35,7 +35,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String userName { get; set; }
 
         [Display(Name = "nom de l'academie liée ")]
-        public String academieIdName { get; set; }
+        public String academieName { get; set; }
 
 
         public List<AcademieModels> academies { get; set; }

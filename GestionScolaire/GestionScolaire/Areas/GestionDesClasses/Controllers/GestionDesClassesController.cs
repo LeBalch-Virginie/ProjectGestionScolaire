@@ -272,7 +272,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     name = x.Name,
                     address = x.Address,
                     postCode = x.PostCode,
-                    town = x.Town
+                    town = x.Town                     
                 }).ToList();
             }
             return View(models);
@@ -297,7 +297,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     postCode = a.PostCode,
                     town = a.Town,
                     userId = a.User_Id,
-                    academieId = a.Academie_Id
+                    academieId = a.Academie_Id,
+                    academieName = a.Academies.Name,
+                    userName = a.Users.UserName
 
                 };
             }
