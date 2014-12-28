@@ -24,6 +24,11 @@
 }
 </div>
 
+@using (Html.BeginForm("ExportExcel", "Eleves"))
+{
+    <input id="excel" type="submit" value="Exporter la liste des élèves au format Excel" /> 
+}
+
 @Html.Partial("_elevesList")
 
 
