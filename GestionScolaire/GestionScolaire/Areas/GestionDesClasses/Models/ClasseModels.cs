@@ -13,16 +13,16 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         [Display(Name = "Id ")]
         public Guid id { get; set; }
 
-        [Display(Name = "titre")]
+        [Display(Name = "Nom de la classe")]
         public String title { get; set; }
 
-        [Display(Name = "Id l'utilisateur liée ")]
+        [Display(Name = "Professeur principal")]
         public Guid userId { get; set; }
 
-        [Display(Name = "Id de l'année liée ")]
+        [Display(Name = "Année")]
         public Guid yearId { get; set; }
 
-        [Display(Name = "Id de l'etablissement liée")]
+        [Display(Name = "Etablissement")]
         public Guid etablissementId { get; set; }
 
 

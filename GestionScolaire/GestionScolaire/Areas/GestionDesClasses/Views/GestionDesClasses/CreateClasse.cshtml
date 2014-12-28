@@ -1,35 +1,45 @@
 ﻿@model GestionScolaire.Areas.GestionDesClasses.Models.ClasseModels
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Création classe";
 }
 
-<h2>Create</h2>
+<h2>Création d'une classe</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>classes</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.title)
-            @Html.ValidationMessageFor(model => model.title)
-            @Html.DropDownListFor(model => model.yearId, new SelectList(Model.years, 
+@Html.ValidationSummary(true)
+<div id="content_form">
+    <table class="table" id="form_creation">
+        <tr>
+            <td> @Html.LabelFor(model => model.title)</td>
+            <td> @Html.TextBoxFor(model => model.title)
+                 @Html.ValidationMessageFor(model => model.title)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.yearId)</td>
+            <td> @Html.DropDownListFor(model => model.yearId, new SelectList(Model.years, 
                                "Id", "Year"))
-            @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+                 @Html.ValidationMessageFor(model => model.yearId)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.userId)</td>
+            <td> @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
                                "Id", "UserName"))
-            @Html.DropDownListFor(model => model.etablissementId, new SelectList(Model.etablissements, 
+                 @Html.ValidationMessageFor(model => model.userId)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.etablissementId)</td>
+            <td> @Html.DropDownListFor(model => model.etablissementId, new SelectList(Model.etablissements, 
                                "Id", "Name"))
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+                 @Html.ValidationMessageFor(model => model.etablissementId)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Create" />
+</div>
 }
 
 <div>
