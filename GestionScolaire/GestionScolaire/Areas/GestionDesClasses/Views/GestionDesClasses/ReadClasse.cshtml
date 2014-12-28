@@ -5,15 +5,17 @@
     ViewBag.Title = "Details";
 }
 
-<h2>classe @Model.title</h2>
+<h2>Classe @Model.title</h2>
 
-<table class="table">
-    <tr>
-        <td>@Model.title</td>
-        
-    </tr>
-</table>
+<p>Professeur principal : <br />
+    @Model.userId <br /><br />
+    Année : <br />
+    @Model.yearId <br /><br />
+    Etablissement : <br />
+    @Model.etablissementId <br /><br />
+    Liste des élèves : <br />
+</p>
 <p>
-    @Html.ActionLink("Edit", "EditClasse", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "EditClasse", new { id = Model.id })
     @Html.ActionLink("Back to List", "ReadClasses")
 </p>
