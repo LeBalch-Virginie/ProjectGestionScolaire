@@ -916,3 +916,41 @@ p {
     border: none;
     margin-left: 5px;
 }
+
+#body table#form_creation tr td {
+    text-align: left;
+    background-color: black;
+    color: #b22170;
+}
+
+#body table#form_creation {
+    background-color: black;
+}
+
+#body #content_form {
+    background-color: black;
+    margin: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: 'Century Gothic';
+}
+
+#body table#form_creation tr td select {
+    width: 312px;
+    height: 30px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+    background-color: #b22170;
+    border-color: #b22170;
+    color: #d3dce0;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+}
+
+#body table#form_creation input {
+    background-color: #b22170;
+    border-color: #b22170;
+    color: #d3dce0;
+    font-family: 'Century Gothic';
+}

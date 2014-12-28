@@ -7,10 +7,10 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
     public class AcademieModels
     {
-        [Display(Name = "Id de l'ancademie")]
+        [Display(Name = "Id de l'académie")]
         public Guid id { get; set; }
 
-        [Display(Name = "Nom de l'academie")]
+        [Display(Name = "Nom de l'académie")]
         public String name { get; set; }
 
         [Display(Name = "Etablissements")]
