@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace GestionScolaire.Areas.Eleves.Controllers
 {
@@ -534,9 +537,44 @@ namespace GestionScolaire.Areas.Eleves.Controllers
 
 
 
+        // EXPORT EXCEL
+        public ActionResult ExportExcel()
+        {
+            GridView gv = new GridView();
 
+            IList<EleveModels> models = new List<EleveModels>();
+            using (EleveRepository repository = new EleveRepository())
+            {
+                IQueryable<Pupils> a = repository.All();
 
+                gv.DataSource = repository.All().Select(x => new EleveModels
+                {
+                    id = x.Id,
+                    firstName = x.FirstName,
+                    lastName = x.LastName,
+                    sexe = x.Sex,
+                    birthdayDate = x.BirthdayDate,
+                    tuteurId = x.Tutor_Id,
+                    classroomId = x.Classroom_Id,
+                    levelId = x.Level_Id
+                }).ToList();
+            }
 
+            gv.DataBind();
+            Response.ClearContent();
+            Response.Buffer = true;
+            Response.AddHeader("content-disposition", "attachment; filename=Liste_élèves.xls");
+            Response.ContentType = "application/ms-excel";
+            Response.Charset = "";
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter htw = new HtmlTextWriter(sw);
+            gv.RenderControl(htw);
+            Response.Output.Write(sw.ToString());
+            Response.Flush();
+            Response.End();
 
+            return RedirectToAction("ReadEleves");
+        }
     }
+
 }
