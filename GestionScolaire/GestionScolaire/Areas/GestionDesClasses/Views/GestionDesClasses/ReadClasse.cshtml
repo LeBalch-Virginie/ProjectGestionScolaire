@@ -1,4 +1,5 @@
 ﻿@using GestionScolaire.Areas.GestionDesClasses.Models
+
 @model ClasseModels
 
 @{
@@ -9,8 +10,16 @@
 
 <table class="table">
     <tr>
+        <td>@Html.LabelFor(model => model.title)</td>
+        <td>@Html.LabelFor(model => model.userName)</td>
+        <td>@Html.LabelFor(model => model.yearName)</td>
+        <td>@Html.LabelFor(model => model.etablissementName)</td>
+    </tr>
+    <tr>
         <td>@Model.title</td>
-        
+        <td>@Html.ActionLink(Model.userName, "ReadUser","Administration", new {area = "Administration", id = Model.userId })</td>
+        <td>@Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId })</td>
+        <td>@Html.ActionLink(Model.etablissementName, "ReadEtablissement", new { id = Model.etablissementId })</td>
     </tr>
 </table>
 <p>

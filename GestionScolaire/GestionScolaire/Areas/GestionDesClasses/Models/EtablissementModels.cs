@@ -31,10 +31,10 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public Guid academieId { get; set; }
 
 
-        [Display(Name = "nom de l'utilisateur liée ")]
+        [Display(Name = "nom utilisateur ")]
         public String userName { get; set; }
 
-        [Display(Name = "nom de l'academie liée ")]
+        [Display(Name = "nom academie ")]
         public String academieName { get; set; }
 
 

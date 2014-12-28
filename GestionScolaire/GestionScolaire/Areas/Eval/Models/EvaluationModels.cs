@@ -29,7 +29,14 @@ namespace GestionScolaire.Areas.Eval.Models
         [Display(Name = "points totaux")]
         public int totalPoint { get; set; }
 
-        
+        [Display(Name = "classe")]
+        public String classroomName { get; set; }
+
+        [Display(Name = "user ")]
+        public String userName { get; set; }
+
+        [Display(Name = "periode")]
+        public DateTime periodName { get; set; }
 
         public List<ClasseModels> classes { get; set; }
 

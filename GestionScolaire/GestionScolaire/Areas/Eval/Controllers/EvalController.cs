@@ -120,6 +120,9 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     periodId = x.Period_Id,
                     date = x.Date,
                     totalPoint = x.TotalPoint,
+                    classroomName = x.Classrooms.Title,
+                    userName = x.Users.UserName,
+                    periodName = x.Periods.Begin
 
                 };
             }

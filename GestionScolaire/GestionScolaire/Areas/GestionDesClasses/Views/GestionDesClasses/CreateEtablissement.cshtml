@@ -5,43 +5,56 @@
     ViewBag.Title = "CreateEtablissement";
 }
 
-<h2>CreateEtablissement</h2>
+<h2>Création d'un établissement</h2>
+
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+@Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Etablissement</legend>
+<div id="content_form">
+    <table class="table" id="form_creation">
+        <tr>
+            <td> @Html.LabelFor(model => model.name)</td>
+            <td> @Html.TextBoxFor(model => model.name)
+                 @Html.ValidationMessageFor(model => model.name)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.address)</td>
+            <td> @Html.TextBoxFor(model => model.address)
+                 @Html.ValidationMessageFor(model => model.address)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.postCode)</td>
+            <td> @Html.TextBoxFor(model => model.postCode)
+                 @Html.ValidationMessageFor(model => model.postCode)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.town)</td>
+            <td> @Html.TextBoxFor(model => model.town)
+                 @Html.ValidationMessageFor(model => model.town)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.academieId)</td>
+            <td>  @Html.DropDownListFor(model => model.academieId, new SelectList(Model.academies, 
+                                   "Id", "Name"))
+                 @Html.ValidationMessageFor(model => model.academieId)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.userId)</td>
+            <td> @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+                                   "Id", "UserName"))
+                 @Html.ValidationMessageFor(model => model.userId)
+            </td>
+        </tr>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.name)
-            @Html.LabelFor(model => model.address)
-            @Html.LabelFor(model => model.postCode)
-            @Html.LabelFor(model => model.town)
-            @Html.LabelFor(model => model.academieIdName)
-            @Html.LabelFor(model => model.userName)
-
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.name)
-            @Html.ValidationMessageFor(model => model.name)
-            @Html.EditorFor(model => model.address)
-            @Html.ValidationMessageFor(model => model.address)
-            @Html.EditorFor(model => model.postCode)
-            @Html.ValidationMessageFor(model => model.postCode)
-            @Html.EditorFor(model => model.town)
-            @Html.ValidationMessageFor(model => model.town)
-            @Html.DropDownListFor(model => model.academieId, new SelectList(Model.academies, 
-                               "Id", "Name"))
-            @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
-                               "Id", "UserName"))
-            @Html.ValidationMessageFor(model => model.academies)
-        </div>
-
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+    </table>
+    <input type="submit" value="Create" />
+</div>
 }
 
 <div>

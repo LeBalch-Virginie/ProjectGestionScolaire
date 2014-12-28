@@ -6,28 +6,17 @@
 
 <h2> Etablissement @Model.name</h2>
 
-<table class="table">
-    <tr>
-        <td>@Html.LabelFor(model => model.name)</td>
-        <td>@Html.LabelFor(model => model.address)</td>
-        <td>@Html.LabelFor(model => model.postCode)</td>
-        <td>@Html.LabelFor(model => model.town)</td>
-        <td>@Html.LabelFor(model => model.userName)</td>
-        <td>@Html.LabelFor(model => model.academieName)</td>
-    </tr>
-
-    <tr>
-        <td>@Model.name</td>
-        <td>@Model.address</td>
-        <td>@Model.postCode</td>
-        <td>@Model.town</td>
-        <td>@Html.ActionLink(Model.userName, "ReadUser", new { id = Model.userId })</td>
-        <td>@Html.ActionLink(Model.academieName, "ReadAcademie", new { id = Model.academieId })</td>
-
-    </tr>
-</table>
+<p>
+    Coordonnées : <br />
+    @Model.address <br />
+    @Model.postCode @Model.town <br /><br />
+    Directeur : <br />
+    @Model.userId <br /><br />
+    Académie : <br />
+    @Model.academieId
+</p>
 
 <p>
-    @Html.ActionLink("Edit", "EditEtablissement", new { id = Model.id }) |
+    @Html.ActionLink("Edit", "EditEtablissement", new { id = Model.id })
     @Html.ActionLink("Back to List", "ReadEtablissements")
 </p>

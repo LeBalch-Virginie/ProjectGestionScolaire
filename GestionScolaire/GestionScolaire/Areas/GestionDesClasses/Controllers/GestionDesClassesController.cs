@@ -512,9 +512,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userId = c.User_Id,
                     yearId = c.Year_Id,
                     etablissementId = c.Establishment_Id,
-                    //userName = 
-                    // yearName = 
-                    //etablissementName = 
+                    userName = c.Users.UserName,
+                    yearName = c.Years.Year,
+                    etablissementName = c.Establishments.Name
 
                 };
             }

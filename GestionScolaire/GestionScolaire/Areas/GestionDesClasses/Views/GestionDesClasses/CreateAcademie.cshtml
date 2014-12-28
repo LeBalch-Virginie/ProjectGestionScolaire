@@ -4,25 +4,21 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Création d'une académie</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Academies</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.name)
-            @Html.ValidationMessageFor(model => model.name)
-        </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+@Html.ValidationSummary(true)
+<div id="content_form">
+    <table class="table" id="form_creation">
+        <tr>
+            <td> @Html.LabelFor(model => model.name)</td>
+            <td> @Html.TextBoxFor(model => model.name)
+                 @Html.ValidationMessageFor(model => model.name)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Create" />
+</div>
 }
 
 <div>

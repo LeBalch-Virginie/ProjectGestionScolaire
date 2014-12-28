@@ -8,6 +8,19 @@
 <h2>evaluation du @Model.date</h2>
 @Html.ActionLink("Edit", "EditEvaluation", new { id = Model.id })
 
-
+<table class="table">
+    <tr>
+        <td>@Html.LabelFor(model => model.classroomName)</td>
+        <td>@Html.LabelFor(model => model.userName)</td>
+        <td>@Html.LabelFor(model => model.periodName)</td>
+        <td>@Html.LabelFor(model => model.totalPoint)</td>
+    </tr>
+    <tr>      
+        <td>@Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId })</td>
+        <td>@Html.ActionLink(Model.userName, "ReadUser","Administration", new {area = "Administration", id = Model.userId })</td>
+        <td>@Html.ActionLink(Model.periodName.ToString(), "ReadPeriode","GestionDesClasses", new {area = "GestionDesClasses", id = Model.periodId })</td>
+        <td>@Model.totalPoint</td>
+    </tr>
+</table>
 
  @Html.ActionLink("Back to List", "ReadEvaluations")
