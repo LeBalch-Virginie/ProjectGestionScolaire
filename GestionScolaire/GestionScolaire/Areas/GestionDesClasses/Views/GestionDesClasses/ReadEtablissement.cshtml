@@ -11,9 +11,9 @@
     @Model.address <br />
     @Model.postCode @Model.town <br /><br />
     Directeur : <br />
-    @Model.userId <br /><br />
+    @Model.userName <br /><br />
     Académie : <br />
-    @Model.academieId
+    @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)
 </p>
 
 <p>

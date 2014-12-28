@@ -298,7 +298,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     town = a.Town,
                     userId = a.User_Id,
                     academieId = a.Academie_Id,
-                    userName = a.Users.UserName
+                    userName = a.Users.UserName,
+                    academieName = a.Academies.Name
 
                 };
             }
