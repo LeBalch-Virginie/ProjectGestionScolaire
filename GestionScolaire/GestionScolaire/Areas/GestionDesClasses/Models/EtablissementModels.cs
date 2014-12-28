@@ -12,30 +12,31 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         [Display(Name = "Id de l'etablissement")]
         public Guid id { get; set; }
 
-        [Display(Name = "Nom de l'etablissement")]
+        [Display(Name = "Nom de l'établissement")]
         public String name { get; set; }
 
         [Display(Name = "Adresse")]
         public String address { get; set; }
 
-        [Display(Name = "code postal")]
+        [Display(Name = "Code postal")]
         public String postCode { get; set; }
 
-        [Display(Name = "ville")]
+        [Display(Name = "Ville")]
         public String town { get; set; }
 
-        [Display(Name = "Id l'utilisateur liée ")]
+        [Display(Name = "Directeur")]
         public Guid userId { get; set; }
 
-        [Display(Name = "Id de l'academie liée")]
+        [Display(Name = "Académie")]
         public Guid academieId { get; set; }
 
 
-        [Display(Name = "nom utilisateur ")]
+        [Display(Name = "Directeur")]
         public String userName { get; set; }
 
-        [Display(Name = "nom academie ")]
-        public String academieName { get; set; }
+        [Display(Name = "Académie")]
+        public String academieIdName { get; set; }
+
 
 
         public List<AcademieModels> academies { get; set; }
