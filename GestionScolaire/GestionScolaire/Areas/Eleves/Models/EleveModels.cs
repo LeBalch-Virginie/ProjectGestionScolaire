@@ -11,7 +11,7 @@ namespace GestionScolaire.Areas.Eleves.Models
 {
     public class EleveModels
     {
-        [Display(Name = "Id de l'eleve")]
+        [Display(Name = "Id de l'élève")]
         public Guid id { get; set; }
 
         [Display(Name = "Prénom")]
@@ -22,21 +22,21 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         public short state { get; set; }
 
-        [Display(Name = "sexe")]
+        [Display(Name = "Sexe")]
         public short sexe { get; set; }
 
 
-        [Display(Name = "date d'anniversaire")]
+        [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
         public DateTime birthdayDate { get; set; }
 
-        [Display(Name = "Id du tuteur")]
+        [Display(Name = "Tuteur")]
         public Guid tuteurId { get; set; }
 
-        [Display(Name = "Id de la classe")]
+        [Display(Name = "Classe")]
         public Guid classroomId { get; set; }
 
-        [Display(Name = "Id du niveau")]
+        [Display(Name = "Niveau")]
         public Guid levelId { get; set; }
 
         public List<TuteurModels> tuteurs { get; set; }
