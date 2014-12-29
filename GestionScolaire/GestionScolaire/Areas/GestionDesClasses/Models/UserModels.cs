@@ -27,5 +27,10 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String mail { get; set; }
 
         public int mode { get; set; }
+
+        public List<EtablissementModels> etablissements { get; set; }
+
+        public List<ClasseModels> classes { get; set; }
+
     }
 }

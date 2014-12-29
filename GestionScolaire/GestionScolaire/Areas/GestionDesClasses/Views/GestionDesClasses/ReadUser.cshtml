@@ -7,20 +7,34 @@
 }
 
 <h2>Professeur : @Model.userName</h2>
+
+<p>Prénom : </p>
+<div id="bloc_texte">
+    @Model.firstName
+</div>
+<p>Nom : </p>
+<div id="bloc_texte">
+    @Model.lastName
+</div>
+<p>Mail : </p>
+<div id="bloc_texte">
+    @Model.mail
+</div>
+<p>
+    Liste des classes dont il est le professeur principal : <br />
+    @foreach(ClasseModels c in Model.classes)
+    {
+        @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {id = c.id}, null)
+    }
+</p>
+
+<p>
+    Liste des établissements dont il est le directeur : <br />
+    @foreach(EtablissementModels e in Model.etablissements)
+    {
+        @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {id = e.id}, null)
+    }
+</p>
+
 @Html.ActionLink("Edit", "EditUser", new { id = Model.id })
-
-<table class="table">
-    <tr>
-        <td>@Html.LabelFor(model => model.firstName)</td>
-        <td>@Html.LabelFor(model => model.lastName)</td>
-        <td>@Html.LabelFor(model => model.mail)</td>
-    </tr>
-    <tr>      
-        <td>@Model.firstName</td>
-        <td>@Model.lastName</td>
-        <td>@Model.mail</td>
-    </tr>
-</table>
-
-
- @Html.ActionLink("Back to List", "ReadUsers")
+@Html.ActionLink("Back to List", "ReadUsers")

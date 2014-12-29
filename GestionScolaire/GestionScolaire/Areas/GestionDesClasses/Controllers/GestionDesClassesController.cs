@@ -112,6 +112,23 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return list;
         }
 
+        private List<ClasseModels> getListClasses(IQueryable<Classrooms> classrooms)
+        {
+            List<ClasseModels> list = new List<ClasseModels>();
+            foreach (var u in classrooms)
+            {
+                ClasseModels a = new ClasseModels
+                {
+                    id = u.Id,
+                    title = u.Title,
+                    userId = u.User_Id,
+                    yearId = u.Year_Id,
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
 
         #region Academie
 
@@ -139,7 +156,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (AcademieRepository repository = new AcademieRepository())
             {
                 Academies a = repository.GetAcademieById(id);
-                 IQueryable<Establishments> l = repository.GetEstablishmentById(id);
+                IQueryable<Establishments> l = repository.GetEstablishmentById(id);
                 if (a == null)
                 {
                     return HttpNotFound();
@@ -726,7 +743,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (UserRepository repository = new UserRepository())
             {
                 IQueryable<Users> a = repository.All();
-
                 models = repository.All().Select(x => new UserModels
                 {
                     id = x.Id,
@@ -746,6 +762,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             UserModels model;
             using (UserRepository repository = new UserRepository())
             {
+                IQueryable<Establishments> e = repository.GetEtablissementsById(id);
+                IQueryable<Classrooms> c = repository.GetClassesById(id);
                 Users x = repository.GetUserById(id);
                 if (x == null)
                 {
@@ -758,7 +776,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     password = x.Password,
                     firstName = x.FirstName,
                     lastName = x.LastName,
-                    mail = x.Mail
+                    mail = x.Mail,
+                    classes = getListClasses(c),
+                    etablissements = getListEtablissements(e)
                 };
             }
             return View(model);
