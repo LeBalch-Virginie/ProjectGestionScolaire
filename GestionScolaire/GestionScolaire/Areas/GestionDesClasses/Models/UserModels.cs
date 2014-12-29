@@ -25,5 +25,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         [Display(Name = "mail")]
         public String mail { get; set; }
+
+        public int mode { get; set; }
     }
 }

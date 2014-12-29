@@ -768,7 +768,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         public ActionResult CreateUser()
         {
-            return View();
+            UserModels model = new UserModels()
+            {
+                mode = -1
+            };
+            return View(model);
         }
 
         // POST: /GestionDesClasses/SearchUsers
@@ -830,6 +834,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 }
                 model = new UserModels
                 {
+                    mode = 0,
                     id = x.Id,
                     userName = x.UserName,
                     password = x.Password,
@@ -838,7 +843,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     mail = x.Mail
                 };
             }
-            return View(model);
+            return View("CreateUser", model);
         }
 
         // POST: /GestionDesClasses/Edit/5
