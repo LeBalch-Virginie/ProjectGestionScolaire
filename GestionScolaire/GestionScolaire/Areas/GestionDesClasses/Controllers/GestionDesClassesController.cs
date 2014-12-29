@@ -135,7 +135,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         public ActionResult CreateAcademie()
         {
-            return View();
+            AcademieModels model = new AcademieModels()
+            {
+                mode = -1
+            };
+            return View(model);
         }
 
         // POST: /GestionDesClasses/SearchAcademies
@@ -192,12 +196,13 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     return HttpNotFound();
                 }
                 model = new AcademieModels
-                {
+                {   
+                    mode = 0,
                     id = a.Id,
                     name = a.Name
                 };
             }
-            return View(model);
+            return View("CreateAcademie", model);
         }
 
         // POST: /GestionDesClasses/Edit/5

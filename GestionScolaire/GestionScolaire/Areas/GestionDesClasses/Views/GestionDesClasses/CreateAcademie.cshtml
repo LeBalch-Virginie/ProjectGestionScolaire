@@ -1,12 +1,17 @@
 ﻿@model GestionScolaire.Areas.GestionDesClasses.Models.AcademieModels
 
-@{
-    ViewBag.Title = "Create";
+@{ if (Model.mode != -1) {
+       ViewBag.Title = "Edition";
+       ViewBag.Input = "Editer";
+    } else {
+       ViewBag.Title = "Création";
+       ViewBag.Input = "Créer";
+    }
 }
 
-<h2>Création d'une académie</h2>
+<h2>@ViewBag.Title d'une académie</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm((Model.mode != -1) ? "EditAcademie" : "CreateAcademie", "GestionDesClasses", FormMethod.Post)) {
 @Html.ValidationSummary(true)
 <div id="content_form">
     <table class="table" id="form_creation">
@@ -17,7 +22,7 @@
             </td>
         </tr>
     </table>
-    <input type="submit" value="Create" />
+    <input type="submit" value="@ViewBag.Input" />  
 </div>
 }
 

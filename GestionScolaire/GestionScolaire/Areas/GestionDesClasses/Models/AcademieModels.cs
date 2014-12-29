@@ -15,5 +15,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         [Display(Name = "Etablissements")]
         public List<EtablissementModels> etablissements { get; set; }
+
+        public int mode { get; set; }
     }
 }

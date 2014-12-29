@@ -41,7 +41,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         {
             return All().Where(Users => Users.UserName.Contains(query));
         }
-  
+
 
         #endregion
 
@@ -83,5 +83,5 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
 
     }
-    
+
 }
