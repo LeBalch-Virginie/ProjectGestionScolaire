@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.Eleves.Models;
 
 namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
@@ -40,6 +41,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public List<UserModels> users { get; set; }
 
         public List<AnneeModels> years { get; set; }
+
+        public List<EleveModels> pupils { get; set; }
 
         public int mode { get; set; }
 

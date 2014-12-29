@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using GestionScolaire.Models;
 using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.Eleves.Models;
 
 
 namespace GestionScolaire.Areas.GestionDesClasses.Controllers
@@ -89,6 +90,28 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             }
             return list;
         }
+
+        private List<EleveModels> getListEleves(IQueryable<Pupils> pupils)
+        {
+            List<EleveModels> list = new List<EleveModels>();
+            foreach (var u in pupils)
+            {
+                EleveModels a = new EleveModels
+                {
+                    id = u.Id,
+                    birthdayDate = u.BirthdayDate,
+                    classroomId = u.Classroom_Id,
+                    firstName = u.FirstName,
+                    lastName = u.LastName,
+                    levelId = u.Level_Id,
+                    sexe = u.Sex,
+                    tuteurId = u.Tutor_Id
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
 
         #region Academie
 
@@ -489,14 +512,13 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (ClasseRepository repository = new ClasseRepository())
             {
                 IQueryable<Classrooms> a = repository.All();
-
                 models = repository.All().Select(x => new ClasseModels
                 {
                     id = x.Id,
                     title = x.Title,
                     userId = x.User_Id,
                     yearId = x.Year_Id,
-                    etablissementId = x.Establishment_Id,
+                    etablissementId = x.Establishment_Id
                 }).ToList();
             }
             return View(models);
@@ -510,6 +532,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             {
                 Classrooms c = repository.GetClasseById(id);
                 //IQueryable<Users> l = repository.GetUserById(id);
+                IQueryable<Pupils> l = repository.GetPupilsById(id);
                 if (c == null)
                 {
                     return HttpNotFound();
@@ -523,8 +546,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     etablissementId = c.Establishment_Id,
                     userName = c.Users.UserName,
                     yearName = c.Years.Year,
-                    etablissementName = c.Establishments.Name
-
+                    etablissementName = c.Establishments.Name,
+                    pupils = getListEleves(l)
                 };
             }
             return View(model);
