@@ -10,12 +10,12 @@
 
 
 <p>Professeur principal : <br />
-    @Html.ActionLink(Model.userName, "ReadUser","Administration", new {area = "Administration", id = Model.userId }) <br /><br />
+    @Html.ActionLink(Model.userName, "ReadUser","Administration", new {area = "Administration", id = Model.userId }) <br />
     Année : <br />
-    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId }) <br /><br />
+    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId }) <br />
     Etablissement : <br />
-    @Html.ActionLink(Model.etablissementName, "ReadEtablissement", new { id = Model.etablissementId }) <br /><br />
-    Liste des élèves : <br />
+    @Html.ActionLink(Model.etablissementName, "ReadEtablissement", new { id = Model.etablissementId }) <br />
+    Liste des élèves : <br /><br /><br />
 </p>
 
 <p>

@@ -406,6 +406,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     address = a.Address,
                     postCode = a.PostCode,
                     town = a.Town,
+                    academieId = a.Academie_Id,
+                    userId = a.User_Id,
                     academies = getListAcademies(academies),
                     users = getListUsers(users)
                 };
@@ -618,6 +620,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     mode = 0,
                     id = c.Id,
                     title = c.Title,
+                    userId = c.User_Id,
+                    yearId = c.Year_Id,
+                    etablissementId = c.Establishment_Id,
                     users = getListUsers(users),
                     years = getListYears(years),
                     etablissements = getListEtablissements(etablissements)

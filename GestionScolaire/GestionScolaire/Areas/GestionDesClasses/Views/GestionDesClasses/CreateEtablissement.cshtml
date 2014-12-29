@@ -44,7 +44,7 @@
         </tr>
         <tr>
             <td> @Html.LabelFor(model => model.academieId)</td>
-            <td>  @Html.DropDownListFor(model => model.academieId, new SelectList(Model.academies, 
+            <td> @Html.DropDownListFor(model => model.academieId, new SelectList(Model.academies, 
                                    "Id", "Name"))
                  @Html.ValidationMessageFor(model => model.academieId)
             </td>

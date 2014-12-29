@@ -1,10 +1,14 @@
 ﻿@model GestionScolaire.Areas.GestionDesClasses.Models.ClasseModels
 
-@{
-    ViewBag.Title = "Création classe";
+@{ if (Model.mode != -1) {
+       ViewBag.Title = "Edition";
+       ViewBag.Input = "Editer";
+    } else {
+       ViewBag.Title = "Création";
+       ViewBag.Input = "Créer";
+    }
 }
-
-<h2>Création d'une classe</h2>
+<h2>@ViewBag.Title d'une classe</h2>
 
 @using (Html.BeginForm()) {
 @Html.ValidationSummary(true)
@@ -38,7 +42,7 @@
             </td>
         </tr>
     </table>
-    <input type="submit" value="Create" />
+    <input type="submit" value="@ViewBag.Input" />
 </div>
 }
 
