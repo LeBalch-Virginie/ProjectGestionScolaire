@@ -139,7 +139,11 @@ namespace GestionScolaire.Areas.Eleves.Controllers
         // GET: /Eleves/CreateTuteur
         public ActionResult CreateTuteur()
         {
-            return View();
+            TuteurModels model = new TuteurModels()
+            {
+                mode = -1
+            };
+            return View(model);
         }
 
         // POST: /GestionDesClasses/SearchEleves
@@ -210,6 +214,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                 }
                 model = new TuteurModels
                 {
+                    mode = 0,
                     id = x.Id,
                     firstName = x.FirstName,
                     lastName = x.LastName,
@@ -222,7 +227,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     // eleves = 
                 };
             }
-            return View(model);
+            return View("CreateTuteur", model);
         }
 
         // POST: /Eleves/Edit/5
@@ -366,6 +371,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                 IQueryable<Levels> niveaux = repository.GetNiveaux();
                 model = new EleveModels
                 {
+                    mode = -1,
                     tuteurs = getListTuteurs(tuteurs),
                     classes = getListClasses(classes),
                     niveaux = getListNiveaux(niveaux)
@@ -449,6 +455,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                 Pupils x = repository.GetPupilById(id);
                 model = new EleveModels
                 {
+                    mode = 0,
                     state = short.MaxValue,
                     firstName = x.FirstName,
                     lastName = x.LastName,
@@ -462,7 +469,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     niveaux = getListNiveaux(niveaux)
                 };
             }
-            return View(model);
+            return View("CreateEleve", model);
         }
 
         // POST: /Eleves/Edit/5

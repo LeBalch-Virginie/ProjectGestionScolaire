@@ -1,57 +1,76 @@
 ﻿@using GestionScolaire.Areas.Eleves.Models
 @model TuteurModels
 
-@{
-    ViewBag.Title = "Create";
+@{ if (Model.mode != -1) {
+       ViewBag.Title = "Edition";
+       ViewBag.Input = "Editer";
+    } else {
+       ViewBag.Title = "Création";
+       ViewBag.Input = "Créer";
+    }
 }
 
-<h2>Create</h2>
+
+<h2>@ViewBag.Title d'un tuteur</h2>
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>tuteurs</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.lastName)
-            @Html.LabelFor(model => model.firstName)
-            @Html.LabelFor(model => model.address)
-            @Html.LabelFor(model => model.postCode)
-            @Html.LabelFor(model => model.town)
-            @Html.LabelFor(model => model.tel)
-            @Html.LabelFor(model => model.mail)
-            @Html.LabelFor(model => model.comment)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.lastName)
-            @Html.ValidationMessageFor(model => model.lastName)
-            @Html.EditorFor(model => model.firstName)
-            @Html.ValidationMessageFor(model => model.firstName)
-            @Html.EditorFor(model => model.address)
-            @Html.ValidationMessageFor(model => model.address)
-            @Html.EditorFor(model => model.postCode)
-            @Html.ValidationMessageFor(model => model.postCode)
-            @Html.EditorFor(model => model.town)
-            @Html.ValidationMessageFor(model => model.town)
-            @Html.EditorFor(model => model.tel)
-            @Html.ValidationMessageFor(model => model.tel)
-            @Html.EditorFor(model => model.mail)
-            @Html.ValidationMessageFor(model => model.mail)
-            @Html.EditorFor(model => model.comment)
-            @Html.ValidationMessageFor(model => model.comment)
-        </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+@Html.ValidationSummary(true)
+<div id="content_form">
+    <table class="table" id="form_creation">
+        <tr>
+            <td> @Html.LabelFor(model => model.lastName)</td>
+            <td> @Html.TextBoxFor(model => model.lastName)
+                 @Html.ValidationMessageFor(model => model.lastName)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.firstName)</td>
+            <td> @Html.TextBoxFor(model => model.firstName)
+                 @Html.ValidationMessageFor(model => model.firstName)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.address)</td>
+            <td> @Html.TextBoxFor(model => model.address)
+                 @Html.ValidationMessageFor(model => model.address)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.postCode)</td>
+            <td> @Html.TextBoxFor(model => model.postCode)
+                 @Html.ValidationMessageFor(model => model.postCode)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.town)</td>
+            <td> @Html.TextBoxFor(model => model.town)
+                 @Html.ValidationMessageFor(model => model.town)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.tel)</td>
+            <td> @Html.TextBoxFor(model => model.tel)
+                 @Html.ValidationMessageFor(model => model.tel)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.mail)</td>
+            <td> @Html.TextBoxFor(model => model.mail)
+                 @Html.ValidationMessageFor(model => model.mail)
+            </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.comment)</td>
+            <td> @Html.TextBoxFor(model => model.comment)
+                 @Html.ValidationMessageFor(model => model.comment)
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="@ViewBag.Input" />
+</div>
+   
 }
 
 <div>
     @Html.ActionLink("Back to List", "ReadTuteurs")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-

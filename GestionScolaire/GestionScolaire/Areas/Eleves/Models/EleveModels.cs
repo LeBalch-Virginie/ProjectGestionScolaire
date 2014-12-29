@@ -45,6 +45,6 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         public List<NiveauModels> niveaux { get; set; }
 
-
+        public int mode { get; set; }
     }
 }

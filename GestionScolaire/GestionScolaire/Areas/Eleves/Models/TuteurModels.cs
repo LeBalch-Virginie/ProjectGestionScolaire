@@ -37,5 +37,7 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         [Display(Name = "Liste des élèves")]
         public String eleves { get; set; }
+
+        public int mode { get; set; }
     }
 }
