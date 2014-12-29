@@ -11,18 +11,17 @@
      @Html.ActionLink("Création d'un nouveau professeur", "CreateUser")
 </div>
 
-<div id="classe">
-    @foreach (UserModels m in Model)
+<div id="search">
+@using(Ajax.BeginForm("SearchUsers", "GestionDesClasses",
+    new AjaxOptions
     {
-        <div class="liste">
-            <table>
-                <tr>
-                    <td class="element_name"> @m.userName</td>
-                    <td>@Html.ActionLink("Edit", "EditUser", new { id = m.id }, null)</td>
-                    <td>@Html.ActionLink("Details", "ReadUser", new { id = m.id })</td>
-                    <td>@Html.ActionLink("Delete", "DeleteUser", new { id = m.id })</td>
-                </tr>
-            </table>
-        </div>
-    }
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "user"
+    }))
+{
+  <input type="text" name="query" />
+  <input type="submit" value="Filtrer par nom" /> 
+}
 </div>
+
+@Html.Partial("_usersList")
