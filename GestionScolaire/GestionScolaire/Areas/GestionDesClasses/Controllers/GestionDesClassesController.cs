@@ -322,6 +322,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 IQueryable<Users> users = repository.GetUsers();
                 model = new EtablissementModels
                 {
+                    mode = -1,
                     academies = getListAcademies(academies),
                     users = getListUsers(users)
                 };
@@ -399,6 +400,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 }
                 model = new EtablissementModels
                 {
+                    mode = 0,
                     id = a.Id,
                     name = a.Name,
                     address = a.Address,
@@ -408,7 +410,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     users = getListUsers(users)
                 };
             }
-            return View(model);
+            return View("CreateEtablissement", model);
         }
 
         // POST: /GestionDesClasses/Edit/5
@@ -539,6 +541,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 IQueryable<Establishments> etablissements = repository.GetEtablissements();
                 model = new ClasseModels
                 {
+                    mode = -1,
                     users = getListUsers(users),
                     years = getListYears(years),
                     etablissements = getListEtablissements(etablissements)
@@ -612,6 +615,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 }
                 model = new ClasseModels
                 {
+                    mode = 0,
                     id = c.Id,
                     title = c.Title,
                     users = getListUsers(users),
@@ -619,7 +623,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     etablissements = getListEtablissements(etablissements)
                 };
             }
-            return View(model);
+            return View("CreateClasse", model);
         }
 
         // POST: /GestionDesClasses/EditClasse/5

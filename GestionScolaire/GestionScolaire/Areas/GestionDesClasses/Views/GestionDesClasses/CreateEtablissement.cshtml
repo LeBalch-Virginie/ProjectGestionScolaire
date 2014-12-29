@@ -1,14 +1,19 @@
 ﻿@model GestionScolaire.Areas.GestionDesClasses.Models.EtablissementModels
 
 
-@{
-    ViewBag.Title = "CreateEtablissement";
+@{ if (Model.mode != -1) {
+       ViewBag.Title = "Edition";
+       ViewBag.Input = "Editer";
+    } else {
+       ViewBag.Title = "Création";
+       ViewBag.Input = "Créer";
+    }
 }
 
-<h2>Création d'un établissement</h2>
+<h2>@ViewBag.Title d'un établissement</h2>
 
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm((Model.mode != -1) ? "EditEtablissement" : "CreateEtablisseement", "GestionDesClasses", FormMethod.Post)) {
 @Html.ValidationSummary(true)
 
 <div id="content_form">
@@ -53,7 +58,7 @@
         </tr>
 
     </table>
-    <input type="submit" value="Create" />
+    <input type="submit" value="@ViewBag.Input" />
 </div>
 }
 

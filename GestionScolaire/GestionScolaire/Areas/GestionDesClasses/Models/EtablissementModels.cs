@@ -38,10 +38,10 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String academieName { get; set; }
 
 
-
         public List<AcademieModels> academies { get; set; }
 
         public List<UserModels> users { get; set; }
 
+        public int mode { get; set; }
     }
 }

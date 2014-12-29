@@ -41,5 +41,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         public List<AnneeModels> years { get; set; }
 
+        public int mode { get; set; }
+
     }
 }

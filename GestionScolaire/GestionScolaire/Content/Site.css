@@ -960,6 +960,15 @@ p {
 
 #body #excel {
     background-color: black;
-    color: ss#d3dce0;
+    color: #d3dce0;
     float: right;
+}
+
+#body #bloc_texte {
+    font-family: 'Century Gothic';
+    background-color: black;
+    color: #b22170;
+    border-radius: 5px;
+    padding: 15px;
+    margin-left: 5px;
 }

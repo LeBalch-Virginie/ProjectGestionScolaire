@@ -7,13 +7,17 @@
 <h2> Etablissement @Model.name</h2>
 
 <p>
-    Coordonnées : <br />
+    Coordonnées : 
+</p>
+<div id="bloc_texte">
     @Model.address <br />
-    @Model.postCode @Model.town <br /><br />
+    @Model.postCode @Model.town
+</div>
+<p>
     Directeur : <br />
-    @Model.userName <br /><br />
+    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, null)<br />
     Académie : <br />
-    @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)
+    @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)<br />
 </p>
 
 <p>
