@@ -5,37 +5,38 @@ using System.Linq;
 using System.Web;
 using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.Eleves.Models;
 
 namespace GestionScolaire.Areas.Eval.Models
 {
     public class EvaluationModels
     {
-        [Display(Name = "Id de l'evaluation")]
+        [Display(Name = "Id de l'évaluation")]
         public Guid id { get; set; }
 
-        [Display(Name = "Id de la classe")]
+        [Display(Name = "Classe")]
         public Guid classroomId { get; set; }
 
-        [Display(Name = "Id du user associée")]
+        [Display(Name = "Professeur")]
         public Guid userId { get; set; }
 
-        [Display(Name = "Id de la periode")]
+        [Display(Name = "Période")]
         public Guid periodId { get; set; }
 
-        [Display(Name = "date")]
+        [Display(Name = "Date")]
         [DataType(DataType.Date)]
         public DateTime date { get; set; }
 
-        [Display(Name = "points totaux")]
+        [Display(Name = "Points totaux")]
         public int totalPoint { get; set; }
 
-        [Display(Name = "classe")]
+        [Display(Name = "Classe")]
         public String classroomName { get; set; }
 
-        [Display(Name = "user ")]
+        [Display(Name = "Professeur")]
         public String userName { get; set; }
 
-        [Display(Name = "periode")]
+        [Display(Name = "Période")]
         public DateTime periodName { get; set; }
 
         public List<ClasseModels> classes { get; set; }
@@ -43,5 +44,11 @@ namespace GestionScolaire.Areas.Eval.Models
         public List<PeriodeModels> periodes { get; set; }
 
         public List<UserModels> users { get; set; }
+
+        public List<ResultatModels> resultats { get; set; }
+
+        public List<EleveModels> eleves { get; set; }
+
+        public int mode { get; set; }
     }
 }

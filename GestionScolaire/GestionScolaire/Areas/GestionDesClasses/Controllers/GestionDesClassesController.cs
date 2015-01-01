@@ -418,10 +418,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             return View(model);
         }
 
-
-
-
-
         //
         // GET: /GestionDesClasses/Edit/5
 

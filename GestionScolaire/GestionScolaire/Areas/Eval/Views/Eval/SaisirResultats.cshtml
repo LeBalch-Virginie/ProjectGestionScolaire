@@ -1,0 +1,33 @@
+﻿@using GestionScolaire.Areas.Eval.Models
+@model EvaluationModels
+
+@{
+    ViewBag.Title = "Saisie des résultats";
+}
+
+@using (GestionScolaire.Areas.Eleves.Models.EleveRepository repository = new GestionScolaire.Areas.Eleves.Models.EleveRepository())
+{
+    foreach (var eleve in repository.All())
+    {
+        <p>@eleve.LastName</p>
+    }
+}
+
+@foreach (var eleve in Model.eleves)
+{
+     <p>@eleve.lastName</p><input type="text" value="" />
+}
+
+    @*<div id="content_form">
+        <table class="table" id="form_creation">
+            <tr>
+                <td> @Html.LabelFor(model => model.classroomId)</td>
+                <td> @Html.DropDownListFor(model => model.classroomId, new SelectList(Model.classes, 
+                                   "Id", "Title"))
+                     @Html.ValidationMessageFor(model => model.classroomId)
+                </td>
+            </tr>
+        </table>
+        <input type="submit" value="@ViewBag.Input" />  
+    </div>   *@
+

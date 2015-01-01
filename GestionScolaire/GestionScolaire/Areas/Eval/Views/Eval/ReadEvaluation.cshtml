@@ -5,7 +5,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>evaluation du @Model.date</h2>
+<h2>Evaluation du @Model.date</h2>
+
+<div class="create">
+    @Html.ActionLink("Saisir les résultats", "SaisirResultats", new { id = Model.id })
+</div>
+
 @Html.ActionLink("Edit", "EditEvaluation", new { id = Model.id })
 
 <table class="table">

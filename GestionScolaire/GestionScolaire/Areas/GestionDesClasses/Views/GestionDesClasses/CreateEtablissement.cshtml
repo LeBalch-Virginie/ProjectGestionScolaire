@@ -13,7 +13,7 @@
 <h2>@ViewBag.Title d'un établissement</h2>
 
 
-@using (Html.BeginForm((Model.mode != -1) ? "EditEtablissement" : "CreateEtablisseement", "GestionDesClasses", FormMethod.Post)) {
+@using (Html.BeginForm((Model.mode != -1) ? "EditEtablissement" : "CreateEtablissement", "GestionDesClasses", FormMethod.Post)) {
 @Html.ValidationSummary(true)
 
 <div id="content_form">

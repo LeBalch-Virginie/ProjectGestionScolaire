@@ -38,6 +38,7 @@
             <td> @Html.LabelFor(model => model.birthdayDate)</td>
             <td> @Html.EditorFor(model => model.birthdayDate)
                  @Html.ValidationMessageFor(model => model.birthdayDate)
+                @Model.birthdayDate
             </td>
         </tr>
         <tr>

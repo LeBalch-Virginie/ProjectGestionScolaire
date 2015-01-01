@@ -69,6 +69,66 @@ namespace GestionScolaire.Areas.Eval.Controllers
             return ac;
         }
 
+        private List<EleveModels> getListPupils(IQueryable<Pupils> pupils)
+        {
+            List<EleveModels> ac = new List<EleveModels>();
+            foreach (var aca in pupils)
+            {
+                EleveModels c = new EleveModels
+                {
+                    id = aca.Id,
+                    birthdayDate = aca.BirthdayDate,
+                    classroomId = aca.Classroom_Id,
+                    firstName = aca.FirstName,
+                    lastName = aca.LastName,
+                    levelId = aca.Level_Id,
+                    sexe = aca.Sex,
+                    tuteurId = aca.Tutor_Id
+                };
+                ac.Add(c);
+            }
+            return ac;
+        }
+
+        private List<EvaluationModels> getListEvaluations(IQueryable<Evaluations> evals)
+        {
+            List<EvaluationModels> ev = new List<EvaluationModels>();
+            foreach (var eval in evals)
+            {
+                EvaluationModels c = new EvaluationModels
+                {
+                    id = eval.Id,
+                    classroomId = eval.Classroom_Id,
+                    date = eval.Date,
+                    periodId = eval.Period_Id,
+                    userId = eval.User_Id,
+                    totalPoint = eval.TotalPoint
+                };
+                ev.Add(c);
+            }
+            return ev;
+        }
+
+        private List<EleveModels> getListEleves(IQueryable<Pupils> pupils)
+        {
+            List<EleveModels> l = new List<EleveModels>();
+            foreach (var p in pupils)
+            {
+                EleveModels c = new EleveModels
+                {
+                    id = p.Id,
+                    firstName = p.FirstName,
+                    lastName = p.LastName,
+                    birthdayDate = p.BirthdayDate,
+                    classroomId = p.Classroom_Id,
+                    levelId = p.Level_Id,
+                    sexe = p.Sex,
+                    tuteurId = p.Tutor_Id
+                };
+                l.Add(c);
+            }
+            return l;
+        }
 
 
         //
@@ -141,6 +201,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 IQueryable<Users> users = repository.GetUsers();
                 model = new EvaluationModels
                 {
+                    mode = -1,
                     periodes = getListPeriodes(periodes),
                     classes = getListClasses(classes),
                     users = getListUsers(users)
@@ -191,6 +252,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 }
                 model = new EvaluationModels
                 {
+                    mode = 0,
                     id = x.Id,
                     classroomId = x.Classroom_Id,
                     userId = x.User_Id,
@@ -202,7 +264,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     users = getListUsers(users)
                 };
             }
-            return View(model);
+            return View("CreateEvaluation", model);
         }
 
         // POST: /Eval/Edit/5
@@ -255,7 +317,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
 
         // POST: /Eleves/DeleteEvaluation/5
         [HttpPost, ActionName("DeleteEvaluation")]
-        public ActionResult DeleteTuteur(EvaluationModels model)
+        public ActionResult DeleteEvaluation(EvaluationModels model)
         {
             using (EvaluationRepository repository = new EvaluationRepository())
             {
@@ -267,5 +329,199 @@ namespace GestionScolaire.Areas.Eval.Controllers
 
         #endregion
 
+
+        #region Resultats
+
+
+
+        public ActionResult SaisirResultats(Guid idEval)
+        {
+            EvaluationModels model;
+            using (EvaluationRepository repo = new EvaluationRepository())
+            {
+                Evaluations e = repo.GetEvaluationById(idEval);
+                if (e == null)
+                {
+                    return HttpNotFound();
+                }
+                IQueryable<Pupils> pupils = repo.GetPupilsByClassroom(repo.GetClassroomId(e));
+                model = new EvaluationModels
+                {
+                    id = e.Id,
+                    classroomId = e.Classroom_Id,
+                    eleves = getListPupils(pupils)
+                };
+
+            }
+            
+            return View(model);
+        }
+
+
+        // GET: /Eval/ReadResultats
+        public ActionResult ReadResultats()
+        {
+            IList<ResultatModels> models = new List<ResultatModels>();
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                IQueryable<Results> a = repository.All();
+
+                models = repository.All().Select(x => new ResultatModels
+                {
+                    id = x.Id,
+                    evaluationId = x.Evaluation_Id,
+                    note = x.Note,
+                    pupilId = x.Pupil_Id
+                }).ToList();
+            }
+            return View(models);
+        }
+
+        public ActionResult ReadResultat(Guid id)
+        {
+            ResultatModels model;
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                Results x = repository.GetResultById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new ResultatModels
+                {
+                    id = x.Id,
+                    evaluationId = x.Evaluation_Id,
+                    note = x.Note,
+                    pupilId = x.Pupil_Id
+                };
+            }
+            return View(model);
+        }
+
+        // GET: /Eval/CreateResultat
+        public ActionResult CreateResultat()
+        {
+            ResultatModels model;
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+
+                IQueryable<Evaluations> evaluations = repository.GetEvaluations();
+                IQueryable<Pupils> pupils = repository.GetEleves();
+                model = new ResultatModels
+                {
+                    mode = -1,                    
+                    eleves = getListEleves(pupils),
+                    evaluations = getListEvaluations(evaluations)
+                };
+            }
+            return View(model);
+        }
+
+        // POST: /Eval/CreateResultat
+        [HttpPost]
+        public ActionResult CreateResultat(ResultatModels model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (ResultatRepository repository = new ResultatRepository())
+                {
+                    Results a = new Results
+                    {
+                        Id = Guid.NewGuid(),
+                        Evaluation_Id = model.evaluationId,
+                        Pupil_Id = model.pupilId,
+                        Note = model.note
+                    };
+
+                    repository.Add(a);
+                    repository.Save();
+
+                }
+                return RedirectToAction("ReadEvaluations");
+            }
+            return View(model);
+        }
+
+        public ActionResult EditResultat(Guid id)
+        {
+            ResultatModels model;
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                Results x = repository.GetResultById(id);
+                IQueryable<Evaluations> evaluations = repository.GetEvaluations();
+                IQueryable<Pupils> pupils = repository.GetEleves();
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new ResultatModels
+                {
+                    mode = 0,
+                    id = x.Id,
+                    evaluationId = x.Evaluation_Id,
+                    note = x.Note,
+                    pupilId = x.Pupil_Id
+                };
+            }
+            return View("CreateResultat", model);
+        }
+
+        // POST: /Eval/Edit/5
+
+        [HttpPost]
+        public ActionResult EditResultat(ResultatModels model)
+        {
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                Results x = repository.GetResultById(model.id);
+                x.Evaluation_Id = model.evaluationId;
+                x.Note = model.note;
+                x.Pupil_Id = model.pupilId;
+
+                if (ModelState.IsValid)
+                {
+                    repository.Save();
+                }
+                return RedirectToAction("ReadResultats");
+            }
+
+        }
+
+        public ActionResult DeleteResultat(Guid id)
+        {
+            ResultatModels model;
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                Results x = repository.GetResultById(id);
+                if (x == null)
+                {
+                    return HttpNotFound();
+                }
+                model = new ResultatModels
+                {
+                    id = x.Id,
+                    evaluationId = x.Evaluation_Id,
+                    note = x.Note,
+                    pupilId = x.Pupil_Id
+                };
+            }
+
+
+            return View("DeleteResultat", model);
+        }
+
+        // POST: /Eleves/DeleteResultat/5
+        [HttpPost, ActionName("DeleteResultat")]
+        public ActionResult DeleteResultat(ResultatModels model)
+        {
+            using (ResultatRepository repository = new ResultatRepository())
+            {
+                repository.DeleteById(model.id);
+                repository.Save();
+            }
+            return View("Index");
+        }
+
+        #endregion
     }
 }
