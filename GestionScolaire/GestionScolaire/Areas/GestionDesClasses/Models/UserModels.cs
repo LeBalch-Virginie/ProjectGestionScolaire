@@ -17,6 +17,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         [Display(Name = "mot de passe")]
         [Required]
+        [DataType(DataType.Password)]
         public String password { get; set; }
 
         [Display(Name = "prénom")]
