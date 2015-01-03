@@ -36,6 +36,7 @@ namespace GestionScolaire.Areas.Eleves.Models
         public String tel { get; set; }
 
         [Display(Name = "Mail")]
+        [EmailAddress]
         [Required]
         public String mail { get; set; }
 

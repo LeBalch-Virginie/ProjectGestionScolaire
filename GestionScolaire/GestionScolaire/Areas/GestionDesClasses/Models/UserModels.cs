@@ -29,6 +29,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         [Display(Name = "mail")]
         [Required]
+        [EmailAddress]
         public String mail { get; set; }
 
         public int mode { get; set; }
