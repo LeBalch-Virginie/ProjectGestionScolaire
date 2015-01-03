@@ -13,12 +13,15 @@ namespace GestionScolaire.Areas.Eval.Models
         public Guid id { get; set; }
 
         [Display(Name = "Evaluation")]
+        [Required]
         public Guid evaluationId { get; set; }
 
         [Display(Name = "Elève")]
+        [Required]
         public Guid pupilId { get; set; }
 
         [Display(Name = "Note")]
+        [Required]
         public double note { get; set; }
 
         public List<EleveModels> eleves { get; set; }

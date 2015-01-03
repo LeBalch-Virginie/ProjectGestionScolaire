@@ -15,28 +15,36 @@ namespace GestionScolaire.Areas.Eval.Models
         public Guid id { get; set; }
 
         [Display(Name = "Classe")]
+        [Required]
         public Guid classroomId { get; set; }
 
         [Display(Name = "Professeur")]
+        [Required]
         public Guid userId { get; set; }
 
         [Display(Name = "Période")]
+        [Required]
         public Guid periodId { get; set; }
 
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
+        [Required]
         public DateTime date { get; set; }
 
         [Display(Name = "Points totaux")]
+        [Required]
         public int totalPoint { get; set; }
 
         [Display(Name = "Classe")]
+        [Required]
         public String classroomName { get; set; }
 
         [Display(Name = "Professeur")]
+        [Required]
         public String userName { get; set; }
 
         [Display(Name = "Période")]
+        [Required]
         public DateTime periodName { get; set; }
 
         public List<ClasseModels> classes { get; set; }

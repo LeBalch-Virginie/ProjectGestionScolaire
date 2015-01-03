@@ -12,18 +12,23 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public Guid id { get; set; }
 
         [Display(Name = "Nom de l'utilisateur")]
+        [Required]
         public String userName { get; set; }
 
         [Display(Name = "mot de passe")]
+        [Required]
         public String password { get; set; }
 
         [Display(Name = "prénom")]
+        [Required]
         public String firstName { get; set; }
 
         [Display(Name = "nom")]
+        [Required]
         public String lastName { get; set; }
 
         [Display(Name = "mail")]
+        [Required]
         public String mail { get; set; }
 
         public int mode { get; set; }
