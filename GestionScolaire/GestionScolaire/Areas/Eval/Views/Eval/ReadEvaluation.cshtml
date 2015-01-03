@@ -21,9 +21,9 @@
         <td>@Html.LabelFor(model => model.totalPoint)</td>
     </tr>
     <tr>      
-        <td>@Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId })</td>
-        <td>@Html.ActionLink(Model.userName, "ReadUser","Administration", new {area = "Administration", id = Model.userId })</td>
-        <td>@Html.ActionLink(Model.periodName.ToString(), "ReadPeriode","GestionDesClasses", new {area = "GestionDesClasses", id = Model.periodId })</td>
+        <td>@Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" ,id = Model.classroomId },null)</td>
+        <td>@Html.ActionLink(Model.userName, "ReadUser","GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId },null)</td>
+        <td>@Html.ActionLink(Model.periodName.ToString(), "ReadPeriode","Administration", new {area = "Administration", id = Model.periodId },null)</td>
         <td>@Model.totalPoint</td>
     </tr>
 </table>
