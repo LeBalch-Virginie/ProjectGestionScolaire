@@ -65,6 +65,7 @@ namespace GestionScolaire.Areas.Eleves.Models
             return data.Tutors;
         }
 
+
         public IQueryable<Classrooms> GetClasses()
         {
             return data.Classrooms;

@@ -335,6 +335,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             using (EleveRepository repository = new EleveRepository())
             {
                 Pupils x = repository.GetPupilById(id);
+                IQueryable<Tutors> t = repository.GetTutors();
                 if (x == null)
                 {
                     return HttpNotFound();
@@ -348,8 +349,10 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     birthdayDate = x.BirthdayDate,
                     tuteurId = x.Tutor_Id,
                     classroomId = x.Classroom_Id,
-                    levelId = x.Level_Id
-                    // tuteurs = 
+                    levelId = x.Level_Id,
+                    tuteurName = x.Tutors.LastName,
+                    classTitle = x.Classrooms.Title,
+                    niveauName = x.Levels.Title
                     // classroom =
                     // level =
                     // result =
