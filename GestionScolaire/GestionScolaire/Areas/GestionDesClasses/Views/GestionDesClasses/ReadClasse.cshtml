@@ -1,5 +1,6 @@
 ﻿@using GestionScolaire.Areas.GestionDesClasses.Models
 @using GestionScolaire.Areas.Eleves.Models
+@using GestionScolaire.Areas.Eval.Models
 
 @model ClasseModels
 
@@ -20,6 +21,11 @@
     @foreach(EleveModels e in Model.pupils)
     {
         @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {id = e.id}, null)
+    }
+    Evaluations: <br /> 
+     @foreach(EvaluationModels ev in Model.evaluations)
+    {
+        @Html.ActionLink(ev.periodName.ToString() , "ReadEvaluation", "Eval", new {id = ev.id}, null)
     }
 </p>
 

@@ -50,6 +50,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
 
         public List<UserModels> users { get; set; }
 
+        public List<ClasseModels> classrooms { get; set; }
+
         public int mode { get; set; }
     }
 }

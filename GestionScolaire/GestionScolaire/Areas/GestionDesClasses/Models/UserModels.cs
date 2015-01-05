@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using GestionScolaire.Areas.Eval.Models;
 
 namespace GestionScolaire.Areas.GestionDesClasses.Models
 {
@@ -38,6 +39,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public List<EtablissementModels> etablissements { get; set; }
 
         public List<ClasseModels> classes { get; set; }
+
+        public List<EvaluationModels> evaluations { get; set; }
 
     }
 }

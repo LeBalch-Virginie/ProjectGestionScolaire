@@ -8,6 +8,7 @@ using GestionScolaire.Models;
 using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Areas.Administration.Models;
 using GestionScolaire.Areas.Eleves.Models;
+using GestionScolaire.Areas.Eval.Models;
 
 
 namespace GestionScolaire.Areas.GestionDesClasses.Controllers
@@ -123,6 +124,25 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     title = u.Title,
                     userId = u.User_Id,
                     yearId = u.Year_Id,
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
+        private List<EvaluationModels> getListEvaluations(IQueryable<Evaluations> evaluations)
+        {
+            List<EvaluationModels> list = new List<EvaluationModels>();
+            foreach (var u in evaluations)
+            {
+                EvaluationModels a = new EvaluationModels
+                {
+                    id = u.Id,
+                    classroomId = u.Classroom_Id,
+                    userId = u.User_Id,
+                    periodId = u.Period_Id,
+                    date = u.Date,
+                    totalPoint = u.TotalPoint
                 };
                 list.Add(a);
             }
@@ -330,6 +350,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             using (EtablissementRepository repository = new EtablissementRepository())
             {
                 Establishments a = repository.GetEtablissementById(id);
+                IQueryable<Classrooms> e = repository.GetClassroomById(a.Id);
+                
                 if (a == null)
                 {
                     return HttpNotFound();
@@ -344,7 +366,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userId = a.User_Id,
                     academieId = a.Academie_Id,
                     userName = a.Users.UserName,
-                    academieName = a.Academies.Name
+                    academieName = a.Academies.Name,
+                    classrooms = getListClasses(e)
 
                 };
             }
@@ -546,6 +569,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 Classrooms c = repository.GetClasseById(id);
                 //IQueryable<Users> l = repository.GetUserById(id);
                 IQueryable<Pupils> l = repository.GetPupilsById(id);
+                IQueryable<Evaluations> e = repository.GetEvaluations(c.Id);
                 if (c == null)
                 {
                     return HttpNotFound();
@@ -560,7 +584,9 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userName = c.Users.UserName,
                     yearName = c.Years.Year,
                     etablissementName = c.Establishments.Name,
-                    pupils = getListEleves(l)
+                    pupils = getListEleves(l),
+                    evaluations = getListEvaluations(e)
+
                 };
             }
             return View(model);
@@ -760,6 +786,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
             {
                 IQueryable<Establishments> e = repository.GetEtablissementsById(id);
                 IQueryable<Classrooms> c = repository.GetClassesById(id);
+                IQueryable<Evaluations> eval = repository.GetEvaluationById(id);
                 Users x = repository.GetUserById(id);
                 if (x == null)
                 {
@@ -774,7 +801,8 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     lastName = x.LastName,
                     mail = x.Mail,
                     classes = getListClasses(c),
-                    etablissements = getListEtablissements(e)
+                    etablissements = getListEtablissements(e),
+                    evaluations = getListEvaluations(eval)
                 };
             }
             return View(model);
