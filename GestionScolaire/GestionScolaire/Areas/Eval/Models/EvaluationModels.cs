@@ -33,19 +33,19 @@ namespace GestionScolaire.Areas.Eval.Models
 
         [Display(Name = "Points totaux")]
         [Required]
-        [Range(1, 20)]
+        [Range(1, 10000)]
         public int totalPoint { get; set; }
 
         [Display(Name = "Classe")]
-        [Required]
+
         public String classroomName { get; set; }
 
         [Display(Name = "Professeur")]
-        [Required]
+
         public String userName { get; set; }
 
         [Display(Name = "Période")]
-        [Required]
+
         public DateTime periodName { get; set; }
 
         public List<ClasseModels> classes { get; set; }

@@ -10,7 +10,7 @@
     @foreach(CycleModels cycle in Model)
     {
 
-            @Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, null)@*</td>*@
+            @Html.ActionLink(cycle.title, "ReadCycle", "Administration", new {id = cycle.id}, new { target = "_blank" })
     }
 
 

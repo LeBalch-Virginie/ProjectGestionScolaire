@@ -29,7 +29,6 @@ namespace GestionScolaire.Areas.Eleves.Models
         [Required]
         public short sexe { get; set; }
 
-
         [Display(Name = "Date de naissance")]
         [DataType(DataType.Date)]
         [Required]

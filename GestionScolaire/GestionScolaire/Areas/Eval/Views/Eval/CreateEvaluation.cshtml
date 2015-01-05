@@ -17,6 +17,7 @@
 
 <div id="content_form">
     <table class="table" id="form_creation">
+        
         <tr>
             <td> @Html.LabelFor(model => model.classroomId)</td>
             <td> @Html.DropDownListFor(model => model.classroomId, new SelectList(Model.classes, 
@@ -24,6 +25,7 @@
                  @Html.ValidationMessageFor(model => model.classroomId)
             </td>
         </tr>
+        
         <tr>
             <td> @Html.LabelFor(model => model.userId)</td>
             <td>  @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
@@ -31,6 +33,7 @@
                  @Html.ValidationMessageFor(model => model.userId)
             </td>
         </tr>
+
         <tr>
             <td> @Html.LabelFor(model => model.periodId)</td>
             <td> @Html.DropDownListFor(model => model.periodId, new SelectList(Model.periodes, 

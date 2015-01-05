@@ -17,9 +17,9 @@
     @foreach(PeriodeModels periode in Model)
     {
         <tr>
-            <td colspan=2>@Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
+            <td colspan=2>@Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, new { target = "_blank" })
             </td>
-            <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {id = periode.yearId}, null)</td>
+            <td>@Html.ActionLink(periode.year.ToString(), "ReadAnnee", "Administration", new {id = periode.yearId}, new { target = "_blank" })</td>
         </tr>
     }
 </table>
