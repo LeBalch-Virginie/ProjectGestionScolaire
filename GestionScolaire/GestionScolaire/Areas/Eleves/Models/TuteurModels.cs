@@ -46,11 +46,9 @@ namespace GestionScolaire.Areas.Eleves.Models
         public String mail { get; set; }
 
         [Display(Name = "Commentaire")]
-        [Required]
         public String comment { get; set; }
 
         [Display(Name = "Liste des élèves")]
-        [Required]
         public String eleves { get; set; }
 
         public int mode { get; set; }
