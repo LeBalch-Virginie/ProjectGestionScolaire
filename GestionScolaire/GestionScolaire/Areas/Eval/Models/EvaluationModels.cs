@@ -33,6 +33,7 @@ namespace GestionScolaire.Areas.Eval.Models
 
         [Display(Name = "Points totaux")]
         [Required]
+        [Range(1, 20)]
         public int totalPoint { get; set; }
 
         [Display(Name = "Classe")]

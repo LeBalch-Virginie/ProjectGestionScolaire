@@ -21,6 +21,7 @@ namespace GestionScolaire.Areas.Eval.Models
         public Guid pupilId { get; set; }
 
         [Display(Name = "Note")]
+        [Range(1, 20)]
         [Required]
         public double note { get; set; }
 

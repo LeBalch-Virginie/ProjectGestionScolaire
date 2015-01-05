@@ -25,6 +25,8 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         [Display(Name = "Code postal")]
         [Required]
+        [StringLength(5)]
+        [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "Le code postal dois être un nombre.")]
         public String postCode { get; set; }
 
         [Display(Name = "Ville")]
@@ -33,6 +35,9 @@ namespace GestionScolaire.Areas.Eleves.Models
 
         [Display(Name = "Téléphone")]
         [Required]
+        [StringLength(10)]
+        [RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "Le numéro de telephone dois être un nombre.")]
+
         public String tel { get; set; }
 
         [Display(Name = "Mail")]

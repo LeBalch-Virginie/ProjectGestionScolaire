@@ -21,6 +21,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String address { get; set; }
 
         [Display(Name = "Code postal")]
+        [StringLength(5)]
         [Required]
         public String postCode { get; set; }
 
