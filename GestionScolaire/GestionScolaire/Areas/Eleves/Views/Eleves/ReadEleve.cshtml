@@ -32,11 +32,11 @@
 </p>
 <p>
     classe : <br />    
-    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {id = Model.classroomId}, null)
+    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" , id = Model.classroomId}, null)
 </p>
 <p>
     niveau : <br />    
-    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration", new {id = Model.niveauName}, null)
+    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration" ,id = Model.levelId}, null)
 </p>
 
 
