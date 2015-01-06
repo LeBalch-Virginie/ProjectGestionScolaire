@@ -353,33 +353,6 @@ namespace GestionScolaire.Areas.Eval.Controllers
 
         public ActionResult SaisirResultats(Guid idEval)
         {
-            /*List<ResultatModels> model = new List<ResultatModels>();
-            using (EvaluationRepository repo = new EvaluationRepository())
-            {
-                Evaluations e = repo.GetEvaluationById(idEval);
-                if (e == null)
-                {
-                    return HttpNotFound();
-                }
-                IQueryable<Pupils> pupils = repo.GetPupilsByClassroom(repo.GetClassroomId(e));
-                EvaluationModels m = new EvaluationModels
-                {
-                    id = e.Id,
-                    classroomId = e.Classroom_Id,
-                    eleves = getListPupils(pupils)
-                };
-
-                foreach (var eleve in m.eleves)
-                {
-                    ResultatModels r = new ResultatModels
-                    {
-                        pupilId = eleve.id,
-                        pupilName = eleve.firstName + " " + eleve.lastName
-                    };
-                    model.Add(r);
-                }
-                
-            }*/
             ListeResultatsModels model = new ListeResultatsModels();
             using (EvaluationRepository repo = new EvaluationRepository())
             {
@@ -408,19 +381,16 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 }
 
             }
-            return View(model);//.AsQueryable());
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult SaisirResultats(ListeResultatsModels model)
         {
-            //List<ResultatModels> l = model.ToList();
             if (ModelState.IsValid) 
             {
                 foreach (var resultat in model.resultats)
                 {
-                    //System.Diagnostics.Debug.WriteLine("1");
-                   
                     using (ResultatRepository repository = new ResultatRepository())
                     {
                         Results r = new Results

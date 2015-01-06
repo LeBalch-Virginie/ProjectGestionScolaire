@@ -7,7 +7,7 @@
         <div class="liste">
             <table>
                 <tr>
-                    <td class="element_name"> @m.userName</td>
+                    <td class="element_name"> @m.userName : @m.firstName @m.lastName</td>
                     <td>@Html.ActionLink("Edit", "EditUser", new { id = m.id }, null)</td>
                     <td>@Html.ActionLink("Details", "ReadUser", new { id = m.id })</td>
                     <td>@Html.ActionLink("Delete", "DeleteUser", new { id = m.id })</td>

@@ -5,17 +5,6 @@
     ViewBag.Title = "Saisie des résultats";
 }
 
-@*
-@using (GestionScolaire.Areas.Eleves.Models.EleveRepository repository = new GestionScolaire.Areas.Eleves.Models.EleveRepository())
-{
-    foreach (var eleve in repository.All())
-    {
-        <p>@eleve.LastName</p>
-    }
-}
-*@
-
-
 @using (Html.BeginForm("SaisirResultats", "Eval", FormMethod.Post)) {
 @Html.ValidationSummary(true)
    
