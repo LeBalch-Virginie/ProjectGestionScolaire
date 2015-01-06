@@ -18,25 +18,27 @@
 <div class="bloc_texte">
     @Model.lastName
 </div>
-<p>sexe : </p>
+<p>Sexe : </p>
 <div class="bloc_texte">
-    @Model.sexe
+    @{ if (Model.sexe == 0) {
+         <span>Homme</span>
+     } else {
+         <span>Femme</span>
+      }
+    }
 </div>
-<p>date de naissance : </p>
+<p>Date de naissance : </p>
 <div class="bloc_texte">
-    @Model.birthdayDate
+    @Model.birthdayDate.ToShortDateString()
 </div>
-<p>
-    tuteur : <br />    
+<p>Tuteur : <br />    
     @Html.ActionLink(Model.tuteurName, "ReadTuteur", "Eleves", new {id = Model.tuteurId}, null)
 </p>
-<p>
-    classe : <br />    
-    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" , id = Model.classroomId}, null)
+<p>Classe : <br />    
+    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId}, null)
 </p>
-<p>
-    niveau : <br />    
-    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration" ,id = Model.levelId}, null)
+<p>Niveau : <br />    
+    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, null)
 </p>
 
 

@@ -39,7 +39,7 @@
 </p>
 
 <p>
-    Liste des évaluation dont il est le directeur : <br />
+    Liste des évaluations dont il est le directeur : <br />
     @foreach(EvaluationModels eval in Model.evaluations)
     {
         @Html.ActionLink(eval.date.ToString(), "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
