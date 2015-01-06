@@ -130,6 +130,23 @@ namespace GestionScolaire.Areas.Eval.Controllers
             return l;
         }
 
+        private List<ResultatModels> getListResultats(IQueryable<Results> results)
+        {
+            List<ResultatModels> l = new List<ResultatModels>();
+            foreach (var r in results)
+            {
+                ResultatModels c = new ResultatModels
+                {
+                    evaluationId = r.Evaluation_Id,
+                    id = r.Id,
+                    note = r.Note,
+                    pupilId = r.Pupil_Id
+                };
+                l.Add(c);
+            }
+            return l;
+        }
+
 
         //
         // GET: /Eval/Eval/
@@ -336,7 +353,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
 
         public ActionResult SaisirResultats(Guid idEval)
         {
-            EvaluationModels model;
+            /*List<ResultatModels> model = new List<ResultatModels>();
             using (EvaluationRepository repo = new EvaluationRepository())
             {
                 Evaluations e = repo.GetEvaluationById(idEval);
@@ -345,18 +362,85 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     return HttpNotFound();
                 }
                 IQueryable<Pupils> pupils = repo.GetPupilsByClassroom(repo.GetClassroomId(e));
-                model = new EvaluationModels
+                EvaluationModels m = new EvaluationModels
                 {
                     id = e.Id,
                     classroomId = e.Classroom_Id,
                     eleves = getListPupils(pupils)
                 };
 
+                foreach (var eleve in m.eleves)
+                {
+                    ResultatModels r = new ResultatModels
+                    {
+                        pupilId = eleve.id,
+                        pupilName = eleve.firstName + " " + eleve.lastName
+                    };
+                    model.Add(r);
+                }
+                
+            }*/
+            ListeResultatsModels model = new ListeResultatsModels();
+            using (EvaluationRepository repo = new EvaluationRepository())
+            {
+                Evaluations e = repo.GetEvaluationById(idEval);
+                if (e == null)
+                {
+                    return HttpNotFound();
+                }
+                IQueryable<Pupils> pupils = repo.GetPupilsByClassroom(repo.GetClassroomId(e));
+                EvaluationModels m = new EvaluationModels
+                {
+                    id = e.Id,
+                    classroomId = e.Classroom_Id,
+                    eleves = getListPupils(pupils)
+                };
+
+                foreach (var eleve in m.eleves)
+                {
+                    ResultatModels r = new ResultatModels
+                    {
+                        pupilId = eleve.id,
+                        pupilName = eleve.firstName + " " + eleve.lastName,
+                        evaluationId = m.id
+                    };
+                    model.resultats.Add(r);
+                }
+
             }
-            
-            return View(model);
+            return View(model);//.AsQueryable());
         }
 
+        [HttpPost]
+        public ActionResult SaisirResultats(ListeResultatsModels model)
+        {
+            //List<ResultatModels> l = model.ToList();
+            if (ModelState.IsValid) 
+            {
+                foreach (var resultat in model.resultats)
+                {
+                    //System.Diagnostics.Debug.WriteLine("1");
+                   
+                    using (ResultatRepository repository = new ResultatRepository())
+                    {
+                        Results r = new Results
+                        {
+                            Id = Guid.NewGuid(),
+                            Pupil_Id = resultat.pupilId,
+                            Note = resultat.note,
+                            Evaluation_Id = resultat.evaluationId
+                        };
+
+                        repository.Add(r);
+                        repository.Save();
+
+                    }
+                    
+                }
+                return RedirectToAction("ReadEvaluations");
+            }
+            return View(model);
+        }
 
         // GET: /Eval/ReadResultats
         public ActionResult ReadResultats()

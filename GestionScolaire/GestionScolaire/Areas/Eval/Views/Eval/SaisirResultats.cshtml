@@ -1,5 +1,5 @@
 ﻿@using GestionScolaire.Areas.Eval.Models
-@model EvaluationModels
+@model ListeResultatsModels
 
 @{
     ViewBag.Title = "Saisie des résultats";
@@ -15,28 +15,39 @@
 }
 *@
 
-<table class="table" id="form_creation">
-@foreach (var eleve in Model.eleves)
-{
-     <tr>
-         <td>@eleve.lastName</td>
-         <td><input type="text" value="" /></td>
-     </tr>
+
+@using (Html.BeginForm("SaisirResultats", "Eval", FormMethod.Post)) {
+@Html.ValidationSummary(true)
+   
+    
+    <table class="table" id="form_creation">
+   @* @foreach (ResultatModels m in Model.resultats)
+    {
+        @Html.HiddenFor(model => m.id)
+        @Html.HiddenFor(model => m.evaluationId)
+        @Html.HiddenFor(model => m.pupilId)
+         <tr>
+             <td>@m.pupilName</td>
+             <td>@Html.EditorFor(model => m.note)
+                 @Html.ValidationMessageFor(model => m.note)
+             </td>
+         </tr>
+    }
+        *@
+
+    @for (var i = 0; i < Model.resultats.Count;i++ )
+    {
+        @Html.HiddenFor(model => model.resultats[i].id)
+        @Html.HiddenFor(model => model.resultats[i].evaluationId)
+        @Html.HiddenFor(model => model.resultats[i].pupilId)
+         <tr>
+             <td>@Model.resultats[i].pupilName</td>
+             <td>@Html.EditorFor(model => model.resultats[i].note)
+                 @Html.ValidationMessageFor(model => model.resultats[i].note)
+             </td>
+         </tr>
+    }
+    </table>
+
+    <input type="submit" value="Envoyer" />
 }
-</table>
-
-<input type="submit" value="Envoyer" />  
-
-    @*<div id="content_form">
-        <table class="table" id="form_creation">
-            <tr>
-                <td> @Html.LabelFor(model => model.classroomId)</td>
-                <td> @Html.DropDownListFor(model => model.classroomId, new SelectList(Model.classes, 
-                                   "Id", "Title"))
-                     @Html.ValidationMessageFor(model => model.classroomId)
-                </td>
-            </tr>
-        </table>
-        <input type="submit" value="@ViewBag.Input" />  
-    </div>   *@
-

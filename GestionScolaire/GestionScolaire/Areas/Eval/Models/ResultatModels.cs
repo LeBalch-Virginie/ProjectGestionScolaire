@@ -20,6 +20,9 @@ namespace GestionScolaire.Areas.Eval.Models
         [Required]
         public Guid pupilId { get; set; }
 
+        [Display(Name = "Elève")]
+        public String pupilName{ get; set; }
+
         [Display(Name = "Note")]
         [Range(0, 10000)]
         [Required]
