@@ -18,6 +18,11 @@
     @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, null)<br />
     Académie : <br />
     @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)<br />
+    classes: <br /> 
+     @foreach(ClasseModels c in Model.classrooms)
+    {
+        @Html.ActionLink(c.title , "ReadClasse", "GestionDesClasses", new {id = c.id}, null)
+    }
 </p>
 
 <p>

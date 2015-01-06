@@ -47,6 +47,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
             return data.Classrooms.Where(Classroom => Classroom.User_Id == id);
         }
 
+        public IQueryable<Evaluations> GetEvaluationById(Guid id)
+        {
+            return data.Evaluations.Where(evaluation => evaluation.User_Id == id);
+        }
+
         public IQueryable<Users> GetUsersByQuery(String query)
         {
             return All().Where(Users => Users.UserName.Contains(query));

@@ -1,4 +1,6 @@
 ﻿@using GestionScolaire.Areas.Eleves.Models
+@using GestionScolaire.Areas.Administration.Models
+@using GestionScolaire.Areas.GestionDesClasses.Models
 @model EleveModels
 
 
@@ -8,13 +10,37 @@
 
 <h2>eleves @Model.lastName</h2>
 
-<table class="table">
-    <tr>
-        <td>@Model.id</td>
-        <td>@Model.lastName</td>
-    </tr>
-</table>
+<p>Prénom : </p>
+<div class="bloc_texte">
+    @Model.firstName
+</div>
+<p>Nom : </p>
+<div class="bloc_texte">
+    @Model.lastName
+</div>
+<p>sexe : </p>
+<div class="bloc_texte">
+    @Model.sexe
+</div>
+<p>date de naissance : </p>
+<div class="bloc_texte">
+    @Model.birthdayDate
+</div>
 <p>
-    @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = Model.id }) |
+    tuteur : <br />    
+    @Html.ActionLink(Model.tuteurName, "ReadTuteur", "Eleves", new {id = Model.tuteurId}, null)
+</p>
+<p>
+    classe : <br />    
+    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {id = Model.classroomId}, null)
+</p>
+<p>
+    niveau : <br />    
+    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration", new {id = Model.niveauName}, null)
+</p>
+
+
+<p>
+    @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = Model.id }) 
     @Html.ActionLink("Back to List", "ReadEleves")
 </p>

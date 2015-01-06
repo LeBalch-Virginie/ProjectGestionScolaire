@@ -46,6 +46,12 @@ namespace GestionScolaire.Areas.Eleves.Models
         [Required]
         public Guid levelId { get; set; }
 
+        public String tuteurName { get; set; }
+
+        public String classTitle { get; set; }
+
+        public String niveauName { get; set; }
+
         public List<TuteurModels> tuteurs { get; set; }
 
         public List<ClasseModels> classes { get; set; }
