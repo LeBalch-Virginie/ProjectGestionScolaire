@@ -20,7 +20,7 @@
     Liste des élèves : <br />
     @foreach(EleveModels e in Model.pupils)
     {
-        @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {id = e.id}, null)
+        @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
     }
     Evaluations: <br /> 
      @foreach(EvaluationModels ev in Model.evaluations)
