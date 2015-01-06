@@ -59,5 +59,7 @@ namespace GestionScolaire.Areas.Eval.Models
         public List<EleveModels> eleves { get; set; }
 
         public int mode { get; set; }
+
+        public int isValuate { get; set; }
     }
 }

@@ -46,6 +46,11 @@ namespace GestionScolaire.Areas.Eval.Models
             return data.Pupils.Where(Pupil => Pupil.Classroom_Id == id);
         }
 
+        public IQueryable<Results> GetResultsByEvalId(Guid id)
+        {
+            return data.Results.Where(Resultat => Resultat.Evaluation_Id == id);
+        }
+
         #endregion
 
         #region CRUD

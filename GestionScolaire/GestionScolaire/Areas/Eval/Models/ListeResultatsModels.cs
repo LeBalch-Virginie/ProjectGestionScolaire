@@ -20,5 +20,7 @@ namespace GestionScolaire.Areas.Eval.Models
         {
             resultats.Add(r);
         }
+
+        public int mode { get; set; }
     }
 }

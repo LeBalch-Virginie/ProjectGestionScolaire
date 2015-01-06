@@ -140,7 +140,8 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     evaluationId = r.Evaluation_Id,
                     id = r.Id,
                     note = r.Note,
-                    pupilId = r.Pupil_Id
+                    pupilId = r.Pupil_Id,
+                    pupilName = r.Pupils.FirstName + " " + r.Pupils.LastName
                 };
                 l.Add(c);
             }
@@ -165,7 +166,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
             using (EvaluationRepository repository = new EvaluationRepository())
             {
                 IQueryable<Evaluations> a = repository.All();
-
+                
                 models = repository.All().Select(x => new EvaluationModels
                 {
                     id = x.Id,
@@ -189,6 +190,12 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 {
                     return HttpNotFound();
                 }
+                IQueryable<Results> r = repository.GetResultsByEvalId(id);
+                int valuate = 1;
+                if (r.Count() == 0)
+                {
+                    valuate = 0;
+                }
                 model = new EvaluationModels
                 {
                     id = x.Id,
@@ -199,8 +206,8 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     totalPoint = x.TotalPoint,
                     classroomName = x.Classrooms.Title,
                     userName = x.Users.UserName,
-                    periodName = x.Periods.Begin
-
+                    periodName = x.Periods.Begin,
+                    isValuate = valuate
                 };
             }
             return View(model);
@@ -381,6 +388,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 }
 
             }
+            model.mode = -1;
             return View(model);
         }
 
@@ -410,6 +418,47 @@ namespace GestionScolaire.Areas.Eval.Controllers
                 return RedirectToAction("ReadEvaluations");
             }
             return View(model);
+        }
+
+        public ActionResult EditerResultats(Guid idEval)
+        {
+            ListeResultatsModels model = new ListeResultatsModels();
+            using (EvaluationRepository repo = new EvaluationRepository())
+            {
+                Evaluations e = repo.GetEvaluationById(idEval);
+                if (e == null)
+                {
+                    return HttpNotFound();
+                }
+                IQueryable<Results> r = repo.GetResultsByEvalId(idEval);
+                List<ResultatModels> l = getListResultats(r);
+                foreach (var res in l)
+                {
+                    model.add(res);
+                }
+            }
+            model.mode = 0;
+            return View("SaisirResultats", model);
+        }
+
+        [HttpPost]
+        public ActionResult EditerResultats(ListeResultatsModels model)
+        {
+            foreach (var resultat in model.resultats)
+            {
+                using (ResultatRepository repository = new ResultatRepository())
+                 {
+                    Results r = repository.GetResultById(resultat.id);
+                    r.Pupil_Id = resultat.pupilId;
+                    r.Note = resultat.note;
+                    r.Evaluation_Id = resultat.evaluationId;
+                    if (ModelState.IsValid)
+                    {
+                        repository.Save();
+                    }
+                }        
+            }
+            return RedirectToAction("ReadEvaluations");
         }
 
         // GET: /Eval/ReadResultats

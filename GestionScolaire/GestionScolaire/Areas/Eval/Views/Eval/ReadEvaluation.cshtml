@@ -5,10 +5,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Evaluation du @Model.date</h2>
+<h2>Evaluation du @Model.date.ToShortDateString()</h2>
 
 <div class="create">
-    @Html.ActionLink("Saisir les résultats", "SaisirResultats", new { idEval = Model.id })
+    @{ if (Model.isValuate == 0) {
+            @Html.ActionLink("Saisir les résultats", "SaisirResultats", new { idEval = Model.id })
+       } else {
+            @Html.ActionLink("Editer les résultats", "EditerResultats", new { idEval = Model.id })
+       }
+    }
 </div>
 
 @Html.ActionLink("Edit", "EditEvaluation", new { id = Model.id })
