@@ -42,10 +42,16 @@
         </tr>
         <tr>
             <td> @Html.LabelFor(model => model.birthdayDate)</td>
-            <td> @Html.EditorFor(model => model.birthdayDate)
-                 @Html.ValidationMessageFor(model => model.birthdayDate)
-                 @Model.birthdayDate
-            </td>
+            @{ if (Model.mode != -1) {
+                    <td> @Html.TextBoxFor(model => model.birthdayDate, new { @Value = Model.birthdayDate.ToShortDateString() })
+                         @Html.ValidationMessageFor(model => model.birthdayDate)
+                    </td> 
+                } else {   
+                    <td> @Html.EditorFor(model => model.birthdayDate)
+                         @Html.ValidationMessageFor(model => model.birthdayDate)
+                    </td>
+                }
+            }
         </tr>
         <tr>
             <td> @Html.LabelFor(model => model.tuteurId)</td>
