@@ -8,7 +8,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>eleves @Model.lastName</h2>
+<h2>Elève @Model.firstName @Model.lastName</h2>
 
 <p>Prénom : </p>
 <div class="bloc_texte">
@@ -41,7 +41,13 @@
     @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, null)
 </p>
 
-
+<p>Résultats :
+    @foreach (var r in Model.resultats)
+    {
+    <p>Note :</p> r.note.ToString();
+    }
+</p>
+<br />
 <p>
     @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = Model.id }) 
     @Html.ActionLink("Back to List", "ReadEleves")

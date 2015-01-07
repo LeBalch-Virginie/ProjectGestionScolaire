@@ -22,11 +22,11 @@
     {
         @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
     }
+    <br />
     Evaluations: <br /> 
     @foreach (EvaluationModels ev in Model.evaluations)
     {
-        @Html.ActionLink(ev.periodBegin.ToShortDateString() + "-" + ev.periodEnd.ToShortDateString()
-                        + " " + ev.userName + " " + ev.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
+        @Html.ActionLink("Le " + ev.date.ToShortDateString() + " avec le professeur " + ev.userName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
     }
 </p>
 

@@ -175,6 +175,8 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     periodId = x.Period_Id,
                     date = x.Date,
                     totalPoint = x.TotalPoint,
+                    classroomName = x.Classrooms.Title,
+                    userName = x.Users.UserName
                 }).ToList();
             }
             return View(models);

@@ -16,7 +16,7 @@
         <div class="liste">
             <table>
                 <tr>
-                    <td class="element_name"> @m.classroomName @m.periodName @m.userName @m.date</td>
+                    <td class="element_name"> @m.classroomName @m.userName @m.date.ToShortDateString()</td>
                     <td>@Html.ActionLink("Edit", "EditEvaluation", new { area = "eval", id = m.id }, null)</td>
                     <td>@Html.ActionLink("Details", "ReadEvaluation", new { area = "eval", id = m.id })</td>
                     <td>@Html.ActionLink("Delete", "DeleteEvaluation", new { area = "eval", id = m.id })</td>

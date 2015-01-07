@@ -19,7 +19,7 @@
 </div>
 <p>Mail : </p>
 <div class="bloc_texte">
-    @Model<.mail
+    @Model.mail
 </div>
 <p>
     Liste des classes dont il est le professeur principal : <br />
@@ -39,10 +39,11 @@
 </p>
 
 <p>
-    Liste des évaluations dont il est le directeur : <br />
+    Liste des évaluations de ses évaluations : <br />
     @foreach(EvaluationModels eval in Model.evaluations)
     {
-        @Html.ActionLink(eval.date.ToString(), "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
+        @Html.ActionLink("Le " + eval.date.ToShortDateString() + " dans la classe " + eval.classroomName,
+        "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
     }
     <br />
 </p>

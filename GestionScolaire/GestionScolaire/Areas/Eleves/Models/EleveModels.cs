@@ -6,6 +6,7 @@ using System.Web;
 using GestionScolaire.Areas.GestionDesClasses.Models;
 using GestionScolaire.Models;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.Eval.Models;
 
 namespace GestionScolaire.Areas.Eleves.Models
 {
@@ -57,6 +58,8 @@ namespace GestionScolaire.Areas.Eleves.Models
         public List<ClasseModels> classes { get; set; }
 
         public List<NiveauModels> niveaux { get; set; }
+
+        public List<ResultatModels> resultats { get; set; }
 
         public int mode { get; set; }
     }

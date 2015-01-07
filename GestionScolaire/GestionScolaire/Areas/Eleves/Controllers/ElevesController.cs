@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.UI;
+using GestionScolaire.Areas.Eval.Models;
 
 namespace GestionScolaire.Areas.Eleves.Controllers
 {
@@ -71,6 +72,24 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             }
             return ac;
         }
+
+        private List<ResultatModels> getListResultats(IQueryable<Results> resultats)
+        {
+            List<ResultatModels> r = new List<ResultatModels>();
+            foreach (var res in resultats)
+            {
+                ResultatModels x = new ResultatModels
+                {
+                    id = res.Id,
+                    evaluationId = res.Evaluation_Id,
+                    note = res.Note,
+                    pupilId = res.Pupil_Id,
+                };
+                r.Add(x);
+            }
+            return r;
+        }
+
 
 
 
@@ -336,6 +355,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             {
                 Pupils x = repository.GetPupilById(id);
                 IQueryable<Tutors> t = repository.GetTutors();
+                IQueryable<Results> r = repository.GetResultatsByPupilId(id);
                 if (x == null)
                 {
                     return HttpNotFound();
@@ -352,11 +372,8 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     levelId = x.Level_Id,
                     tuteurName = x.Tutors.LastName,
                     classTitle = x.Classrooms.Title,
-                    niveauName = x.Levels.Title
-                    // classroom =
-                    // level =
-                    // result =
-
+                    niveauName = x.Levels.Title,
+                    resultats = getListResultats(r)
                 };
             }
             return View(model);

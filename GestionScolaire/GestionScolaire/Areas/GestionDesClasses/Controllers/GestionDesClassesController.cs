@@ -142,7 +142,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userId = u.User_Id,
                     periodId = u.Period_Id,
                     date = u.Date,
-                    totalPoint = u.TotalPoint
+                    totalPoint = u.TotalPoint,
+                    userName = u.Users.UserName,
+                    classroomName = u.Classrooms.Title,
+                    periodBegin = u.Periods.Begin,
+                    periodEnd = u.Periods.End
                 };
                 list.Add(a);
             }
@@ -368,7 +372,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     userName = a.Users.UserName,
                     academieName = a.Academies.Name,
                     classrooms = getListClasses(e)
-
+                    
                 };
             }
             return View(model);
@@ -585,8 +589,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     yearName = c.Years.Year,
                     etablissementName = c.Establishments.Name,
                     pupils = getListEleves(l),
-                    evaluations = getListEvaluations(e)
-
+                    evaluations = getListEvaluations(e) 
                 };
             }
             return View(model);

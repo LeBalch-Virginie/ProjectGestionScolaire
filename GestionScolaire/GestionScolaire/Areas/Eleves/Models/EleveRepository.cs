@@ -40,6 +40,12 @@ namespace GestionScolaire.Areas.Eleves.Models
         {
             return All().Where(Pupil => Pupil.LastName.Contains(query) || Pupil.FirstName.Contains(query));
         }
+
+        public IQueryable<Results> GetResultatsByPupilId(Guid id)
+        {
+            return data.Results.Where(res => res.Pupil_Id == id);
+        }
+
         #endregion
 
         #region CRUD
