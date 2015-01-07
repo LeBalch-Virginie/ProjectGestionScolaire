@@ -72,6 +72,27 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             return ac;
         }
 
+        private List<EleveModels> getListEleves(IQueryable<Pupils> pupils)
+        {
+            List<EleveModels> list = new List<EleveModels>();
+            foreach (var u in pupils)
+            {
+                EleveModels a = new EleveModels
+                {
+                    id = u.Id,
+                    birthdayDate = u.BirthdayDate,
+                    classroomId = u.Classroom_Id,
+                    firstName = u.FirstName,
+                    lastName = u.LastName,
+                    levelId = u.Level_Id,
+                    sexe = u.Sex,
+                    tuteurId = u.Tutor_Id
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
 
 
         // GET: /Eleves/Eleves/
@@ -111,9 +132,11 @@ namespace GestionScolaire.Areas.Eleves.Controllers
         public ActionResult ReadTuteur(Guid id)
         {
             TuteurModels model;
+            
             using (TuteurRepository repository = new TuteurRepository())
             {
                 Tutors x = repository.GetTutorById(id);
+                IQueryable<Pupils> l = repository.GetPupilsById(id);
                 if (x == null)
                 {
                     return HttpNotFound();
@@ -129,7 +152,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     town = x.Town,
                     tel = x.Tel,
                     address = x.Address,
-                    // eleves = 
+                    pupils = getListEleves(l)
 
                 };
             }
