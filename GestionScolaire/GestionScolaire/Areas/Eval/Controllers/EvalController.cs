@@ -207,7 +207,8 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     classroomName = x.Classrooms.Title,
                     userName = x.Users.UserName,
                     periodName = x.Periods.Begin,
-                    isValuate = valuate
+                    isValuate = valuate,
+                    resultats = getListResultats(r)
                 };
             }
             return View(model);

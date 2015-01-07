@@ -16,21 +16,40 @@
     }
 </div>
 
-@Html.ActionLink("Edit", "EditEvaluation", new { id = Model.id })
+@Html.ActionLink("Editer l'évaluation", "EditEvaluation", new { id = Model.id })
 
-<table class="table">
-    <tr>
-        <td>@Html.LabelFor(model => model.classroomName)</td>
-        <td>@Html.LabelFor(model => model.userName)</td>
-        <td>@Html.LabelFor(model => model.periodName)</td>
-        <td>@Html.LabelFor(model => model.totalPoint)</td>
-    </tr>
-    <tr>      
-        <td>@Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" ,id = Model.classroomId },null)</td>
-        <td>@Html.ActionLink(Model.userName, "ReadUser","GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId },null)</td>
-        <td>@Html.ActionLink(Model.periodName.ToString(), "ReadPeriode","Administration", new {area = "Administration", id = Model.periodId },null)</td>
-        <td>@Model.totalPoint</td>
-    </tr>
-</table>
+<br />
 
+<span>Classe : <br />
+    @Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" ,id = Model.classroomId }, null) <br />
+</span>
+<span>Professeur : <br />
+    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId }, null) <br />
+</span>
+<span>Période : <br />
+    @Html.ActionLink(Model.periodName.ToShortDateString(), "ReadPeriode", "Administration", new {area = "Administration", id = Model.periodId }, null)<br />
+</span>
+<span>Points totaux : </span>
+    <div class="bloc_texte">
+        @Model.totalPoint
+    </div>
+<br />
+ <span>Résultats : </span><br /> 
+ <div class="liste_notes">
+     <table>
+        <tr id="first_ligne">
+            <td>Elève</td>
+            <td>Note</td>
+        </tr>
+     @foreach (ResultatModels r in Model.resultats)
+     {
+        <tr>
+            <td>@Html.ActionLink(r.pupilName, "ReadEleve", "Eleves", new {area = "Eleves" ,id = r.pupilId }, null)</td>
+            <td>@r.note</td>
+        </tr>
+     }
+     </table>
+</div>
+<br />
  @Html.ActionLink("Back to List", "ReadEvaluations")
+

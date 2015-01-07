@@ -862,8 +862,16 @@ p {
     display: inline;
 }
 
-.liste tr, .liste td {
+.liste tr, .liste td, .liste_notes tr, .liste_notes td {
     width: 100%;  
+}
+
+.liste_notes {
+    background-color: none;
+    margin: 5px;
+    border-radius: 5px;
+    clear: both;
+    color: #b22170;
 }
 
 .element_name {
@@ -980,5 +988,18 @@ p {
     border-radius: 5px;
     padding: 15px;
     margin-left: 5px;
+}
+
+.liste_notes tr, .liste_notes td {
+    width: 50%;  
+}
+
+.liste_notes table #first_ligne td, .liste_notes table #first_ligne {
+    background-color: #b22170;
+    color: black;
+}
+
+.liste_notes table #first_ligne td {
+    border-radius: 0px;
 }
 

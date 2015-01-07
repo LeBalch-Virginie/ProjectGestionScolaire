@@ -36,7 +36,7 @@
 
         <tr>
             <td> @Html.LabelFor(model => model.periodId)</td>
-            <td> @Html.DropDownListFor(model => model.periodId, new SelectList(Model.periodes, 
+            <td> @Html.DropDownListFor(model => model.periodId, new SelectList(Model.periodes,
                                "Id", "Begin"))
                  @Html.ValidationMessageFor(model => model.periodId)
             </td>
