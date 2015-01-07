@@ -41,6 +41,11 @@ namespace GestionScolaire.Areas.Administration.Models
             return data.Periods.Where(periode => periode.Year_Id == id);
         }
 
+        public IQueryable<Classrooms> GetClassesByYearId(Guid id)
+        {
+            return data.Classrooms.Where(classe => classe.Year_Id == id);
+        }
+
         #endregion
 
         #region CRUD

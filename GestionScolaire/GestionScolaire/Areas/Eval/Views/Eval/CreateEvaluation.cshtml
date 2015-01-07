@@ -28,7 +28,7 @@
         
         <tr>
             <td> @Html.LabelFor(model => model.userId)</td>
-            <td>  @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
+            <td> @Html.DropDownListFor(model => model.userId, new SelectList(Model.users, 
                                 "Id", "UserName"))
                  @Html.ValidationMessageFor(model => model.userId)
             </td>

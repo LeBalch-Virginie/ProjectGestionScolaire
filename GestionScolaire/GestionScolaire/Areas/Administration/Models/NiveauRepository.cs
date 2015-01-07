@@ -36,6 +36,10 @@ namespace GestionScolaire.Areas.Administration.Models
             return All().SingleOrDefault(level => level.Id == id);
         }
 
+        public IQueryable<Pupils> GetElevesByLevelId(Guid id)
+        {
+            return data.Pupils.Where(pupil => pupil.Level_Id == id);
+        }
 
         #endregion
 

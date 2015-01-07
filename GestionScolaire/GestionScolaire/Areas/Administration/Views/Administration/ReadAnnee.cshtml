@@ -11,5 +11,12 @@
 <p>L'année scolaire @Model.year est composée des périodes suivantes :</p>
 @foreach(PeriodeModels periode in Model.periods)
 {
-    @Html.ActionLink(periode.begin.ToString() + " - " + periode.end.ToString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
+    @Html.ActionLink(periode.begin.ToShortDateString() + " - " + periode.end.ToShortDateString(), "ReadPeriode", "Administration", new {id = periode.id}, null)
+}
+
+<p>L'année scolaire @Model.year contient les classes suivantes :</p>
+@foreach(var classe in Model.classes)
+{
+    @Html.ActionLink(classe.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = classe.id}, null)
+
 }

@@ -2,15 +2,23 @@
 @model PeriodeModels
 
 @{
-    ViewBag.Title = "Periode " + Model.begin + " - " + Model.end;
+    ViewBag.Title = "Periode " + Model.begin.ToShortDateString() + " - " + Model.end.ToShortDateString();
 }
 
-<h2>Periode @Model.begin -  @Model.end</h2>
+<h2>Periode @Model.begin.ToShortDateString() -  @Model.end.ToShortDateString()</h2>
 
-<p>Cette période commence le @Model.begin et se termine le @Model.end
+<p>Cette période commence le @Model.begin.ToShortDateString() et se termine le @Model.end.ToShortDateString()
     <br />
     Elle appartient à l'année scolaire : <br /><br />
     @Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)
 </p>
+
+<p>Cette période contient les évaluations suivantes :</p>
+@foreach(var eval in Model.evaluations)
+{
+    @Html.ActionLink(eval.date.ToShortDateString() + " " + eval.userName + " " + eval.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
+
+}
+
 
 

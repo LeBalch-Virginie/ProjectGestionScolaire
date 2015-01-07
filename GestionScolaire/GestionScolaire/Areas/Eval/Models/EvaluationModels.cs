@@ -26,6 +26,11 @@ namespace GestionScolaire.Areas.Eval.Models
         [Required]
         public Guid periodId { get; set; }
 
+        public DateTime periodBegin { get; set; }
+        public DateTime periodEnd { get; set; }
+
+        public PeriodeModels periode { get; set; }
+
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
         [Required]
@@ -46,7 +51,7 @@ namespace GestionScolaire.Areas.Eval.Models
 
         [Display(Name = "Période")]
 
-        public DateTime periodName { get; set; }
+        public String periodName { get; set; }
 
         public List<ClasseModels> classes { get; set; }
 

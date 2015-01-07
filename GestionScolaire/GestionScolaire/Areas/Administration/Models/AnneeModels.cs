@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using GestionScolaire.Areas.Administration.Models;
+using GestionScolaire.Areas.GestionDesClasses.Models;
 
 namespace GestionScolaire.Areas.Administration.Models
 {
@@ -17,5 +18,7 @@ namespace GestionScolaire.Areas.Administration.Models
 
         [Display(Name = "Liste des périodes")]
         public List<PeriodeModels> periods { get; set; }
+
+        public List<ClasseModels> classes { get; set; }
     }
 }

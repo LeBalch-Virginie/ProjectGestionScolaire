@@ -14,7 +14,7 @@
 <p>Professeur principal : <br />
     @Html.ActionLink(Model.userName, "ReadUser", new {id = Model.userId }) <br />
     Année : <br />
-    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId },null) <br />
+    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId }, null) <br />
     Etablissement : <br />
     @Html.ActionLink(Model.etablissementName, "ReadEtablissement", new { id = Model.etablissementId }) <br />
     Liste des élèves : <br />
@@ -23,12 +23,14 @@
         @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
     }
     Evaluations: <br /> 
-     @foreach(EvaluationModels ev in Model.evaluations)
+    @foreach (EvaluationModels ev in Model.evaluations)
     {
-        @Html.ActionLink(ev.periodName.ToString() , "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
+        @Html.ActionLink(ev.periodBegin.ToShortDateString() + "-" + ev.periodEnd.ToShortDateString()
+                        + " " + ev.userName + " " + ev.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
     }
 </p>
 
+<br />
 <p>
     @Html.ActionLink("Edit", "EditClasse", new { id = Model.id })
     @Html.ActionLink("Back to List", "ReadClasses")

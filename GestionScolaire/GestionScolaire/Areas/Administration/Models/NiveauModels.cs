@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionScolaire.Areas.Eleves.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace GestionScolaire.Areas.Administration.Models
         public Guid cycleId { get; set; }
 
         public String cycleTitle { get; set; }
+
+        public List<EleveModels> eleves { get; set; }
     }
 }

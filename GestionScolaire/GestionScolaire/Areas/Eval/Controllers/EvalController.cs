@@ -206,7 +206,7 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     totalPoint = x.TotalPoint,
                     classroomName = x.Classrooms.Title,
                     userName = x.Users.UserName,
-                    periodName = x.Periods.Begin,
+                    periodName = x.Periods.Begin.ToShortDateString() + " - " + x.Periods.End.ToShortDateString(),
                     isValuate = valuate,
                     resultats = getListResultats(r)
                 };

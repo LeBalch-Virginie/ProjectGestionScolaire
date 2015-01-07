@@ -27,7 +27,7 @@
     @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId }, null) <br />
 </span>
 <span>Période : <br />
-    @Html.ActionLink(Model.periodName.ToShortDateString(), "ReadPeriode", "Administration", new {area = "Administration", id = Model.periodId }, null)<br />
+    @Html.ActionLink(Model.periodName, "ReadPeriode", "Administration", new {area = "Administration", id = Model.periodId }, null)<br />
 </span>
 <span>Points totaux : </span>
     <div class="bloc_texte">

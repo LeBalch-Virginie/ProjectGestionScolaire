@@ -36,6 +36,12 @@ namespace GestionScolaire.Areas.Administration.Models
             return All().SingleOrDefault(periode => periode.Id == id);
         }
 
+
+        public IQueryable<Evaluations> GetEvaluationsByPeriodId(Guid id)
+        {
+            return data.Evaluations.Where(eval => eval.Period_Id == id);
+        }
+
         #endregion
 
         #region CRUD

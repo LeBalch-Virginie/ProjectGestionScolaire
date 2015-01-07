@@ -5,11 +5,82 @@ using System.Web;
 using System.Web.Mvc;
 using GestionScolaire.Areas.Administration.Models;
 using GestionScolaire.Models;
+using GestionScolaire.Areas.GestionDesClasses.Models;
+using GestionScolaire.Areas.Eval.Models;
+using GestionScolaire.Areas.Eleves.Models;
 
 namespace GestionScolaire.Areas.Administration.Controllers
 {
     public class AdministrationController : Controller
     {
+        private List<NiveauModels> getListNiveau(IQueryable<Levels> levels)
+        {
+            List<NiveauModels> niveaux = new List<NiveauModels>();
+            foreach (var level in levels)
+            {
+                NiveauModels niveau = new NiveauModels
+                {
+                    id = level.Id,
+                    title = level.Title,
+                    cycleId = level.Cycle_Id,
+                    cycleTitle = level.Cycles.Title
+                };
+                niveaux.Add(niveau);
+            }
+            return niveaux;
+        }
+
+        private List<ClasseModels> getListClasses(IQueryable<Classrooms> classes)
+        {
+            List<ClasseModels> classrooms = new List<ClasseModels>();
+            foreach (var c in classes)
+            {
+                ClasseModels classe = new ClasseModels
+                {
+                    id = c.Id,
+                    etablissementId = c.Establishment_Id,
+                    title = c.Title,
+                    userId = c.User_Id,
+                    yearId = c.Year_Id
+                };
+                classrooms.Add(classe);
+            }
+            return classrooms;
+        }
+
+        private List<EvaluationModels> getListEvaluations(IQueryable<Evaluations> ev)
+        {
+            List<EvaluationModels> evaluations = new List<EvaluationModels>();
+            foreach (var e in ev)
+            {
+                EvaluationModels eval = new EvaluationModels
+                {
+                    id = e.Id,
+                    periodId = e.Period_Id,
+                    userId = e.User_Id,
+                    classroomName = e.Classrooms.Title,
+                    userName = e.Users.UserName
+                };
+                evaluations.Add(eval);
+            }
+            return evaluations;
+        }
+
+        private List<EleveModels> getListEleves(IQueryable<Pupils> pupils)
+        {
+            List<EleveModels> eleves = new List<EleveModels>();
+            foreach (var e in pupils)
+            {
+                EleveModels eval = new EleveModels
+                {
+                    id = e.Id,
+                    firstName = e.FirstName,
+                    lastName = e.LastName
+                };
+                eleves.Add(eval);
+            }
+            return eleves;
+        }
         //
         // GET: /Administration/
 
@@ -53,23 +124,6 @@ namespace GestionScolaire.Areas.Administration.Controllers
             return View(model);
         }
 
-        private List<NiveauModels> getListNiveau(IQueryable<Levels> levels)
-        {
-            List<NiveauModels> niveaux = new List<NiveauModels>();
-            foreach (var level in levels)
-            {
-                NiveauModels niveau = new NiveauModels
-                {
-                    id = level.Id,
-                    title = level.Title,
-                    cycleId = level.Cycle_Id,
-                    cycleTitle = level.Cycles.Title
-                };
-                niveaux.Add(niveau);
-            }
-            return niveaux;
-        }
-
         public ActionResult ReadNiveaux()
         {
             IList<NiveauModels> models = new List<NiveauModels>();
@@ -94,12 +148,14 @@ namespace GestionScolaire.Areas.Administration.Controllers
             using (NiveauRepository repository = new NiveauRepository())
             {
                 Levels l = repository.GetLevelById(id);
+                IQueryable<Pupils> p = repository.GetElevesByLevelId(id);
                 model = new NiveauModels
                 {
                     id = l.Id,
                     title = l.Title,
                     cycleId = l.Cycle_Id,
-                    cycleTitle = l.Cycles.Title
+                    cycleTitle = l.Cycles.Title,
+                    eleves = getListEleves(p)
                 };
             }
             return View(model);
@@ -130,13 +186,15 @@ namespace GestionScolaire.Areas.Administration.Controllers
             using (PeriodeRepository repository = new PeriodeRepository())
             {
                 Periods p = repository.GetPeriodById(id);
+                IQueryable<Evaluations> e = repository.GetEvaluationsByPeriodId(id);
                 model = new PeriodeModels
                 {
                     id = p.Id,
                     begin = p.Begin,
                     end = p.End,
                     yearId = p.Year_Id,
-                    year = p.Years.Year
+                    year = p.Years.Year,
+                    evaluations = getListEvaluations(e)
                 };
             }
             return View(model);
@@ -165,11 +223,13 @@ namespace GestionScolaire.Areas.Administration.Controllers
             {
                 Years a = repository.GetYearById(id);
                 IQueryable<Periods> l = repository.GetPeriodesById(id);
+                IQueryable<Classrooms> c = repository.GetClassesByYearId(id);
                 model = new AnneeModels
                 {
                     id = a.Id,
                     year = a.Year,
-                    periods = getListPeriode(l)
+                    periods = getListPeriode(l),
+                    classes = getListClasses(c)
                 };
             }
             return View(model);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionScolaire.Areas.Eval.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +22,7 @@ namespace GestionScolaire.Areas.Administration.Models
         public Guid yearId { get; set; }
 
         public int year { get; set; }
+
+        public List<EvaluationModels> evaluations { get; set; }
     }
 }
