@@ -25,7 +25,7 @@
     Liste des classes dont il est le professeur principal : <br />
     @foreach(ClasseModels c in Model.classes)
     {
-        @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = c.id}, null)
+        @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = c.id}, new { target = "_blank" })
     }
 </p>
 
@@ -33,7 +33,7 @@
     Liste des établissements dont il est le directeur : <br />
     @foreach(EtablissementModels e in Model.etablissements)
     {
-        @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {area = "GestionDesClasses", id = e.id}, null)
+        @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {area = "GestionDesClasses", id = e.id}, new { target = "_blank" })
     }
     <br />
 </p>

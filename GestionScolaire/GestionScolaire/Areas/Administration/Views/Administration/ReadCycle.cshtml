@@ -11,5 +11,5 @@
 
         @foreach(NiveauModels niveau in Model.niveaux)
         {
-            @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, null)
+            @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, new { target = "_blank" })
         }
