@@ -217,12 +217,11 @@ namespace GestionScolaire.Areas.Eval.Controllers
         }
 
         // GET: /Eval/CreateEvaluation
-        public ActionResult CreateEvaluation()
+        public ActionResult CreateEvaluation(Guid? classroom, Guid? periode, Guid? user)
         {
             EvaluationModels model;
             using (EvaluationRepository repository = new EvaluationRepository())
             {
-
                 IQueryable<Periods> periodes = repository.GetPeriodes();
                 IQueryable<Classrooms> classes = repository.GetClasses();
                 IQueryable<Users> users = repository.GetUsers();
@@ -233,6 +232,18 @@ namespace GestionScolaire.Areas.Eval.Controllers
                     classes = getListClasses(classes),
                     users = getListUsers(users)
                 };
+                if (classroom != null)
+                {
+                    model.classroomId = (Guid) classroom;
+                }
+                if (periode != null)
+                {
+                    model.periodId = (Guid) periode;
+                }
+                if (user != null)
+                {
+                    model.userId = (Guid) user;
+                }
             }
             return View(model);
         }

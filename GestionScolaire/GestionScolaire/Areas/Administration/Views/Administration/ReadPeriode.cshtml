@@ -7,16 +7,18 @@
 
 <h2>Periode @Model.begin.ToShortDateString() -  @Model.end.ToShortDateString()</h2>
 
+@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", periode = Model.id }, null)
+
 <p>Cette période commence le @Model.begin.ToShortDateString() et se termine le @Model.end.ToShortDateString()
     <br />
     Elle appartient à l'année scolaire : <br /><br />
-    @Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, new { target = "_blank" })
+    @Html.ActionLink(Model.year.ToString(), "ReadAnnee", "Administration", new {id = Model.yearId}, null)
 </p>
 
 <p>Cette période contient les évaluations suivantes :</p>
 @foreach(var eval in Model.evaluations)
 {
-    @Html.ActionLink(eval.date.ToShortDateString() + " " + eval.userName + " " + eval.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, new { target = "_blank" })
+    @Html.ActionLink(eval.date.ToShortDateString() + " " + eval.userName + " " + eval.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
 
 }
 

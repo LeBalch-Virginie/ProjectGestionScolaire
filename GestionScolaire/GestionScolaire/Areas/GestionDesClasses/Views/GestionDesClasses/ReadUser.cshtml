@@ -11,6 +11,7 @@
 
 @Html.ActionLink("Ajouter un établissement", "CreateEtablissement", "GestionDesClasses", new { user = Model.id }, null)
 @Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
+@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", user = Model.id }, null)
 
 <p>Prénom : </p>
 <div class="bloc_texte">
@@ -28,7 +29,7 @@
     Liste des classes dont il est le professeur principal : <br />
     @foreach(ClasseModels c in Model.classes)
     {
-        @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = c.id}, new { target = "_blank" })
+        @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = c.id}, null)
     }
 </p>
 
@@ -36,7 +37,7 @@
     Liste des établissements dont il est le directeur : <br />
     @foreach(EtablissementModels e in Model.etablissements)
     {
-        @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {area = "GestionDesClasses", id = e.id}, new { target = "_blank" })
+        @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {area = "GestionDesClasses", id = e.id}, null)
     }
     <br />
 </p>

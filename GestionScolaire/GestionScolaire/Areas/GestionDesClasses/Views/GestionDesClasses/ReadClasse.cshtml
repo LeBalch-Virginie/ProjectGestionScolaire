@@ -11,23 +11,24 @@
 <h2>Classe @Model.title</h2>
 
 @Html.ActionLink("Ajouter un élève", "CreateEleve", "Eleves", new { area="Eleves", classe = Model.id }, null)
+@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", classroom = Model.id }, null)
 
 <p>Professeur principal : <br />
     @Html.ActionLink(Model.userName, "ReadUser", new {id = Model.userId }) <br />
     Année : <br />
-    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId }, new { target = "_blank" }) <br />
+    @Html.ActionLink(Model.yearName.ToString(),"ReadAnnee", "Administration", new {area = "Administration", id = Model.yearId }, null) <br />
     Etablissement : <br />
     @Html.ActionLink(Model.etablissementName, "ReadEtablissement", new { id = Model.etablissementId }) <br />
     Liste des élèves : <br />
     @foreach(EleveModels e in Model.pupils)
     {
-        @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, new { target = "_blank" })
+        @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
     }
     <br />
     Evaluations: <br /> 
     @foreach (EvaluationModels ev in Model.evaluations)
     {
-        @Html.ActionLink("Le " + ev.date.ToShortDateString() + " avec le professeur " + ev.userName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, new { target = "_blank" })
+        @Html.ActionLink("Le " + ev.date.ToShortDateString() + " avec le professeur " + ev.userName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
     }
 </p>
 
