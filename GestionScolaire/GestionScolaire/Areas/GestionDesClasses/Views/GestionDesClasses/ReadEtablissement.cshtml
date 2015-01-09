@@ -17,13 +17,14 @@
 </div>
 <p>
     Directeur : <br />
-    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, null)<br />
+    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, new { target = "_blank" })<br />
     Académie : <br />
-    @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)<br />
-    Classes : <br /> 
+
+    @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, new { target = "_blank" })<br />
+    Classes: <br /> 
     @foreach(ClasseModels c in Model.classrooms)
     {
-        @Html.ActionLink(c.title , "ReadClasse", "GestionDesClasses", new {id = c.id}, null)
+        @Html.ActionLink(c.title , "ReadClasse", "GestionDesClasses", new {id = c.id}, new { target = "_blank" })
     }
 </p>
 

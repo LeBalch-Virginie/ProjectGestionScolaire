@@ -5,7 +5,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Evaluation du @Model.date.ToShortDateString()</h2>
+<h2>Evaluation du @Model.date.ToLongDateString()</h2>
 
 <div class="create">
     @{ if (Model.isValuate == 0) {
@@ -21,13 +21,13 @@
 <br />
 
 <span>Classe : <br />
-    @Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" ,id = Model.classroomId }, null) <br />
+    @Html.ActionLink(Model.classroomName,"ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses" ,id = Model.classroomId }, new { target = "_blank" }) <br />
 </span>
 <span>Professeur : <br />
-    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId }, null) <br />
+    @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.userId }, new { target = "_blank" }) <br />
 </span>
 <span>Période : <br />
-    @Html.ActionLink(Model.periodName, "ReadPeriode", "Administration", new {area = "Administration", id = Model.periodId }, null)<br />
+    @Html.ActionLink(Model.periodName, "ReadPeriode", "Administration", new {area = "Administration", id = Model.periodId }, new { target = "_blank" })<br />
 </span>
 <span>Points totaux : </span>
     <div class="bloc_texte">
@@ -44,7 +44,7 @@
      @foreach (ResultatModels r in Model.resultats)
      {
         <tr>
-            <td>@Html.ActionLink(r.pupilName, "ReadEleve", "Eleves", new {area = "Eleves" ,id = r.pupilId }, null)</td>
+            <td>@Html.ActionLink(r.pupilName, "ReadEleve", "Eleves", new {area = "Eleves" ,id = r.pupilId }, new { target = "_blank" })</td>
             <td>@r.note</td>
         </tr>
      }

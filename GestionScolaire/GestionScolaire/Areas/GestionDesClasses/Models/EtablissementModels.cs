@@ -13,19 +13,22 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public Guid id { get; set; }
 
         [Display(Name = "Nom de l'établissement")]
+        [StringLength(255)]
         [Required]
         public String name { get; set; }
 
         [Display(Name = "Adresse")]
+        [StringLength(255)]
         [Required]
         public String address { get; set; }
 
         [Display(Name = "Code postal")]
-        [StringLength(5)]
+        [StringLength(50)]
         [Required]
         public String postCode { get; set; }
 
         [Display(Name = "Ville")]
+        [StringLength(50)]
         [Required]
         public String town { get; set; }
 

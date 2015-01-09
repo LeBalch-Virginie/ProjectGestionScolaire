@@ -35,10 +35,10 @@
     @Html.ActionLink(Model.tuteurName, "ReadTuteur", "Eleves", new {id = Model.tuteurId}, null)
 </p>
 <p>Classe : <br />    
-    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId}, null)
+    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId}, new { target = "_blank" })
 </p>
 <p>Niveau : <br />    
-    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, null)
+    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, new { target = "_blank" })
 </p>
 
 <p>Résultats :

@@ -16,6 +16,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public Guid id { get; set; }
 
         [Display(Name = "Nom de la classe")]
+        [StringLength(50)]
         [Required]
         public String title { get; set; }
 

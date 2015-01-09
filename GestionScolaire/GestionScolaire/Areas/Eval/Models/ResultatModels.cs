@@ -24,7 +24,7 @@ namespace GestionScolaire.Areas.Eval.Models
         public String pupilName{ get; set; }
 
         [Display(Name = "Note")]
-        [Range(0, 10000)]
+        [Range(0.0, 10000.0)]
         [Required]
         public double note { get; set; }
 

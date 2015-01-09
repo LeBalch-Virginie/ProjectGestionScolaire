@@ -13,6 +13,8 @@ namespace GestionScolaire.Areas.Administration.Models
         public Guid id { get; set; }
 
         [Display(Name = "Titre du niveau")]
+        [StringLength(50)]
+        [Required]
         public String title { get; set; }
 
         [Display(Name = "Id du cycle auquel il appartient")]

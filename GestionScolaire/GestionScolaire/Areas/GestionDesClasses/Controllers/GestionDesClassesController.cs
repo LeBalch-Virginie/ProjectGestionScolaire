@@ -839,7 +839,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
         {
             UserModels model = new UserModels()
             {
-                mode = -1
+                mode = -1,
             };
             return View(model);
         }
