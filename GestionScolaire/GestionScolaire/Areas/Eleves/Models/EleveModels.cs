@@ -17,10 +17,12 @@ namespace GestionScolaire.Areas.Eleves.Models
         public Guid id { get; set; }
 
         [Display(Name = "Prénom")]
+        [StringLength(50)]
         [Required]
         public String firstName { get; set; }
 
         [Display(Name = "Nom")]
+        [StringLength(50)]
         [Required]
         public String lastName { get; set; }
 
