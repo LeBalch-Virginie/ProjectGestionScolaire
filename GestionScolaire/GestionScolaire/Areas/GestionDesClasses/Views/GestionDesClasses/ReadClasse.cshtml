@@ -10,9 +10,6 @@
 
 <h2>Classe @Model.title</h2>
 
-@Html.ActionLink("Ajouter un élève", "CreateEleve", "Eleves", new { area="Eleves", classe = Model.id }, null)
-@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", classroom = Model.id }, null)
-
 <p>Professeur principal : <br />
     @Html.ActionLink(Model.userName, "ReadUser", new {id = Model.userId }) <br />
     Année : <br />
@@ -24,12 +21,30 @@
     {
         @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
     }
+
+    @if (Model.pupils.Count == 0)
+    {
+        <p class="count0">Aucun élève dans cette classe</p>
+    }
+    <div class="create">
+        @Html.ActionLink("Ajouter un élève dans cette classe", "CreateEleve", "Eleves", new { area="Eleves", classe = Model.id }, null)
+    </div>
+
     <br />
     Evaluations: <br /> 
     @foreach (EvaluationModels ev in Model.evaluations)
     {
         @Html.ActionLink("Le " + ev.date.ToShortDateString() + " avec le professeur " + ev.userName, "ReadEvaluation", "Eval", new {area = "Eval", id = ev.id}, null)
     }
+
+    @if (Model.evaluations.Count == 0)
+    {
+        <p class="count0">Aucune évaluation dans cette classe</p>
+    }
+    
+    <div class="create">
+        @Html.ActionLink("Ajouter une évaluation pour cette classe", "CreateEvaluation", "Eval", new { area="Eval", classroom = Model.id }, null)
+    </div>
 </p>
 
 <br />

@@ -7,10 +7,6 @@
 
 <h2>Tuteur @Model.lastName @Model.firstName</h2>
 
-<div class="create">
-    @Html.ActionLink("Affecter un élève à ce tuteur", "CreateEleve", "Eleves", new { area="Eleves", tuteur = Model.id }, null)
-</div>
-
 <p>Prénom : </p>
 <div class="bloc_texte">
     @Model.firstName
@@ -19,34 +15,52 @@
 <div class="bloc_texte">
     @Model.lastName
 </div>
+<<<<<<< HEAD
+<p>Adresse : </p>
+<div class="bloc_texte">
+    @Model.address
+</div>
+<p>Code postal : </p>
+=======
 <p>
     Coordonnées : 
 </p>
+>>>>>>> 7e86ca6d5d16d2b2fe2f909402cc3c35ec515d60
 <div class="bloc_texte">
     @Model.address <br />
     @Model.postCode @Model.town
 </div>
-<p>numéro de telephone : </p>
+<p>Numéro de telephone : </p>
 <div class="bloc_texte">
     @Model.tel
 </div>
-<p>adresse mail : </p>
+<p>Adresse mail : </p>
 <div class="bloc_texte">
     @Model.mail
 </div>
-<p>commentaire : </p>
+<p>Commentaire : </p>
 <div class="bloc_texte">
     @Model.comment
 </div>
 
 
-Liste des élèves : <br />
+<p>Liste des élèves : </p>
 @foreach(EleveModels e in Model.pupils)
 {
     @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
 }
 
+@if (Model.pupils.Count == 0)    
+{
+    <p class="count0">Aucun élève pour ce tuteur</p>
+}
+
+<div class="create">
+    @Html.ActionLink("Affecter un élève à ce tuteur", "CreateEleve", "Eleves", new { area="Eleves", tuteur = Model.id }, null)
+</div>
+
+<br />
 <p>
-    @Html.ActionLink("Edit", "EditTuteur", new {area = "Eleves", id = Model.id }) |
+    @Html.ActionLink("Edit", "EditTuteur", new {area = "Eleves", id = Model.id })
     @Html.ActionLink("Back to List", "ReadTuteurs")
 </p>
