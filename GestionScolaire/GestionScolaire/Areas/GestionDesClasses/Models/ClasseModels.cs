@@ -21,27 +21,26 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String title { get; set; }
 
         [Display(Name = "Professeur principal")]
-        [Required]
+
         public Guid userId { get; set; }
 
         [Display(Name = "Année")]
-        [Required]
+
         public Guid yearId { get; set; }
 
         [Display(Name = "Etablissement")]
-        [Required]
+
         public Guid etablissementId { get; set; }
 
         [Display(Name = "utilisateur ")]
-        [Required]
         public String userName { get; set; }
 
         [Display(Name = "année  ")]
-        [Required]
+
         public int yearName { get; set; }
 
         [Display(Name = "nom'etablissement")]
-        [Required]
+
         public String etablissementName { get; set; }
 
 
