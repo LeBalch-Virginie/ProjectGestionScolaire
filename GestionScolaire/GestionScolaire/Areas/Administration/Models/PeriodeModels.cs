@@ -23,6 +23,8 @@ namespace GestionScolaire.Areas.Administration.Models
 
         public int year { get; set; }
 
+        public String name { get { return begin.ToShortDateString() + " - " + end.ToShortDateString(); } }
+
         public List<EvaluationModels> evaluations { get; set; }
     }
 }

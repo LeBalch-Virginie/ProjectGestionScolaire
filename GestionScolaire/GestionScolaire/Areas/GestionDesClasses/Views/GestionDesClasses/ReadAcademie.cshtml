@@ -6,12 +6,14 @@
 }
 
 <h2>Académie de @Model.name</h2>
-@Html.ActionLink("Edit", "EditAcademie", new { id = Model.id })
-@Html.ActionLink("Associer à un établissement", "CreateEtablissement", "GestionDesClasses", new { academie = Model.id }, null)
+<div class="create">
+    @Html.ActionLink("Edit", "EditAcademie", new { id = Model.id })
+    @Html.ActionLink("Associer à un établissement", "CreateEtablissement", "GestionDesClasses", new { academie = Model.id }, null)
+</div>
 <p>Liste des établissements présents dans cette académie :</p>
 @foreach(EtablissementModels e in Model.etablissements)
 {
-    @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {id = e.id}, new { target = "_blank" })
+    @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {id = e.id}, null)
 }
 
 <br />

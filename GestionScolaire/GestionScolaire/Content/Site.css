@@ -919,7 +919,6 @@ p {
     margin-bottom: 10px;
 }
 
-
 #body input[type="submit"] {
     font-family: 'Century Gothic';
     background-color: #b22170;
@@ -1001,5 +1000,13 @@ p {
 
 .liste_notes table #first_ligne td {
     border-radius: 0px;
+}
+
+#body .create {
+    font-family: 'Century Gothic';
+    background-color: #b22170;
+    color: #d3dce0;
+    border: none;
+    margin-left: 5px;
 }
 

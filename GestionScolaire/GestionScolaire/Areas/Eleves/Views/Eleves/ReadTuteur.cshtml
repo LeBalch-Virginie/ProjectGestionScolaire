@@ -5,9 +5,11 @@
     ViewBag.Title = "Details";
 }
 
-<h2>tuteur @Model.lastName</h2>
+<h2>Tuteur @Model.lastName @Model.firstName</h2>
 
-@Html.ActionLink("Affecter un élève", "CreateEleve", "Eleves", new { area="Eleves", tuteur = Model.id }, null)
+<div class="create">
+    @Html.ActionLink("Affecter un élève à ce tuteur", "CreateEleve", "Eleves", new { area="Eleves", tuteur = Model.id }, null)
+</div>
 
 <p>Prénom : </p>
 <div class="bloc_texte">
@@ -17,12 +19,13 @@
 <div class="bloc_texte">
     @Model.lastName
 </div>
-<p>
-    Coordonnées : 
-</p>
+<p>adresse : </p>
 <div class="bloc_texte">
-    @Model.address <br />
-    @Model.postCode @Model.town
+    @Model.address
+</div>
+<p>code postal : </p>
+<div class="bloc_texte">
+    @Model.postCode
 </div>
 <p>numéro de telephone : </p>
 <div class="bloc_texte">
@@ -34,14 +37,14 @@
 </div>
 <p>commentaire : </p>
 <div class="bloc_texte">
-    @Model.comment
+    @Model.mail
 </div>
 
 
 Liste des élèves : <br />
 @foreach(EleveModels e in Model.pupils)
 {
-    @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, new { target = "_blank" })
+    @Html.ActionLink(e.lastName + " " + e.firstName, "ReadEleve", "Eleves", new {area = "Eleves", id = e.id}, null)
 }
 
 <p>
