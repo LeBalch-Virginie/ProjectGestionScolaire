@@ -10,6 +10,7 @@
 
 <h2>Classe @Model.title</h2>
 
+@Html.ActionLink("Ajouter un élève", "CreateEleve", "Eleves", new { area="Eleves", classe = Model.id }, null)
 
 <p>Professeur principal : <br />
     @Html.ActionLink(Model.userName, "ReadUser", new {id = Model.userId }) <br />

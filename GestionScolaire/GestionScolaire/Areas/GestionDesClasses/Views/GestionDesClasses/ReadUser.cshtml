@@ -9,6 +9,9 @@
 
 <h2>Professeur : @Model.userName</h2>
 
+@Html.ActionLink("Ajouter un établissement", "CreateEtablissement", "GestionDesClasses", new { user = Model.id }, null)
+@Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
+
 <p>Prénom : </p>
 <div class="bloc_texte">
     @Model.firstName

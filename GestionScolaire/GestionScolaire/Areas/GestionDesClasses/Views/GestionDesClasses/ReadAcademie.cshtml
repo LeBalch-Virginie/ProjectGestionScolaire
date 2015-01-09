@@ -7,6 +7,7 @@
 
 <h2>Académie de @Model.name</h2>
 @Html.ActionLink("Edit", "EditAcademie", new { id = Model.id })
+@Html.ActionLink("Associer à un établissement", "CreateEtablissement", "GestionDesClasses", new { academie = Model.id }, null)
 <p>Liste des établissements présents dans cette académie :</p>
 @foreach(EtablissementModels e in Model.etablissements)
 {

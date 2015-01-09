@@ -400,7 +400,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
         }
 
         // GET: /Eleves/CreateEleve
-        public ActionResult CreateEleve()
+        public ActionResult CreateEleve(Guid? classe, Guid? level, Guid? tuteur)
         {
             EleveModels model;
             using (EleveRepository repository = new EleveRepository())
@@ -414,8 +414,21 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     mode = -1,
                     tuteurs = getListTuteurs(tuteurs),
                     classes = getListClasses(classes),
-                    niveaux = getListNiveaux(niveaux)
+                    niveaux = getListNiveaux(niveaux),  
                 };
+                if (classe != null)
+                {
+                    model.classroomId = (Guid) classe;
+                }
+                if (level != null)
+                {
+                    model.levelId = (Guid) level;
+                }
+                if (tuteur != null)
+                {
+                    model.tuteurId = (Guid) tuteur;
+                }
+               
             }
             return View(model);
         }

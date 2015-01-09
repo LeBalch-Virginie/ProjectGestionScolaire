@@ -6,6 +6,8 @@
 
 <h2> Etablissement @Model.name</h2>
 
+@Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
+
 <p>
     Coordonnées : 
 </p>
@@ -18,13 +20,14 @@
     @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, null)<br />
     Académie : <br />
     @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, null)<br />
-    classes: <br /> 
-     @foreach(ClasseModels c in Model.classrooms)
+    Classes : <br /> 
+    @foreach(ClasseModels c in Model.classrooms)
     {
         @Html.ActionLink(c.title , "ReadClasse", "GestionDesClasses", new {id = c.id}, null)
     }
 </p>
 
+<br />
 <p>
     @Html.ActionLink("Edit", "EditEtablissement", new { id = Model.id })
     @Html.ActionLink("Back to List", "ReadEtablissements")

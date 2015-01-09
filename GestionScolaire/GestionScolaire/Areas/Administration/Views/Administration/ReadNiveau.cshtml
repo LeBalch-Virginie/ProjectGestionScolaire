@@ -6,6 +6,8 @@
 }
 <h2>Niveau @Model.title</h2>
 
+@Html.ActionLink("Ajouter un élève", "CreateEleve", "Eleves", new { area="Eleves", level = Model.id }, null)
+
 <p>Le niveau @Model.title appartient au cycle :</p>
     @Html.ActionLink(Model.cycleTitle, "ReadCycle", "Administration", new {id = Model.cycleId}, null)
 

@@ -7,6 +7,8 @@
 
 <h2>tuteur @Model.lastName</h2>
 
+@Html.ActionLink("Affecter un élève", "CreateEleve", "Eleves", new { area="Eleves", tuteur = Model.id }, null)
+
 <p>Prénom : </p>
 <div class="bloc_texte">
     @Model.firstName

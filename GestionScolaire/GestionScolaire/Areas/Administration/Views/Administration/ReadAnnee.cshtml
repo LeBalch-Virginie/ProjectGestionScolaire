@@ -8,6 +8,8 @@
 
 <h2>Année @Model.year</h2>
 
+@Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { year = Model.id }, null)
+
 <p>L'année scolaire @Model.year est composée des périodes suivantes :</p>
 @foreach(PeriodeModels periode in Model.periods)
 {

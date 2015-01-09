@@ -380,7 +380,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         // GET: /GestionDesClasses/CreateEtablissement
 
-        public ActionResult CreateEtablissement()
+        public ActionResult CreateEtablissement(Guid? academie, Guid? user)
         {
             EtablissementModels model;
             using (EtablissementRepository repository = new EtablissementRepository())
@@ -391,8 +391,16 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                 {
                     mode = -1,
                     academies = getListAcademies(academies),
-                    users = getListUsers(users)
+                    users = getListUsers(users),
                 };
+                if (academie != null)
+                {
+                    model.academieId = (Guid) academie;
+                }
+                if (user != null)
+                {
+                    model.userId = (Guid) user;
+                }
             }
             return View(model);
         }
@@ -597,7 +605,7 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
 
         // GET: /GestionDesClasses/CreateClasse
 
-        public ActionResult CreateClasse()
+        public ActionResult CreateClasse(Guid? etablissement, Guid? user, Guid? year)
         {
             ClasseModels model;
             using (ClasseRepository repository = new ClasseRepository())
@@ -611,8 +619,22 @@ namespace GestionScolaire.Areas.GestionDesClasses.Controllers
                     mode = -1,
                     users = getListUsers(users),
                     years = getListYears(years),
-                    etablissements = getListEtablissements(etablissements)
+                    etablissements = getListEtablissements(etablissements),
+                    
+                    
                 };
+                if (etablissement != null)
+                {
+                    model.etablissementId = (Guid) etablissement;
+                }
+                if (user != null)
+                {
+                    model.userId = (Guid) user;
+                }
+                if (year != null)
+                {
+                    model.yearId = (Guid) year;
+                }
             }
             return View(model);
         }
