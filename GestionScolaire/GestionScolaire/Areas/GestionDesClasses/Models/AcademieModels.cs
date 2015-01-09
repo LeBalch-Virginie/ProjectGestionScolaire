@@ -16,7 +16,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String name { get; set; }
 
         [Display(Name = "Etablissements")]
-        [Required]
         public List<EtablissementModels> etablissements { get; set; }
 
         public int mode { get; set; }
