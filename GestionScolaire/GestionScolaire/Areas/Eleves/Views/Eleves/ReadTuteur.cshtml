@@ -19,13 +19,12 @@
 <div class="bloc_texte">
     @Model.lastName
 </div>
-<p>adresse : </p>
+<p>
+    Coordonnées : 
+</p>
 <div class="bloc_texte">
-    @Model.address
-</div>
-<p>code postal : </p>
-<div class="bloc_texte">
-    @Model.postCode
+    @Model.address <br />
+    @Model.postCode @Model.town
 </div>
 <p>numéro de telephone : </p>
 <div class="bloc_texte">
