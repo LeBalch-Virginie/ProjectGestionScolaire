@@ -49,9 +49,16 @@
         </tr>
         <tr>
             <td> @Html.LabelFor(model => model.date)</td>
-            <td> @Html.EditorFor(model => model.date)
-                 @Html.ValidationMessageFor(model => model.date)
-            </td>
+            @{ if (Model.mode != -1) {
+                    <td> @Html.TextBoxFor(model => model.date, new { @Value = Model.date.ToShortDateString() })
+                         @Html.ValidationMessageFor(model => model.date)
+                    </td> 
+                } else {   
+                    <td> @Html.EditorFor(model => model.date)
+                         @Html.ValidationMessageFor(model => model.date)
+                    </td>
+                }
+            }
         </tr>
     </table>
     <input type="submit" value="@ViewBag.Input" />  

@@ -111,6 +111,29 @@ namespace GestionScolaire.Areas.Eleves.Controllers
             return list;
         }
 
+        private List<EvaluationModels> getListEvaluations(IQueryable<Evaluations> evaluations)
+        {
+            List<EvaluationModels> list = new List<EvaluationModels>();
+            foreach (var u in evaluations)
+            {
+                EvaluationModels a = new EvaluationModels
+                {
+                    id = u.Id,
+                    classroomId = u.Classroom_Id,
+                    date = u.Date,
+                    classroomName = u.Classrooms.Title,
+                    periodId = u.Period_Id,
+                    periodBegin = u.Periods.Begin,
+                    periodEnd = u.Periods.End,
+                    totalPoint = u.TotalPoint,
+                    userId = u.User_Id,
+                    userName = u.Users.UserName
+                };
+                list.Add(a);
+            }
+            return list;
+        }
+
         // GET: /Eleves/Eleves/
 
         public ActionResult Index()
@@ -139,7 +162,6 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     town = x.Town,
                     tel = x.Tel,
                     address = x.Address,
-                    // eleves = 
                 }).ToList();
             }
             return View(models);
@@ -376,6 +398,7 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                 Pupils x = repository.GetPupilById(id);
                 IQueryable<Tutors> t = repository.GetTutors();
                 IQueryable<Results> r = repository.GetResultatsByPupilId(id);
+                IQueryable<Evaluations> e = repository.GetEvaluations();
                 if (x == null)
                 {
                     return HttpNotFound();
@@ -393,7 +416,8 @@ namespace GestionScolaire.Areas.Eleves.Controllers
                     tuteurName = x.Tutors.LastName,
                     classTitle = x.Classrooms.Title,
                     niveauName = x.Levels.Title,
-                    resultats = getListResultats(r)
+                    resultats = getListResultats(r),
+                    evaluations = getListEvaluations(e)
                 };
             }
             return View(model);

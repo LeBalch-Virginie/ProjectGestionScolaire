@@ -35,18 +35,36 @@
     @Html.ActionLink(Model.tuteurName, "ReadTuteur", "Eleves", new {id = Model.tuteurId}, null)
 </p>
 <p>Classe : <br />    
-    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId}, new { target = "_blank" })
+    @Html.ActionLink(Model.classTitle, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = Model.classroomId}, null)
 </p>
 <p>Niveau : <br />    
-    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, new { target = "_blank" })
+    @Html.ActionLink(Model.niveauName, "ReadNiveau", "Administration",  new {area = "Administration", id = Model.levelId}, null)
 </p>
 
-<p>Résultats :
+<p>Résultats :</p>
+<div class="liste_notes">
+    <table>
+        <thead>
+            <tr>
+                <th>Evaluation</th>
+                <th>Note</th>
+            </tr>
+        </thead>
     @foreach (var r in Model.resultats)
     {
-    <p>Note :</p> r.note.ToString();
+        foreach (var e in Model.evaluations)
+        {
+            if (r.evaluationId == e.id)
+            {
+                <tr>
+                    <td>@e.date.ToShortDateString() - @e.classroomName - @e.userName</td>
+                    <td>@r.note.ToString()</td>
+                </tr>
+            }
+        }
     }
-</p>
+    </table>
+</div>
 <br />
 <p>
     @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = Model.id }) 

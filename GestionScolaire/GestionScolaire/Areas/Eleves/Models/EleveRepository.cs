@@ -82,6 +82,11 @@ namespace GestionScolaire.Areas.Eleves.Models
             return data.Levels;
         }
 
+        public IQueryable<Evaluations> GetEvaluations()
+        {
+            return data.Evaluations;
+        }
+
 
         #endregion
 
