@@ -33,19 +33,19 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public String town { get; set; }
 
         [Display(Name = "Directeur")]
-        [Required]
+
         public Guid userId { get; set; }
 
         [Display(Name = "Académie")]
-        [Required]
+
         public Guid academieId { get; set; }
 
         [Display(Name = "Directeur")]
-        [Required]
+
         public String userName { get; set; }
 
         [Display(Name = "Académie")]
-        [Required]
+
         public String academieName { get; set; }
 
 
