@@ -8,9 +8,11 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
     public class AcademieModels
     {
         [Display(Name = "Id de l'académie")]
+        
         public Guid id { get; set; }
 
         [Display(Name = "Nom de l'académie")]
+        [StringLength(50)]
         [Required]
         public String name { get; set; }
 
