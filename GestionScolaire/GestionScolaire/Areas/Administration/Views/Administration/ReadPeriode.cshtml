@@ -2,12 +2,10 @@
 @model PeriodeModels
 
 @{
-    ViewBag.Title = "Periode " + Model.begin.ToShortDateString() + " - " + Model.end.ToShortDateString();
+    ViewBag.Title = "Période " + Model.begin.ToShortDateString() + " - " + Model.end.ToShortDateString();
 }
 
-<h2>Periode @Model.begin.ToShortDateString() -  @Model.end.ToShortDateString()</h2>
-
-@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", periode = Model.id }, null)
+<h2>Période @Model.begin.ToShortDateString() -  @Model.end.ToShortDateString()</h2>
 
 <p>Cette période commence le @Model.begin.ToShortDateString() et se termine le @Model.end.ToShortDateString()
     <br />
@@ -19,8 +17,15 @@
 @foreach(var eval in Model.evaluations)
 {
     @Html.ActionLink(eval.date.ToShortDateString() + " " + eval.userName + " " + eval.classroomName, "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
-
 }
 
+@if (Model.evaluations.Count == 0)
+{
+    <p class="count0">Aucune évaluation sur cette période</p>
+}
+
+<div class="create">
+    @Html.ActionLink("Ajouter une évaluation pour cette période", "CreateEvaluation", "Eval", new { area="Eval", periode = Model.id }, null)
+</div>
 
 

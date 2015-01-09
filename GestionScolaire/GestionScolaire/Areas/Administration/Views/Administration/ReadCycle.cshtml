@@ -9,7 +9,7 @@
 
 <p>Le cycle @Model.title est composé des différents niveaux suivants :</p>
 
-        @foreach(NiveauModels niveau in Model.niveaux)
-        {
-            @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, new { target = "_blank" })
-        }
+    @foreach(NiveauModels niveau in Model.niveaux)
+    {
+        @Html.ActionLink(niveau.title, "ReadNiveau", "Administration", new {id = niveau.id}, new { target = "_blank" })
+    }

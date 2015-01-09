@@ -42,30 +42,39 @@
 </p>
 
 <p>Résultats :</p>
-<div class="liste_notes">
-    <table>
-        <thead>
-            <tr>
-                <th>Evaluation</th>
-                <th>Note</th>
-            </tr>
-        </thead>
-    @foreach (var r in Model.resultats)
-    {
-        foreach (var e in Model.evaluations)
-        {
-            if (r.evaluationId == e.id)
-            {
+
+
+@if (Model.resultats.Count == 0)
+{
+    <p class="count0">Aucun résultat pour cet élève</p>
+} else {
+    <div class="liste_notes">
+        <table>
+            <thead>
                 <tr>
-                    <td>@e.date.ToShortDateString() - @e.classroomName - @e.userName</td>
-                    <td>@r.note.ToString()</td>
+                    <th>Evaluation</th>
+                    <th>Note</th>
                 </tr>
+            </thead>
+        @foreach (var r in Model.resultats)
+        {
+            foreach (var e in Model.evaluations)
+            {
+                if (r.evaluationId == e.id)
+                {
+                    <tr>
+                        <td>@e.date.ToShortDateString() - @e.classroomName - @e.userName</td>
+                        <td>@r.note.ToString()</td>
+                    </tr>
+                }
             }
         }
-    }
-    </table>
-</div>
+        </table>
+    </div>
+}
+
 <br />
+
 <p>
     @Html.ActionLink("Edit", "EditEleve", new {area = "Eleves", id = Model.id }) 
     @Html.ActionLink("Back to List", "ReadEleves")

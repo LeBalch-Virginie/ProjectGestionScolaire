@@ -12,7 +12,6 @@ namespace GestionScolaire.Areas.GestionDesClasses.Models
         public Guid id { get; set; }
 
         [Display(Name = "Nom de l'académie")]
-        [StringLength(50)]
         [Required]
         public String name { get; set; }
 

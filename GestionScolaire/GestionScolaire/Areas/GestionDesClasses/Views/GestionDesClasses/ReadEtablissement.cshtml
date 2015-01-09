@@ -6,8 +6,6 @@
 
 <h2> Etablissement @Model.name</h2>
 
-@Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
-
 <p>
     Coordonnées : 
 </p>
@@ -18,6 +16,8 @@
 <p>
     Directeur : <br />
     @Html.ActionLink(Model.userName, "ReadUser", "GestionDesClasses", new {id = Model.userId}, new { target = "_blank" })<br />
+
+
     Académie : <br />
 
     @Html.ActionLink(Model.academieName, "ReadAcademie", "GestionDesClasses", new {id = Model.academieId}, new { target = "_blank" })<br />
@@ -26,6 +26,15 @@
     {
         @Html.ActionLink(c.title , "ReadClasse", "GestionDesClasses", new {id = c.id}, new { target = "_blank" })
     }
+
+    @if (Model.classrooms.Count == 0)
+    {
+        <p class="count0">Aucune classe pour cet établissement</p>
+    }
+    <div class="create">
+        @Html.ActionLink("Ajouter une classe dans cet établissement", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
+    </div>
+
 </p>
 
 <br />

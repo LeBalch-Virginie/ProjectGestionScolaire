@@ -9,9 +9,6 @@
 
 <h2>Professeur : @Model.userName</h2>
 
-@Html.ActionLink("Ajouter un établissement", "CreateEtablissement", "GestionDesClasses", new { user = Model.id }, null)
-@Html.ActionLink("Ajouter une classe", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
-@Html.ActionLink("Ajouter une évaluation", "CreateEvaluation", "Eval", new { area="Eval", user = Model.id }, null)
 
 <p>Prénom : </p>
 <div class="bloc_texte">
@@ -31,6 +28,15 @@
     {
         @Html.ActionLink(c.title, "ReadClasse", "GestionDesClasses", new {area = "GestionDesClasses", id = c.id}, null)
     }
+
+    @if (Model.classes.Count == 0)
+    {
+        <p class="count0">Aucune classe pour ce professeur</p>
+    }
+
+    <div class="create">
+        @Html.ActionLink("Ajouter une classe pour ce professeur", "CreateClasse", "GestionDesClasses", new { etablissement = Model.id }, null)
+    </div>
 </p>
 
 <p>
@@ -39,7 +45,15 @@
     {
         @Html.ActionLink(e.name, "ReadEtablissement", "GestionDesClasses", new {area = "GestionDesClasses", id = e.id}, null)
     }
-    <br />
+
+    @if (Model.etablissements.Count == 0)
+    {
+        <p class="count0">Aucun établissement pour ce professeur</p>
+    }
+
+    <div class="create">
+        @Html.ActionLink("Ajouter un établissement pour ce professeur", "CreateEtablissement", "GestionDesClasses", new { user = Model.id }, null)
+    </div>
 </p>
 
 <p>
@@ -49,8 +63,17 @@
         @Html.ActionLink("Le " + eval.date.ToShortDateString() + " dans la classe " + eval.classroomName,
         "ReadEvaluation", "Eval", new {area = "Eval", id = eval.id}, null)
     }
-    <br />
+  
+    @if (Model.evaluations.Count == 0)
+    {
+        <p class="count0">Aucune évaluation pour ce professeur</p>
+    }
+
+    <div class="create">
+        @Html.ActionLink("Ajouter une évaluation pour ce professeur", "CreateEvaluation", "Eval", new { area="Eval", user = Model.id }, null)
+    </div>
 </p>
 
+<br />
 @Html.ActionLink("Edit", "EditUser", new { id = Model.id })
 @Html.ActionLink("Back to List", "ReadUsers")

@@ -1008,5 +1008,16 @@ p {
     color: #d3dce0;
     border: none;
     margin-left: 5px;
+    border-radius: 0px;
 }
 
+.count0 {
+   
+    font-style: italic;
+    background-color: black;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    padding-bottom: 7px;
+    padding-top: 7px;
+}
